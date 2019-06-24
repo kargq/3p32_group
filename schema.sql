@@ -1,7 +1,8 @@
 /**
  * SQL code to create the database.  
  */
-/* Entities */
+
+/* Entities that need to be changed */
 CREATE TABLE Skill (
     skill_id INTEGER PRIMARY KEY,
     min_level INTEGER,
