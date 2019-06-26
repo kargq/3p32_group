@@ -49,7 +49,7 @@ CREATE TABLE Charachter (
     FOREIGN KEY (main_equipped) REFERENCES Main_Weapon_Instance,
     secondary_equipped INTEGER,
     UNIQUE (secondary_equipped),
-    FOREIGN KEY (secondary_equipped) REFERENCES Secondary_Equipment_Instance,
+    FOREIGN KEY (secondary_equipped) REFERENCES Secondary_Equipment_Instance
 );
 
 CREATE TABLE Gem (
@@ -167,7 +167,7 @@ CREATE TABLE Has_Earned (
     chr_name CHAR(30),
     PRIMARY KEY (skill_id, chr_name),
     FOREIGN KEY (skill_id) REFERENCES Skill,
-    FOREIGN KEY (chr_name) REFERENCES Charachter
+    FOREIGN KEY (chr_name) REFERENCES Charac\dthter
 );
 
 CREATE TABLE Class_Equipment (
