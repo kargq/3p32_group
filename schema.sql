@@ -25,11 +25,31 @@ CREATE TABLE Charachter (
     char_will INTEGER,
     char_life INTEGER,
     char_defence INTEGER,
-    char_strength INTEGER
-);
-
-CREATE TABLE Clan (
-    clanname CHAR(30) PRIMARY KEY
+    char_strength INTEGER,
+    -- class
+    has_class CHAR(20) NOT NULL,
+    FOREIGN KEY has_class REFERENCES Class,
+    -- equipment slots
+    head_equipped INTEGER,
+    FOREIGN KEY (head_equipped) REFERENCES Head_Armour_Instance,
+    chest_equipped INTEGER,
+    UNIQUE(chest_equipped),
+    FOREIGN KEY (chest_equipped) REFERENCES Chest_Armour_Instance,
+    legs_equipped INTEGER,
+    UNIQUE(legs_equipped),
+    FOREIGN KEY (legs_equipped) REFERENCES Legs_Armour_Instance,
+    head_equipped INTEGER,
+    UNIQUE(head_equipped),
+    FOREIGN KEY (head_equipped) REFERENCES Head_Armour_Instance,
+    feet_equipped INTEGER,
+    UNIQUE(feet_equipped),
+    FOREIGN KEY (feet_equipped) REFERENCES Feet_Armour_Instance,
+    main_equipped INTEGER,
+    UNIQUE(main_equipped),
+    FOREIGN KEY (main_equipped) REFERENCES Main_Weapon_Instance,
+    secondary_equipped INTEGER,
+    UNIQUE (secondary_equipped),
+    FOREIGN KEY (secondary_equipped) REFERENCES Secondary_Equipment_Instance,
 );
 
 CREATE TABLE Gem (
@@ -91,7 +111,7 @@ CREATE TABLE Secondary_Equipment (
 
 CREATE TABLE Head_Armour_Instance ( 
     eqp_id INTEGER,
-    head_armour_instance_id INTEGER PRIMARY KEY,  
+    head_armour_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Head_Armour 
 );
 
@@ -119,10 +139,9 @@ CREATE TABLE Main_Weapon_Instance (
     FOREIGN KEY (eqp_id) REFERENCES Main_Weapon
 );
 
-CREATE TABLE Secondary_Equipment_Instance ( 
+CREATE TABLE Secondary_Equipment_Instance (
     eqp_id INTEGER,
-    secondary_weapon_instance_id INTEGER,
-    PRIMARY KEY (eqp_id, secondary_weapon_instance_id),
+    secondary_weapon_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Secondary_Equipment
 );
 
@@ -167,77 +186,74 @@ CREATE TABLE Embedded_Gems (
     FOREIGN KEY (eqp_id) REFERENCES Equipment
 );
 
-CREATE TABLE Has_Class (
-    chr_name CHAR(30) NOT NULL,
-    cls_name CHAR(20),
-    PRIMARY KEY (chr_name, cls_name),
-    FOREIGN KEY (chr_name) REFERENCES Charachter,
-    FOREIGN KEY (cls_name) REFERENCES Class
+CREATE TABLE Clan (
+    clanname CHAR(30) PRIMARY KEY,
+    chief CHAR(30) NOT NULL,
+    FOREIGN KEY chief REFERENCES Charachter,
 );
 
 CREATE TABLE Clan_Member (
-    cln_name CHAR(30) NOT NULL,
-    chr_name CHAR(30) NOT NULL,
-    PRIMARY KEY (cln_name, chr_name),
+    cln_name CHAR(30),
+    chr_name CHAR(30) PRIMARY KEY,
     FOREIGN KEY (cln_name) REFERENCES Clan,
     FOREIGN KEY (chr_name) REFERENCES Charachter
 );
 
-CREATE TABLE Clan_Chief (
-    cln_name CHAR(30) NOT NULL,
-    chr_name CHAR(30),
-    PRIMARY KEY (cln_name, chr_name),
-    FOREIGN KEY (cln_name) REFERENCES Clan,
-    FOREIGN KEY (chr_name) REFERENCES Charachter
-);
+-- CREATE TABLE Clan_Chief (
+--     cln_name CHAR(30) NOT NULL,
+--     chr_name CHAR(30),
+--     PRIMARY KEY (cln_name, chr_name),
+--     FOREIGN KEY (cln_name) REFERENCES Clan,
+--     FOREIGN KEY (chr_name) REFERENCES Charachter
+-- );
 
-CREATE TABLE Head_Equipped (
-    eqp_id INTEGER,
-    chr_name CHAR(30),
-    PRIMARY KEY (eqp_id, chr_name),
-    FOREIGN KEY (eqp_id) REFERENCES Head_Armour_Instance,
-    FOREIGN KEY (chr_name) REFERENCES Charachter
-);
+-- CREATE TABLE Head_Equipped (
+--     eqp_id INTEGER,
+--     chr_name CHAR(30),
+--     PRIMARY KEY (eqp_id, chr_name),
+--     FOREIGN KEY (eqp_id) REFERENCES Head_Armour_Instance,
+--     FOREIGN KEY (chr_name) REFERENCES Charachter
+-- );
 
-CREATE TABLE Chest_Equipped (
-    eqp_id INTEGER,
-    chr_name CHAR(30),
-    PRIMARY KEY (eqp_id, chr_name),
-    FOREIGN KEY (eqp_id) REFERENCES Chest_Armour_Instance,
-    FOREIGN KEY (chr_name) REFERENCES Charachter
-);
+-- CREATE TABLE Chest_Equipped (
+--     eqp_id INTEGER,
+--     chr_name CHAR(30),
+--     PRIMARY KEY (eqp_id, chr_name),
+--     FOREIGN KEY (eqp_id) REFERENCES Chest_Armour_Instance,
+--     FOREIGN KEY (chr_name) REFERENCES Charachter
+-- );
 
-CREATE TABLE Legs_Equipped (
-    eqp_id INTEGER,
-    chr_name CHAR(30),
-    PRIMARY KEY (eqp_id, chr_name),
-    FOREIGN KEY (eqp_id) REFERENCES Legs_Armour_Instance,
-    FOREIGN KEY (chr_name) REFERENCES Charachter
-);
+-- CREATE TABLE Legs_Equipped (
+--     eqp_id INTEGER,
+--     chr_name CHAR(30),
+--     PRIMARY KEY (eqp_id, chr_name),
+--     FOREIGN KEY (eqp_id) REFERENCES Legs_Armour_Instance,
+--     FOREIGN KEY (chr_name) REFERENCES Charachter
+-- );
 
-CREATE TABLE Feet_Equipped (
-    eqp_id INTEGER,
-    chr_name CHAR(30),
-    PRIMARY KEY (eqp_id, chr_name),
-    FOREIGN KEY (eqp_id) REFERENCES Feet_Armour_Instance,
-    FOREIGN KEY (chr_name) REFERENCES Charachter
-);
+-- CREATE TABLE Feet_Equipped (
+--     eqp_id INTEGER,
+--     chr_name CHAR(30),
+--     PRIMARY KEY (eqp_id, chr_name),
+--     FOREIGN KEY (eqp_id) REFERENCES Feet_Armour_Instance,
+--     FOREIGN KEY (chr_name) REFERENCES Charachter
+-- );
 
-CREATE TABLE Main_Equipped (
-    eqp_id INTEGER,
-    chr_name CHAR(30),
-    PRIMARY KEY (eqp_id, chr_name),
-    FOREIGN KEY (eqp_id) REFERENCES Main_Weapon_Instance,
-    FOREIGN KEY (chr_name) REFERENCES Charachter
-);
+-- CREATE TABLE Main_Equipped (
+--     eqp_id INTEGER,
+--     chr_name CHAR(30),
+--     PRIMARY KEY (eqp_id, chr_name),
+--     FOREIGN KEY (eqp_id) REFERENCES Main_Weapon_Instance,
+--     FOREIGN KEY (chr_name) REFERENCES Charachter
+-- );
 
-CREATE TABLE Secondary_Equipped (
-    eqp_id INTEGER,
-    chr_name CHAR(30),
-    PRIMARY KEY (eqp_id, chr_name),
-    FOREIGN KEY (eqp_id) REFERENCES Secondary_Equipment_Instance,
-    FOREIGN KEY (chr_name) REFERENCES Charachter
-);
+-- CREATE TABLE Secondary_Equipped (
+--     eqp_id INTEGER,
+--     chr_name CHAR(30),
+--     PRIMARY KEY (eqp_id, chr_name),
+--     FOREIGN KEY (eqp_id) REFERENCES Secondary_Equipment_Instance,
+--     FOREIGN KEY (chr_name) REFERENCES Charachter
+-- );
 
 /* gem embed relations */
 CREATE TABLE head_embed (
