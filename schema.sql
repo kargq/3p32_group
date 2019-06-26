@@ -28,7 +28,7 @@ CREATE TABLE Charachter (
     char_strength INTEGER,
     -- class
     has_class CHAR(20) NOT NULL,
-    FOREIGN KEY has_class REFERENCES Class,
+    FOREIGN KEY (has_class) REFERENCES Class,
     -- equipment slots
     head_equipped INTEGER,
     FOREIGN KEY (head_equipped) REFERENCES Head_Armour_Instance,
