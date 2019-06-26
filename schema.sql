@@ -7,7 +7,8 @@ CREATE TABLE Skill (
     skill_id INTEGER PRIMARY KEY,
     min_level INTEGER,
     power_cost INTEGER,
-    description CHAR(60)
+    sdescription CHAR(60)
+    sname CHAR(20)
 );
 
 CREATE TABLE Class (
@@ -16,45 +17,45 @@ CREATE TABLE Class (
 
 CREATE TABLE Charachter (
     chr_name CHAR(30) PRIMARY KEY,
-    experience INTEGER,
-    speed INTEGER,
-    block INTEGER,
-    power INTEGER,
-    level INTEGER,
-    will INTEGER,
-    life INTEGER,
-    defence INTEGER,
-    strength INTEGER,
+    char_experience INTEGER,
+    char_speed INTEGER,
+    char_block INTEGER,
+    char_power INTEGER,
+    char_level INTEGER,
+    char_will INTEGER,
+    char_life INTEGER,
+    char_defence INTEGER,
+    char_strength INTEGER,
 );
 
 CREATE TABLE Clan (
-    cln_name CHAR(30) PRIMARY KEY,
+    clanname CHAR(30) PRIMARY KEY,
 );
 
 CREATE TABLE Gem (
     gem_id INTEGER PRIMARY KEY,
-    life INTEGER,
-    power INTEGER,
-    name INTEGER,
-    speed INTEGER,
-    defence INTEGER,
-    will INTEGER,
-    strength INTEGER,
-    level INTEGER,
-    block INTEGER
+    glife INTEGER,
+    gpower INTEGER,
+    gname INTEGER,
+    gspeed INTEGER,
+    gdefence INTEGER,
+    gwill INTEGER,
+    gstrength INTEGER,
+    glevel INTEGER,
+    gblock INTEGER
 );
 
 CREATE TABLE Equipment (
     eqp_id INTEGER PRIMARY KEY,
     eqp_name CHAR(20),
-    will INTEGER,
-    speed INTEGER,
-    defence INTEGER,
-    strength INTEGER,
-    blcok INTEGER,
-    power INTEGER,
-    life INTEGER,
-    level INTEGER,
+    ewill INTEGER,
+    espeed INTEGER,
+    edefence INTEGER,
+    estrength INTEGER,
+    eblcok INTEGER,
+    epower INTEGER,
+    elife INTEGER,
+    elevel INTEGER,
     gem_limit INTEGER,
 );
 
@@ -89,39 +90,39 @@ CREATE TABLE Secondary_Equipment (
 );
 
 CREATE TABLE Head_Armour_Instance ( 
-    head_armour_id INTEGER,
+    eqp_id INTEGER,
     head_armour_instance_id INTEGER PRIMARY KEY,  
-    FOREIGN KEY (head_armour_id) REFERENCES Head_Armour 
+    FOREIGN KEY (eqp_id) REFERENCES Head_Armour 
 );
 
 CREATE TABLE Chest_Armour_Instance ( 
-    chest_armour_id INTEGER,
+    eqp_id INTEGER,
     chest_armour_instance_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (chest_armour_id) REFERENCES Chest_Armour
+    FOREIGN KEY (eqp_id) REFERENCES Chest_Armour
 );
 
 CREATE TABLE Leg_Armour_Instance ( 
-    leg_armour_id INTEGER,
+    eqp_id INTEGER,
     leg_armour_instance_id INTEGER PRIMARY KEY,  
-    FOREIGN KEY (leg_armour_id) REFERENCES Leg_Armour
+    FOREIGN KEY (eqp_id) REFERENCES Leg_Armour
 );
 
 CREATE TABLE Feet_Armour_Instance ( 
-    feet_armour_id INTEGER,
+    eqp_id INTEGER,
     feet_armour_instance_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (feet_armour_id) REFERENCES Feet_Armour
+    FOREIGN KEY (eqp_id) REFERENCES Feet_Armour
 );
 
 CREATE TABLE Main_Weapon_Instance ( 
-    main_weapon_id INTEGER,
+    eqp_id INTEGER,
     main_weapon_instance_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (main_weapon_id) REFERENCES Main_Weapon
+    FOREIGN KEY (eqp_id) REFERENCES Main_Weapon
 );
 
 CREATE TABLE Secondary_Weapon_Instance ( 
-    seconday_weapon_id INTEGER PRIMARY KEY,
+    eqp_id INTEGER PRIMARY KEY,
     seconday_weapon_instance_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (secondary_weapon_id) REFERENCES Seconday_Weapon
+    FOREIGN KEY (eqp_id) REFERENCES Seconday_Weapon
 );
 
 /* Relationships */
