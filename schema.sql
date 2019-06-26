@@ -7,7 +7,7 @@ CREATE TABLE Skill (
     skill_id INTEGER PRIMARY KEY,
     min_level INTEGER,
     power_cost INTEGER,
-    sdescription CHAR(60)
+    sdescription CHAR(60),
     sname CHAR(20)
 );
 
@@ -101,10 +101,10 @@ CREATE TABLE Chest_Armour_Instance (
     FOREIGN KEY (eqp_id) REFERENCES Chest_Armour
 );
 
-CREATE TABLE Leg_Armour_Instance ( 
+CREATE TABLE Legs_Armour_Instance ( 
     eqp_id INTEGER,
-    leg_armour_instance_id INTEGER PRIMARY KEY,  
-    FOREIGN KEY (eqp_id) REFERENCES Leg_Armour
+    legs_armour_instance_id INTEGER PRIMARY KEY,  
+    FOREIGN KEY (eqp_id) REFERENCES Legs_Armour
 );
 
 CREATE TABLE Feet_Armour_Instance ( 
@@ -210,7 +210,7 @@ CREATE TABLE Legs_Equipped (
     eqp_id INTEGER,
     chr_name CHAR(30),
     PRIMARY KEY (eqp_id, chr_name),
-    FOREIGN KEY (eqp_id) REFERENCES Leg_Armour_Instance,
+    FOREIGN KEY (eqp_id) REFERENCES Legs_Armour_Instance,
     FOREIGN KEY (chr_name) REFERENCES Charachter
 );
 
@@ -256,10 +256,10 @@ CREATE TABLE chest_embed (
 );
 
 CREATE TABLE leg_embed (
-  leg_armour_instance_id INTEGER,
+  legs_armour_instance_id INTEGER,
   gem_id INTEGER,
-  PRIMARY KEY (leg_armour_instance_id, gem_id),
-  FOREIGN KEY (leg_armour_instance_id) REFERENCES Leg_Armour_Instance,
+  PRIMARY KEY (legs_armour_instance_id, gem_id),
+  FOREIGN KEY (legs_armour_instance_id) REFERENCES Legs_Armour_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
 );
 
