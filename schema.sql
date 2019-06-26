@@ -121,7 +121,7 @@ CREATE TABLE Main_Weapon_Instance (
 
 CREATE TABLE Secondary_Weapon_Instance ( 
     eqp_id INTEGER,
-    seconday_weapon_instance_id INTEGER,
+    secondary_weapon_instance_id INTEGER,
     PRIMARY KEY (eqp_id, secondary_weapon_instance_id),
     FOREIGN KEY (eqp_id) REFERENCES Seconday_Weapon
 );
