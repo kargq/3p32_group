@@ -119,11 +119,11 @@ CREATE TABLE Main_Weapon_Instance (
     FOREIGN KEY (eqp_id) REFERENCES Main_Weapon
 );
 
-CREATE TABLE Secondary_Weapon_Instance ( 
+CREATE TABLE Secondary_Equipment_Instance ( 
     eqp_id INTEGER,
     secondary_weapon_instance_id INTEGER,
     PRIMARY KEY (eqp_id, secondary_weapon_instance_id),
-    FOREIGN KEY (eqp_id) REFERENCES Seconday_Weapon
+    FOREIGN KEY (eqp_id) REFERENCES Secondary_Weapon
 );
 
 /* Relationships */
@@ -235,7 +235,7 @@ CREATE TABLE Secondary_Equipped (
     eqp_id INTEGER,
     chr_name CHAR(30),
     PRIMARY KEY (eqp_id, chr_name),
-    FOREIGN KEY (eqp_id) REFERENCES Secondary_Weapon_Instance,
+    FOREIGN KEY (eqp_id) REFERENCES Secondary_Equipment_Instance,
     FOREIGN KEY (chr_name) REFERENCES Charachter
 );
 
@@ -284,6 +284,6 @@ CREATE TABLE secondary_embed (
   secondary_weapon_instance_id INTEGER,
   gem_id INTEGER,
   PRIMARY KEY (secondary_weapon_instance_id, gem_id),
-  FOREIGN KEY (secondary_weapon_instance_id) REFERENCES Secondary_Weapon_Instance,
+  FOREIGN KEY (secondary_weapon_instance_id) REFERENCES Secondary_Equipment_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
 );
