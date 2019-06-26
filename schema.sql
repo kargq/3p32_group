@@ -188,7 +188,7 @@ CREATE TABLE Embedded_Gems (
 CREATE TABLE Clan (
     clanname CHAR(30) PRIMARY KEY,
     chief CHAR(30) NOT NULL,
-    FOREIGN KEY (chief) REFERENCES Charachter,
+    FOREIGN KEY (chief) REFERENCES Charachter
 );
 
 CREATE TABLE Clan_Member (
