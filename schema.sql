@@ -2,54 +2,7 @@
  * SQL code to create the database.  
  */
 
-/* Entities that need to be changed */
-CREATE TABLE Skill (
-    skill_id INTEGER PRIMARY KEY,
-    min_level INTEGER,
-    power_cost INTEGER,
-    sdescription CHAR(60),
-    sname CHAR(20)
-);
-
-CREATE TABLE Class (
-    cls_name CHAR(20) PRIMARY KEY
-);
-
-CREATE TABLE Charachter (
-    chr_name CHAR(30) PRIMARY KEY,
-    char_experience INTEGER,
-    char_speed INTEGER,
-    char_block INTEGER,
-    char_power INTEGER,
-    char_level INTEGER,
-    char_will INTEGER,
-    char_life INTEGER,
-    char_defence INTEGER,
-    char_strength INTEGER,
-    -- class
-    has_class CHAR(20) NOT NULL,
-    FOREIGN KEY (has_class) REFERENCES Class,
-    -- equipment slots
-    head_equipped INTEGER,
-    UNIQUE (head_equipped),
-    FOREIGN KEY (head_equipped) REFERENCES Head_Armour_Instance,
-    chest_equipped INTEGER,
-    UNIQUE(chest_equipped),
-    FOREIGN KEY (chest_equipped) REFERENCES Chest_Armour_Instance,
-    legs_equipped INTEGER,
-    UNIQUE(legs_equipped),
-    FOREIGN KEY (legs_equipped) REFERENCES Legs_Armour_Instance,
-    feet_equipped INTEGER,
-    UNIQUE(feet_equipped),
-    FOREIGN KEY (feet_equipped) REFERENCES Feet_Armour_Instance,
-    main_equipped INTEGER,
-    UNIQUE(main_equipped),
-    FOREIGN KEY (main_equipped) REFERENCES Main_Weapon_Instance,
-    secondary_equipped INTEGER,
-    UNIQUE (secondary_equipped),
-    FOREIGN KEY (secondary_equipped) REFERENCES Secondary_Equipment_Instance
-);
-
+/* Equipment */
 CREATE TABLE Gem (
     gem_id INTEGER PRIMARY KEY,
     glife INTEGER,
@@ -141,6 +94,54 @@ CREATE TABLE Secondary_Equipment_Instance (
     eqp_id INTEGER,
     secondary_weapon_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Secondary_Equipment
+);
+
+/* Entities that need to be changed */
+CREATE TABLE Skill (
+    skill_id INTEGER PRIMARY KEY,
+    min_level INTEGER,
+    power_cost INTEGER,
+    sdescription CHAR(60),
+    sname CHAR(20)
+);
+
+CREATE TABLE Class (
+    cls_name CHAR(20) PRIMARY KEY
+);
+
+CREATE TABLE Charachter (
+    chr_name CHAR(30) PRIMARY KEY,
+    char_experience INTEGER,
+    char_speed INTEGER,
+    char_block INTEGER,
+    char_power INTEGER,
+    char_level INTEGER,
+    char_will INTEGER,
+    char_life INTEGER,
+    char_defence INTEGER,
+    char_strength INTEGER,
+    -- class
+    has_class CHAR(20) NOT NULL,
+    FOREIGN KEY (has_class) REFERENCES Class,
+    -- equipment slots
+    head_equipped INTEGER,
+    UNIQUE (head_equipped),
+    FOREIGN KEY (head_equipped) REFERENCES Head_Armour_Instance,
+    chest_equipped INTEGER,
+    UNIQUE(chest_equipped),
+    FOREIGN KEY (chest_equipped) REFERENCES Chest_Armour_Instance,
+    legs_equipped INTEGER,
+    UNIQUE(legs_equipped),
+    FOREIGN KEY (legs_equipped) REFERENCES Legs_Armour_Instance,
+    feet_equipped INTEGER,
+    UNIQUE(feet_equipped),
+    FOREIGN KEY (feet_equipped) REFERENCES Feet_Armour_Instance,
+    main_equipped INTEGER,
+    UNIQUE(main_equipped),
+    FOREIGN KEY (main_equipped) REFERENCES Main_Weapon_Instance,
+    secondary_equipped INTEGER,
+    UNIQUE (secondary_equipped),
+    FOREIGN KEY (secondary_equipped) REFERENCES Secondary_Equipment_Instance
 );
 
 /* Relationships */
