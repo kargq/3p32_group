@@ -31,6 +31,7 @@ CREATE TABLE Charachter (
     FOREIGN KEY (has_class) REFERENCES Class,
     -- equipment slots
     head_equipped INTEGER,
+    UNIQUE (head_equipped),
     FOREIGN KEY (head_equipped) REFERENCES Head_Armour_Instance,
     chest_equipped INTEGER,
     UNIQUE(chest_equipped),
@@ -38,9 +39,6 @@ CREATE TABLE Charachter (
     legs_equipped INTEGER,
     UNIQUE(legs_equipped),
     FOREIGN KEY (legs_equipped) REFERENCES Legs_Armour_Instance,
-    head_equipped INTEGER,
-    UNIQUE(head_equipped),
-    FOREIGN KEY (head_equipped) REFERENCES Head_Armour_Instance,
     feet_equipped INTEGER,
     UNIQUE(feet_equipped),
     FOREIGN KEY (feet_equipped) REFERENCES Feet_Armour_Instance,
