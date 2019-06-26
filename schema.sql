@@ -123,7 +123,7 @@ CREATE TABLE Secondary_Equipment_Instance (
     eqp_id INTEGER,
     secondary_weapon_instance_id INTEGER,
     PRIMARY KEY (eqp_id, secondary_weapon_instance_id),
-    FOREIGN KEY (eqp_id) REFERENCES Secondary_Weapon
+    FOREIGN KEY (eqp_id) REFERENCES Secondary_Equipment
 );
 
 /* Relationships */
