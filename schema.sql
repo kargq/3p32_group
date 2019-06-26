@@ -240,7 +240,7 @@ CREATE TABLE Secondary_Equipped (
 /* gem embed relations */
 CREATE TABLE head_embed (
   head_armour_instance_id INTEGER,
-  gem_id INTEGER
+  gem_id INTEGER,
   PRIMARY KEY (head_armour_instance_id, gem_id),
   FOREIGN KEY (head_armour_instance_id) REFERENCES Head_Armour_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
@@ -248,7 +248,7 @@ CREATE TABLE head_embed (
 
 CREATE TABLE chest_embed (
   chest_armour_instance_id INTEGER,
-  gem_id INTEGER
+  gem_id INTEGER,
   PRIMARY KEY (chest_armour_instance_id, gem_id),
   FOREIGN KEY (chest_armour_instance_id) REFERENCES Chest_Armour_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
@@ -256,7 +256,7 @@ CREATE TABLE chest_embed (
 
 CREATE TABLE leg_embed (
   leg_armour_instance_id INTEGER,
-  gem_id INTEGER
+  gem_id INTEGER,
   PRIMARY KEY (leg_armour_instance_id, gem_id),
   FOREIGN KEY (leg_armour_instance_id) REFERENCES Leg_Armour_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
@@ -264,7 +264,7 @@ CREATE TABLE leg_embed (
 
 CREATE TABLE feet_embed (
   feet_armour_instance_id INTEGER,
-  gem_id INTEGER
+  gem_id INTEGER,
   PRIMARY KEY (feet_armour_instance_id, gem_id),
   FOREIGN KEY (feet_armour_instance_id) REFERENCES Feet_Armour_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
@@ -272,7 +272,7 @@ CREATE TABLE feet_embed (
 
 CREATE TABLE main_embed (
   main_weapon_instance_id INTEGER,
-  gem_id INTEGER
+  gem_id INTEGER,
   PRIMARY KEY (main_weapon_instance_id, gem_id),
   FOREIGN KEY (main_weapon_instance_id) REFERENCES Main_Weapon_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
@@ -280,7 +280,7 @@ CREATE TABLE main_embed (
 
 CREATE TABLE secondary_embed (
   secondary_weapon_instance_id INTEGER,
-  gem_id INTEGER
+  gem_id INTEGER,
   PRIMARY KEY (secondary_weapon_instance_id, gem_id),
   FOREIGN KEY (secondary_weapon_instance_id) REFERENCES Secondary_Weapon_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
