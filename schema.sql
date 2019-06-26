@@ -1,6 +1,8 @@
 /**
- * SQL code to create the database.  
+ * Schema 
  */
+
+/* Table creation queries */
 
 /* Equipment */
 CREATE TABLE Gem (
@@ -97,6 +99,7 @@ CREATE TABLE Secondary_Equipment_Instance (
 );
 
 /* Entities that need to be changed */
+
 CREATE TABLE Skill (
     skill_id INTEGER PRIMARY KEY,
     min_level INTEGER,
@@ -145,6 +148,7 @@ CREATE TABLE Charachter (
 );
 
 /* Relationships */
+
 CREATE TABLE Earned_Skill (
     skill_id INTEGER,
     cls_name CHAR(20),
@@ -198,63 +202,8 @@ CREATE TABLE Clan_Member (
     FOREIGN KEY (chr_name) REFERENCES Charachter
 );
 
--- CREATE TABLE Clan_Chief (
---     cln_name CHAR(30) NOT NULL,
---     chr_name CHAR(30),
---     PRIMARY KEY (cln_name, chr_name),
---     FOREIGN KEY (cln_name) REFERENCES Clan,
---     FOREIGN KEY (chr_name) REFERENCES Charachter
--- );
-
--- CREATE TABLE Head_Equipped (
---     eqp_id INTEGER,
---     chr_name CHAR(30),
---     PRIMARY KEY (eqp_id, chr_name),
---     FOREIGN KEY (eqp_id) REFERENCES Head_Armour_Instance,
---     FOREIGN KEY (chr_name) REFERENCES Charachter
--- );
-
--- CREATE TABLE Chest_Equipped (
---     eqp_id INTEGER,
---     chr_name CHAR(30),
---     PRIMARY KEY (eqp_id, chr_name),
---     FOREIGN KEY (eqp_id) REFERENCES Chest_Armour_Instance,
---     FOREIGN KEY (chr_name) REFERENCES Charachter
--- );
-
--- CREATE TABLE Legs_Equipped (
---     eqp_id INTEGER,
---     chr_name CHAR(30),
---     PRIMARY KEY (eqp_id, chr_name),
---     FOREIGN KEY (eqp_id) REFERENCES Legs_Armour_Instance,
---     FOREIGN KEY (chr_name) REFERENCES Charachter
--- );
-
--- CREATE TABLE Feet_Equipped (
---     eqp_id INTEGER,
---     chr_name CHAR(30),
---     PRIMARY KEY (eqp_id, chr_name),
---     FOREIGN KEY (eqp_id) REFERENCES Feet_Armour_Instance,
---     FOREIGN KEY (chr_name) REFERENCES Charachter
--- );
-
--- CREATE TABLE Main_Equipped (
---     eqp_id INTEGER,
---     chr_name CHAR(30),
---     PRIMARY KEY (eqp_id, chr_name),
---     FOREIGN KEY (eqp_id) REFERENCES Main_Weapon_Instance,
---     FOREIGN KEY (chr_name) REFERENCES Charachter
--- );
-
--- CREATE TABLE Secondary_Equipped (
---     eqp_id INTEGER,
---     chr_name CHAR(30),
---     PRIMARY KEY (eqp_id, chr_name),
---     FOREIGN KEY (eqp_id) REFERENCES Secondary_Equipment_Instance,
---     FOREIGN KEY (chr_name) REFERENCES Charachter
--- );
-
 /* gem embed relations */
+
 CREATE TABLE head_embed (
   head_armour_instance_id INTEGER,
   gem_id INTEGER,
