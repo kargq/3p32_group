@@ -25,11 +25,11 @@ CREATE TABLE Charachter (
     char_will INTEGER,
     char_life INTEGER,
     char_defence INTEGER,
-    char_strength INTEGER,
+    char_strength INTEGER
 );
 
 CREATE TABLE Clan (
-    clanname CHAR(30) PRIMARY KEY,
+    clanname CHAR(30) PRIMARY KEY
 );
 
 CREATE TABLE Gem (
@@ -56,7 +56,7 @@ CREATE TABLE Equipment (
     epower INTEGER,
     elife INTEGER,
     elevel INTEGER,
-    gem_limit INTEGER,
+    gem_limit INTEGER
 );
 
 CREATE TABLE Head_Armour (
