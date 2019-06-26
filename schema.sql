@@ -167,7 +167,7 @@ CREATE TABLE Has_Earned (
     chr_name CHAR(30),
     PRIMARY KEY (skill_id, chr_name),
     FOREIGN KEY (skill_id) REFERENCES Skill,
-    FOREIGN KEY (chr_name) REFERENCES Charac\dthter
+    FOREIGN KEY (chr_name) REFERENCES Charachter
 );
 
 CREATE TABLE Class_Equipment (
@@ -189,7 +189,7 @@ CREATE TABLE Embedded_Gems (
 CREATE TABLE Clan (
     clanname CHAR(30) PRIMARY KEY,
     chief CHAR(30) NOT NULL,
-    FOREIGN KEY chief REFERENCES Charachter,
+    FOREIGN KEY (chief) REFERENCES Charachter,
 );
 
 CREATE TABLE Clan_Member (
