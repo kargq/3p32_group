@@ -113,7 +113,7 @@ CREATE TABLE Class (
 );
 
 CREATE TABLE Character (
-    chr_name CHAR(30) PRIMARY KEY,
+    char_name CHAR(30) PRIMARY KEY,
     char_experience INTEGER,
     char_speed INTEGER,
     char_block INTEGER,
@@ -167,10 +167,10 @@ CREATE TABLE Auto_Skill (
 
 CREATE TABLE Has_Earned (
     skill_id INTEGER,
-    chr_name CHAR(30),
-    PRIMARY KEY (skill_id, chr_name),
+    char_name CHAR(30),
+    PRIMARY KEY (skill_id, char_name),
     FOREIGN KEY (skill_id) REFERENCES Skill,
-    FOREIGN KEY (chr_name) REFERENCES Character
+    FOREIGN KEY (char_name) REFERENCES Character
 );
 
 CREATE TABLE Class_Equipment (
@@ -197,9 +197,9 @@ CREATE TABLE Clan (
 
 CREATE TABLE Clan_Member (
     cln_name CHAR(30),
-    chr_name CHAR(30) PRIMARY KEY,
+    char_name CHAR(30) PRIMARY KEY,
     FOREIGN KEY (cln_name) REFERENCES Clan,
-    FOREIGN KEY (chr_name) REFERENCES Character
+    FOREIGN KEY (char_name) REFERENCES Character
 );
 
 /* gem embed relations */
