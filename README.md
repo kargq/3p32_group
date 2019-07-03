@@ -12,6 +12,10 @@ User script update_sql.sh to deploy changes to schema.
 
 Note: The script drops every table and recreates them.
 
+### Todo
+
+Would be helpful to have a script to add dummy data. Add that to update_sql.
+
 ### ER Diagram
 https://www.draw.io/#G17ShW0CAUOEnBLl88cmvr-g9rNtZNtuZH
 
