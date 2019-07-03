@@ -8,9 +8,14 @@ Code to drop every table is in `drop_all.sql`
 
 ### Server
 
-User script update_sql.sh to deploy changes to schema. 
+User script `update_sql.sh` to deploy changes to schema. 
 
 Note: The script drops every table and recreates them.
+
+Use `login` to open psql terminal 
+
+(Or just use the `grp_psql.sh` script, login is just an alias, this is just so you don't need to enter the password)
+
 
 ### Todo
 
