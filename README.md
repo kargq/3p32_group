@@ -8,13 +8,13 @@ Code to drop every table is in `drop_all.sql`
 
 ### Server
 
-Use script `update_sql.sh` to deploy changes to schema. 
+`ssh c3p32g02@sandcastle.cosc.brocku.ca` to login. Enter password, check your emails for the password.
 
-Note: The script drops every table and recreates them.
+Use script `update_sql.sh` to deploy changes from this repo to the psql database. 
 
-Use `login` to open psql terminal 
+Note: The script drops every table and recreates them. (just runs drop_table.sql and then schema.sql as of right now)
 
-(Or just use the `grp_psql.sh` script, login is just an alias, this is just so you don't need to enter the password)
+Use `login` to open psql terminal (Or just use the `grp_psql.sh` script, login is just an alias, this is just so you don't need to enter the password)
 
 
 ### Todo
