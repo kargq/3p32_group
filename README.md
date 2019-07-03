@@ -8,7 +8,7 @@ Code to drop every table is in `drop_all.sql`
 
 ### Server
 
-User script `update_sql.sh` to deploy changes to schema. 
+Use script `update_sql.sh` to deploy changes to schema. 
 
 Note: The script drops every table and recreates them.
 
