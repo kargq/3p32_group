@@ -3,7 +3,8 @@
 ### Schema
 
 Table creation code is in `schema.sql`
-Drop every table code is in `drop_all.sql`
+
+Code to drop every table is in `drop_all.sql`
 
 ### Server
 
