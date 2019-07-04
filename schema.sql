@@ -32,22 +32,7 @@ CREATE TABLE Equipment (
     gem_limit INTEGER
 );
 
-CREATE TABLE Head_Armour (
-    eqp_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (eqp_id) REFERENCES Equipment ON DELETE CASCADE
-);
-
-CREATE TABLE Chest_Armour (
-    eqp_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (eqp_id) REFERENCES Equipment ON DELETE CASCADE
-);
-
-CREATE TABLE Legs_Armour (
-    eqp_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (eqp_id) REFERENCES Equipment ON DELETE CASCADE
-);
-
-CREATE TABLE Feet_Armour (
+CREATE TABLE Armour (
     eqp_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Equipment ON DELETE CASCADE
 );
@@ -62,25 +47,7 @@ CREATE TABLE Secondary_Equipment (
     FOREIGN KEY (eqp_id) REFERENCES Equipment ON DELETE CASCADE
 );
 
-CREATE TABLE Head_Armour_Instance ( 
-    eqp_id INTEGER,
-    head_armour_instance_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (eqp_id) REFERENCES Head_Armour 
-);
-
-CREATE TABLE Chest_Armour_Instance ( 
-    eqp_id INTEGER,
-    chest_armour_instance_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (eqp_id) REFERENCES Chest_Armour
-);
-
-CREATE TABLE Legs_Armour_Instance ( 
-    eqp_id INTEGER,
-    legs_armour_instance_id INTEGER PRIMARY KEY,  
-    FOREIGN KEY (eqp_id) REFERENCES Legs_Armour
-);
-
-CREATE TABLE Feet_Armour_Instance ( 
+CREATE TABLE Armour_Instance ( 
     eqp_id INTEGER,
     feet_armour_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Feet_Armour
@@ -147,7 +114,7 @@ CREATE TABLE Character (
     FOREIGN KEY (secondary_equipped) REFERENCES Secondary_Equipment_Instance
 );
 
-/* Relationships */
+/* Skill Relationships */
 
 CREATE TABLE Earned_Skill (
     skill_id INTEGER,
@@ -181,13 +148,7 @@ CREATE TABLE Class_Equipment (
     FOREIGN KEY (eqp_id) REFERENCES Equipment
 );
 
-CREATE TABLE Embedded_Gems (
-    gem_id INTEGER,
-    eqp_id INTEGER,
-    PRIMARY KEY (gem_id, eqp_id),
-    FOREIGN KEY (gem_id) REFERENCES Gem,
-    FOREIGN KEY (eqp_id) REFERENCES Equipment
-);
+/* Clan */
 
 CREATE TABLE Clan (
     clanname CHAR(30) PRIMARY KEY,
@@ -204,31 +165,7 @@ CREATE TABLE Clan_Member (
 
 /* gem embed relations */
 
-CREATE TABLE head_embed (
-  head_armour_instance_id INTEGER,
-  gem_id INTEGER,
-  PRIMARY KEY (head_armour_instance_id, gem_id),
-  FOREIGN KEY (head_armour_instance_id) REFERENCES Head_Armour_Instance,
-  FOREIGN KEY (gem_id) REFERENCES Gem
-);
-
-CREATE TABLE chest_embed (
-  chest_armour_instance_id INTEGER,
-  gem_id INTEGER,
-  PRIMARY KEY (chest_armour_instance_id, gem_id),
-  FOREIGN KEY (chest_armour_instance_id) REFERENCES Chest_Armour_Instance,
-  FOREIGN KEY (gem_id) REFERENCES Gem
-);
-
-CREATE TABLE leg_embed (
-  legs_armour_instance_id INTEGER,
-  gem_id INTEGER,
-  PRIMARY KEY (legs_armour_instance_id, gem_id),
-  FOREIGN KEY (legs_armour_instance_id) REFERENCES Legs_Armour_Instance,
-  FOREIGN KEY (gem_id) REFERENCES Gem
-);
-
-CREATE TABLE feet_embed (
+CREATE TABLE armour_embed (
   feet_armour_instance_id INTEGER,
   gem_id INTEGER,
   PRIMARY KEY (feet_armour_instance_id, gem_id),
