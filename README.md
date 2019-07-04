@@ -8,7 +8,7 @@ Code to drop every table is in `drop_all.sql`
 
 ### Server
 
-`ssh c3p32g02@sandcastle.cosc.brocku.ca` to login. Enter password, check your emails for the password.
+`ssh c3p32g02@sandcastle.cosc.brocku.ca` to login. Enter password `d5e6j4v9` (Super secure to put it up here, I know) check your emails for the password.
 
 Use script `update_sql.sh` to deploy changes from this repo to the psql database. 
 
