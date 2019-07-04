@@ -1,4 +1,4 @@
-import Models.CharacterModel;
+import models.CharacterModel;
 
 import java.util.List;
 
