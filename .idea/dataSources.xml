@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="c3p32g02@sandcastle.cosc.brocku.ca" uuid="bd2b0704-fffb-4532-9fe4-34e47cc0ade5">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://sandcastle.cosc.brocku.ca/c3p32g02</jdbc-url>
+    </data-source>
+  </component>
+</project>
