@@ -1,0 +1,1 @@
+INSERT INTO Gem values (23412,1,1,1,1,1,1,1,1,1)

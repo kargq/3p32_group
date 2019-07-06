@@ -18,15 +18,14 @@ initialization values to 10 for all somehow too?
 */
 
 
-/* 
-min level for skill (equal or lower than character level)
-*/
+
+-- min level for skill (equal or lower than character level)
 
 
-/*
-min level for equipment
-/*
 
-/*
-gem level, max gems
-*/
+
+-- min level for equipment
+
+
+
+-- gem level, max gems
