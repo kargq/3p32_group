@@ -49,8 +49,8 @@ CREATE TABLE Secondary_Equipment (
 
 CREATE TABLE Armour_Instance ( 
     eqp_id INTEGER,
-    feet_armour_instance_id INTEGER PRIMARY KEY,
-    FOREIGN KEY (eqp_id) REFERENCES Feet_Armour
+    armour_instance_id INTEGER PRIMARY KEY,
+    FOREIGN KEY (eqp_id) REFERENCES Armour
 );
 
 CREATE TABLE Main_Weapon_Instance ( 
@@ -94,18 +94,9 @@ CREATE TABLE Character (
     has_class CHAR(20) NOT NULL,
     FOREIGN KEY (has_class) REFERENCES Class,
     -- equipment slots
-    head_equipped INTEGER,
-    UNIQUE (head_equipped),
-    FOREIGN KEY (head_equipped) REFERENCES Head_Armour_Instance,
-    chest_equipped INTEGER,
-    UNIQUE(chest_equipped),
-    FOREIGN KEY (chest_equipped) REFERENCES Chest_Armour_Instance,
-    legs_equipped INTEGER,
-    UNIQUE(legs_equipped),
-    FOREIGN KEY (legs_equipped) REFERENCES Legs_Armour_Instance,
-    feet_equipped INTEGER,
-    UNIQUE(feet_equipped),
-    FOREIGN KEY (feet_equipped) REFERENCES Feet_Armour_Instance,
+    armour_equipped INTEGER,
+    UNIQUE(armour_equipped),
+    FOREIGN KEY (armour_equipped) REFERENCES Feet_Armour_Instance,
     main_equipped INTEGER,
     UNIQUE(main_equipped),
     FOREIGN KEY (main_equipped) REFERENCES Main_Weapon_Instance,
@@ -166,10 +157,10 @@ CREATE TABLE Clan_Member (
 /* gem embed relations */
 
 CREATE TABLE armour_embed (
-  feet_armour_instance_id INTEGER,
+  armour_instance_id INTEGER,
   gem_id INTEGER,
-  PRIMARY KEY (feet_armour_instance_id, gem_id),
-  FOREIGN KEY (feet_armour_instance_id) REFERENCES Feet_Armour_Instance,
+  PRIMARY KEY (armour_instance_id, gem_id),
+  FOREIGN KEY (armour_instance_id) REFERENCES Armour_Instance,
   FOREIGN KEY (gem_id) REFERENCES Gem
 );
 
