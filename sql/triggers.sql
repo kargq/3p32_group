@@ -19,8 +19,9 @@ initialization values to 10 for all somehow too?
 
 
 /* 
-min level for skill (equal or lower than charachter's level)
+min level for skill (equal or lower than character level)
 */
+
 
 /*
 min level for equipment

@@ -96,7 +96,7 @@ CREATE TABLE Character (
     -- equipment slots
     armour_equipped INTEGER,
     UNIQUE(armour_equipped),
-    FOREIGN KEY (armour_equipped) REFERENCES Feet_Armour_Instance,
+    FOREIGN KEY (armour_equipped) REFERENCES Armour_Instance,
     main_equipped INTEGER,
     UNIQUE(main_equipped),
     FOREIGN KEY (main_equipped) REFERENCES Main_Weapon_Instance,
