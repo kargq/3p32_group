@@ -23,6 +23,7 @@ initialization values to 10 for all somehow too?
 
 
 -- min level for skill (equal or lower than character level)
+-- Trigger #1, for skill assignment
 create or replace function skill_min_level_check() returns trigger as $$
 declare
     n_skill_id n_char_name;
@@ -43,6 +44,13 @@ end if;
 return NEW;
 end;
 $$ LANGUAGE plpgsql;
+
+create trigger bef_ins_has_earned
+before insert on has_earned 
+for each row
+execute procedure skill_min_level_check();
+
+-- EO Trigger #1
 
 -- min level for equipment
 
