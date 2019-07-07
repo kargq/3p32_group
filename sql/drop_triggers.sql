@@ -1,0 +1,1 @@
+drop trigger bef_ins_has_earned;
