@@ -10,6 +10,11 @@ public class HasEarnedModel {
     private int skillId;
     private String charName;
 
+    @Override
+    public String toString(){
+        return this.charName;
+    }
+
     @Id
     @Column(name = "skill_id")
     public int getSkillId() {

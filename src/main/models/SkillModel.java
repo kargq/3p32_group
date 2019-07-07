@@ -12,6 +12,11 @@ public class SkillModel {
     private String sdescription;
     private String sname;
 
+    @Override
+    public String toString(){
+        return this.sname;
+    }
+
     @Id
     @Column(name = "skill_id")
     public int getSkillId() {

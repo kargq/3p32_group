@@ -1,46 +1,37 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="connection.username">c3p32g02</property>
-        <property name="connection.password">d5e6j4v9</property>
-<!--        auto generated stuff-->
-        <property name="connection.url">jdbc:postgresql://localhost:51875/c3p32g02</property>
-        <property name="connection.driver_class">org.postgresql.Driver</property>
-        <mapping class="main.models.AutoSkillModel"/>
-        <mapping class="main.models.CharacterModel"/>
-        <mapping class="main.models.ChestArmourModel"/>
-        <mapping class="main.models.ChestArmourInstanceModel"/>
-        <mapping class="main.models.ChestEmbedModel"/>
-        <mapping class="main.models.ClanModel"/>
-        <mapping class="main.models.ClanMemberModel"/>
-        <mapping class="main.models.ClazzModel"/>
-        <mapping class="main.models.ClassEquipmentModel"/>
-        <mapping class="main.models.EarnedSkillModel"/>
-        <mapping class="main.models.EmbeddedGemsModel"/>
-        <mapping class="main.models.EquipmentModel"/>
-        <mapping class="main.models.FeetArmourModel"/>
-        <mapping class="main.models.FeetArmourInstanceModel"/>
-        <mapping class="main.models.FeetEmbedModel"/>
-        <mapping class="main.models.GemModel"/>
-        <mapping class="main.models.HasEarnedModel"/>
-        <mapping class="main.models.HeadArmourModel"/>
-        <mapping class="main.models.HeadArmourInstanceModel"/>
-        <mapping class="main.models.HeadEmbedModel"/>
-        <mapping class="main.models.LegEmbedModel"/>
-        <mapping class="main.models.LegsArmourModel"/>
-        <mapping class="main.models.LegsArmourInstanceModel"/>
-        <mapping class="main.models.MainEmbedModel"/>
-        <mapping class="main.models.MainWeaponModel"/>
-        <mapping class="main.models.MainWeaponInstanceModel"/>
-        <mapping class="main.models.SecondaryEmbedModel"/>
-        <mapping class="main.models.SecondaryEquipmentModel"/>
-        <mapping class="main.models.SecondaryEquipmentInstanceModel"/>
-        <mapping class="main.models.SkillModel"/>
+  <session-factory>
+      <property name="connection.username">c3p32g02</property>
+      <property name="connection.password">d5e6j4v9</property>
+      <property name="connection.url">jdbc:postgresql://localhost:35814/c3p32g02</property>
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+      <mapping class="main.models.ArmourModel"/>
+      <mapping class="main.models.ArmourEmbedModel"/>
+      <mapping class="main.models.ArmourInstanceModel"/>
+      <mapping class="main.models.AutoSkillModel"/>
+      <mapping class="main.models.CharacterModel"/>
+      <mapping class="main.models.ClanModel"/>
+      <mapping class="main.models.ClanMemberModel"/>
+      <mapping class="main.models.ClazzModel"/>
+      <mapping class="main.models.ClassEquipmentModel"/>
+      <mapping class="main.models.EarnedSkillModel"/>
+      <mapping class="main.models.EquipmentModel"/>
+      <mapping class="main.models.GemModel"/>
+      <mapping class="main.models.HasEarnedModel"/>
+      <mapping class="main.models.MainEmbedModel"/>
+      <mapping class="main.models.MainWeaponModel"/>
+      <mapping class="main.models.MainWeaponInstanceModel"/>
+      <mapping class="main.models.SecondaryEmbedModel"/>
+      <mapping class="main.models.SecondaryEquipmentModel"/>
+      <mapping class="main.models.SecondaryEquipmentInstanceModel"/>
+      <mapping class="main.models.SkillModel"/>
+      <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
 
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
-    </session-factory>
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+  </session-factory>
 </hibernate-configuration>

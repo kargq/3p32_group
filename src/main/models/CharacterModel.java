@@ -17,10 +17,7 @@ public class CharacterModel {
     private Integer charDefence;
     private Integer charStrength;
     private String hasClass;
-    private Integer headEquipped;
-    private Integer chestEquipped;
-    private Integer legsEquipped;
-    private Integer feetEquipped;
+    private Integer armourEquipped;
     private Integer mainEquipped;
     private Integer secondaryEquipped;
 
@@ -32,6 +29,11 @@ public class CharacterModel {
 
     public void setCharName(String charName) {
         this.charName = charName;
+    }
+
+    @Override
+    public String toString(){
+        return this.charName;
     }
 
     @Basic
@@ -135,43 +137,13 @@ public class CharacterModel {
     }
 
     @Basic
-    @Column(name = "head_equipped")
-    public Integer getHeadEquipped() {
-        return headEquipped;
+    @Column(name = "armour_equipped")
+    public Integer getArmourEquipped() {
+        return armourEquipped;
     }
 
-    public void setHeadEquipped(Integer headEquipped) {
-        this.headEquipped = headEquipped;
-    }
-
-    @Basic
-    @Column(name = "chest_equipped")
-    public Integer getChestEquipped() {
-        return chestEquipped;
-    }
-
-    public void setChestEquipped(Integer chestEquipped) {
-        this.chestEquipped = chestEquipped;
-    }
-
-    @Basic
-    @Column(name = "legs_equipped")
-    public Integer getLegsEquipped() {
-        return legsEquipped;
-    }
-
-    public void setLegsEquipped(Integer legsEquipped) {
-        this.legsEquipped = legsEquipped;
-    }
-
-    @Basic
-    @Column(name = "feet_equipped")
-    public Integer getFeetEquipped() {
-        return feetEquipped;
-    }
-
-    public void setFeetEquipped(Integer feetEquipped) {
-        this.feetEquipped = feetEquipped;
+    public void setArmourEquipped(Integer armourEquipped) {
+        this.armourEquipped = armourEquipped;
     }
 
     @Basic
@@ -210,16 +182,13 @@ public class CharacterModel {
                 Objects.equals(charDefence, that.charDefence) &&
                 Objects.equals(charStrength, that.charStrength) &&
                 Objects.equals(hasClass, that.hasClass) &&
-                Objects.equals(headEquipped, that.headEquipped) &&
-                Objects.equals(chestEquipped, that.chestEquipped) &&
-                Objects.equals(legsEquipped, that.legsEquipped) &&
-                Objects.equals(feetEquipped, that.feetEquipped) &&
+                Objects.equals(armourEquipped, that.armourEquipped) &&
                 Objects.equals(mainEquipped, that.mainEquipped) &&
                 Objects.equals(secondaryEquipped, that.secondaryEquipped);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(charName, charExperience, charSpeed, charBlock, charPower, charLevel, charWill, charLife, charDefence, charStrength, hasClass, headEquipped, chestEquipped, legsEquipped, feetEquipped, mainEquipped, secondaryEquipped);
+        return Objects.hash(charName, charExperience, charSpeed, charBlock, charPower, charLevel, charWill, charLife, charDefence, charStrength, hasClass, armourEquipped, mainEquipped, secondaryEquipped);
     }
 }
