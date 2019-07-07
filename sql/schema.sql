@@ -82,7 +82,7 @@ CREATE TABLE Character (
     char_speed INTEGER DEFAULT 10,
     char_block INTEGER,
     char_power INTEGER DEFAULT 10,
-    char_level INTEGER,
+    char_level INTEGER DEFAULT 1,
     char_will INTEGER DEFAULT 10,
     char_life INTEGER DEFAULT 10,
     char_defence INTEGER DEFAULT 10,

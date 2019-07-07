@@ -217,7 +217,7 @@ BEGIN
         UPDATE
             Character C
         SET
-            char_level = C.char_experience / 1000,
+            char_level = C.char_experience / 1000 + 1,
             char_life = (C.char_experience / 1000) * (50) + 10,
             char_power = (C.char_experience / 1000) * (2) + 10,
             char_strength = (C.char_experience / 1000) * (5) + 10,
@@ -231,7 +231,7 @@ IF (NEW.has_class = "ranger") THEN
     UPDATE
         Character C
     SET
-        char_level = C.char_experience / 1000,
+        char_level = C.char_experience / 1000 + 1,
         char_life = (C.char_experience / 1000) * (30) + 10,
         char_power = (C.char_experience / 1000) * (2) + 10,
         char_strength = (C.char_experience / 1000) * (4) + 10,
@@ -245,7 +245,7 @@ IF (NEW.has_class = "white mage") THEN
     UPDATE
         Character C
     SET
-        char_level = C.char_experience / 1000,
+        char_level = C.char_experience / 1000 + 1,
         char_life = (C.char_experience / 1000) * (15) + 10,
         char_power = (C.char_experience / 1000) * (5) + 10,
         char_strength = (C.char_experience / 1000) * (1) + 10,
@@ -259,7 +259,7 @@ IF (NEW.has_class = "black mage") THEN
     UPDATE
         Character C
     SET
-        char_level = C.char_experience / 1000,
+        char_level = C.char_experience / 1000 + 1,
         char_life = (C.char_experience / 1000) * (20) + 10,
         char_power = (C.char_experience / 1000) * (5) + 10,
         char_strength = (C.char_experience / 1000) * (1) + 10,
