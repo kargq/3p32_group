@@ -299,8 +299,14 @@ END;
 $$
     LANGUAGE plpgsql;
 
-CREATE TRIGGER on_update_character
+CREATE TRIGGER on_insert_character
     AFTER INSERT
+    ON character
+    FOR EACH ROW
+EXECUTE PROCEDURE update_levels();
+
+CREATE TRIGGER on_update_character
+    AFTER UPDATE
     ON character
     FOR EACH ROW
 EXECUTE PROCEDURE update_levels();
