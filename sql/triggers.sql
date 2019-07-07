@@ -232,10 +232,6 @@ CREATE OR REPLACE FUNCTION update_levels()
 AS
 $$
 BEGIN
-    UPDATE
-        Character C
-    SET char_level = C.char_experience / 1000 + 1
-    WHERE C.char_name = NEW.char_name;
     --     IF (NEW.has_class = 'warrior') THEN
 --         UPDATE
 --             Character C
@@ -250,6 +246,11 @@ BEGIN
 --     END IF;
     -- apparently theres an issue with the code abve but it looks identical to the following code so i have
     -- no clue what the error is
+    UPDATE
+        Character C
+    SET char_level = C.char_experience / 1000 + 1
+    WHERE C.char_name = NEW.char_name;
+
     IF (NEW.has_class = 'warrior') THEN
         UPDATE
             Character C
@@ -294,6 +295,7 @@ BEGIN
             char_speed    = (C.char_experience / 1000) * (2) + 10
         WHERE C.char_name = NEW.char_name;
     END IF;
+
     RETURN NEW;
 END;
 $$
@@ -302,13 +304,13 @@ $$
 CREATE TRIGGER on_insert_character
     AFTER INSERT
     ON character
-    FOR EACH ROW
+    FOR EACH STATEMENT
 EXECUTE PROCEDURE update_levels();
 
 CREATE TRIGGER on_update_character
     AFTER UPDATE
     ON character
-    FOR EACH ROW
+    FOR EACH STATEMENT
 EXECUTE PROCEDURE update_levels();
 
 -- EO Trigger #4

@@ -78,7 +78,7 @@ CREATE TABLE Class (
 
 CREATE TABLE Character (
     char_name CHAR(30) PRIMARY KEY,
-    char_experience INTEGER,
+    char_experience INTEGER DEFAULT 0,
     char_speed INTEGER DEFAULT 10,
     char_block INTEGER,
     char_power INTEGER DEFAULT 10,

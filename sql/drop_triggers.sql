@@ -10,6 +10,8 @@ DROP TRIGGER bef_ins_main_embed ON main_embed;
 
 DROP TRIGGER bef_ins_armour_embed ON armour_embed;
 
+DROP TRIGGER on_insert_character ON character;
+
 DROP TRIGGER on_update_character ON character;
 
 DROP TRIGGER on_add_auto_skill ON Auto_Skill;
