@@ -6,7 +6,7 @@
   <session-factory>
       <property name="connection.username">c3p32g02</property>
       <property name="connection.password">d5e6j4v9</property>
-      <property name="connection.url">jdbc:postgresql://localhost:35814/c3p32g02</property>
+      <property name="connection.url">jdbc:postgresql://localhost:5432/c3p32g02</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
       <mapping class="main.models.ArmourModel"/>
       <mapping class="main.models.ArmourEmbedModel"/>
