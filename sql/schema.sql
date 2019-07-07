@@ -1,9 +1,7 @@
 /**
  * Schema 
  */
-
 /* Table creation queries */
-
 /* Equipment */
 CREATE TABLE Gem (
     gem_id INTEGER PRIMARY KEY,
@@ -47,13 +45,13 @@ CREATE TABLE Secondary_Equipment (
     FOREIGN KEY (eqp_id) REFERENCES Equipment ON DELETE CASCADE
 );
 
-CREATE TABLE Armour_Instance ( 
+CREATE TABLE Armour_Instance (
     eqp_id INTEGER,
     armour_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Armour
 );
 
-CREATE TABLE Main_Weapon_Instance ( 
+CREATE TABLE Main_Weapon_Instance (
     eqp_id INTEGER,
     main_weapon_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Main_Weapon
@@ -66,7 +64,6 @@ CREATE TABLE Secondary_Equipment_Instance (
 );
 
 /* Entities that need to be changed */
-
 CREATE TABLE Skill (
     skill_id INTEGER PRIMARY KEY,
     min_level INTEGER,
@@ -82,23 +79,25 @@ CREATE TABLE Class (
 CREATE TABLE Character (
     char_name CHAR(30) PRIMARY KEY,
     char_experience INTEGER,
-    char_speed INTEGER,
+    char_speed INTEGER DEFAULT 10,
     char_block INTEGER,
-    char_power INTEGER,
+    char_power INTEGER DEFAULT 10,
     char_level INTEGER,
-    char_will INTEGER,
-    char_life INTEGER,
-    char_defence INTEGER,
-    char_strength INTEGER,
+    char_will INTEGER DEFAULT 10,
+    char_life INTEGER DEFAULT 10,
+    char_defence INTEGER DEFAULT 10,
+    char_strength INTEGER DEFAULT 10,
     -- class
+
     has_class CHAR(20) NOT NULL,
     FOREIGN KEY (has_class) REFERENCES Class,
     -- equipment slots
+
     armour_equipped INTEGER,
-    UNIQUE(armour_equipped),
+    UNIQUE (armour_equipped),
     FOREIGN KEY (armour_equipped) REFERENCES Armour_Instance,
     main_equipped INTEGER,
-    UNIQUE(main_equipped),
+    UNIQUE (main_equipped),
     FOREIGN KEY (main_equipped) REFERENCES Main_Weapon_Instance,
     secondary_equipped INTEGER,
     UNIQUE (secondary_equipped),
@@ -106,7 +105,6 @@ CREATE TABLE Character (
 );
 
 /* Skill Relationships */
-
 CREATE TABLE Earned_Skill (
     skill_id INTEGER,
     cls_name CHAR(20),
@@ -140,7 +138,6 @@ CREATE TABLE Class_Equipment (
 );
 
 /* Clan */
-
 CREATE TABLE Clan (
     clanname CHAR(30) PRIMARY KEY,
     chief CHAR(30) NOT NULL,
@@ -155,27 +152,27 @@ CREATE TABLE Clan_Member (
 );
 
 /* gem embed relations */
-
 CREATE TABLE armour_embed (
-  armour_instance_id INTEGER,
-  gem_id INTEGER,
-  PRIMARY KEY (armour_instance_id, gem_id),
-  FOREIGN KEY (armour_instance_id) REFERENCES Armour_Instance,
-  FOREIGN KEY (gem_id) REFERENCES Gem
+    armour_instance_id INTEGER,
+    gem_id INTEGER,
+    PRIMARY KEY (armour_instance_id, gem_id),
+    FOREIGN KEY (armour_instance_id) REFERENCES Armour_Instance,
+    FOREIGN KEY (gem_id) REFERENCES Gem
 );
 
 CREATE TABLE main_embed (
-  main_weapon_instance_id INTEGER,
-  gem_id INTEGER,
-  PRIMARY KEY (main_weapon_instance_id, gem_id),
-  FOREIGN KEY (main_weapon_instance_id) REFERENCES Main_Weapon_Instance,
-  FOREIGN KEY (gem_id) REFERENCES Gem
+    main_weapon_instance_id INTEGER,
+    gem_id INTEGER,
+    PRIMARY KEY (main_weapon_instance_id, gem_id),
+    FOREIGN KEY (main_weapon_instance_id) REFERENCES Main_Weapon_Instance,
+    FOREIGN KEY (gem_id) REFERENCES Gem
 );
 
 CREATE TABLE secondary_embed (
-  secondary_weapon_instance_id INTEGER,
-  gem_id INTEGER,
-  PRIMARY KEY (secondary_weapon_instance_id, gem_id),
-  FOREIGN KEY (secondary_weapon_instance_id) REFERENCES Secondary_Equipment_Instance,
-  FOREIGN KEY (gem_id) REFERENCES Gem
+    secondary_weapon_instance_id INTEGER,
+    gem_id INTEGER,
+    PRIMARY KEY (secondary_weapon_instance_id, gem_id),
+    FOREIGN KEY (secondary_weapon_instance_id) REFERENCES Secondary_Equipment_Instance,
+    FOREIGN KEY (gem_id) REFERENCES Gem
 );
+

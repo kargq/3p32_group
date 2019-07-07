@@ -2,25 +2,6 @@
 CREATE
 LANGUAGE plpgsql;
 
-/* 
-change level after each gain of 1000 experience
-change stats according to level change
-
-initialization values to 10 for all somehow too?
-
-+------------+------+-------+----------+---------+------+-------+
-|            | Life | Power | Strength | Defence | Will | Speed |
-+------------+------+-------+----------+---------+------+-------+
-| Warrior    | 50   | 2     | 5        | 5       | 1    | 3     |
-+------------+------+-------+----------+---------+------+-------+
-| Ranger     | 30   | 2     | 4        | 3       | 3    | 5     |
-+------------+------+-------+----------+---------+------+-------+
-| White mage | 15   | 5     | 1        | 2       | 5    | 2     |
-+------------+------+-------+----------+---------+------+-------+
-| Black mage | 20   | 5     | 1        | 2       | 5    | 2     |
-+------------+------+-------+----------+---------+------+-------+
- */
- 
 -- Trigger group #1, for skill assignment
 -- min level for skill (equal or lower than character level)
 
@@ -29,7 +10,7 @@ CREATE OR REPLACE FUNCTION skill_min_level_check ()
     AS $$
 BEGIN
     -- row will have skill_id and char_name, need to make checks according to that
-    -- need to check if the skill belongs to the charachters class
+    -- need to check if the skill belongs to the Characters class
     IF NOT EXISTS (
             SELECT
                 *
@@ -37,7 +18,7 @@ BEGIN
                 Earned_Skill ES,
                 Character CH,
                 Skill S
-                -- check if skill_id exists in all skills associated with charachter classname
+                -- check if skill_id exists in all skills associated with Character classname
                 -- check if char level is greater than skill level
             WHERE
                 CH.char_name = NEW.char_name AND ES.skill_id = NEW.skill_id AND ES.cls_name = CH.has_class AND S.skill_id = ES.skill_id AND S.min_level < CH.char_level) THEN
@@ -62,7 +43,7 @@ CREATE OR REPLACE FUNCTION equipment_instance_assign_check ()
     RETURNS TRIGGER
     AS $$
 BEGIN
-    -- all we need from the row is the charachter name and equipment instance id
+    -- all we need from the row is the Character name and equipment instance id
     -- only need to check if min level of equipment is less than char level
     IF EXISTS (
         SELECT
@@ -77,7 +58,7 @@ BEGIN
                 OR E.eqp_id = NEW.secondary_equipped)
             AND C.char_level < E.elevel) THEN
         raise
-exception 'Charachter level is too low for given equipment';
+exception 'Character level is too low for given equipment';
 END IF;
             RETURN NEW;
 END;
@@ -196,3 +177,105 @@ CREATE TRIGGER bef_ins_secondary_embed
 
 -- end secondary
 -- EO Trigger #3
+-- Trigger Group #4
+
+/* 
+change level after each gain of 1000 experience
+change stats according to level change
+
+initialization values to 10 for all somehow too? (hadled as default values in Character table)
+
++------------+------+-------+----------+---------+------+-------+
+|            | Life | Power | Strength | Defence | Will | Speed |
++------------+------+-------+----------+---------+------+-------+
+| Warrior    | 50   | 2     | 5        | 5       | 1    | 3     |
++------------+------+-------+----------+---------+------+-------+
+| Ranger     | 30   | 2     | 4        | 3       | 3    | 5     |
++------------+------+-------+----------+---------+------+-------+
+| White mage | 15   | 5     | 1        | 2       | 5    | 2     |
++------------+------+-------+----------+---------+------+-------+
+| Black mage | 20   | 5     | 1        | 2       | 5    | 2     |
++------------+------+-------+----------+---------+------+-------+
+
+if (NEW.has_class = "warrior")
+then
+
+UPDATE Character C
+SET 
+char_life = (C.char_experience/1000) * (50) + 10
+WHERE C.char_name = NEW.char_name
+
+
+end if;
+return NEW;
+ */
+CREATE OR REPLACE FUNCTION update_levels ()
+    RETURNS TRIGGER
+    AS $$
+BEGIN
+    IF (NEW.has_class = "warrior") THEN
+        UPDATE
+            Character C
+        SET
+            char_level = C.char_experience / 1000,
+            char_life = (C.char_experience / 1000) * (50) + 10,
+            char_power = (C.char_experience / 1000) * (2) + 10,
+            char_strength = (C.char_experience / 1000) * (5) + 10,
+            char_defence = (C.char_experience / 1000) * (5) + 10,
+            char_will = (C.char_experience / 1000) * (1) + 10,
+            char_speed = (C.char_experience / 1000) * (3) + 10
+        WHERE
+            C.char_name = NEW.char_name;
+    END IF;
+IF (NEW.has_class = "ranger") THEN
+    UPDATE
+        Character C
+    SET
+        char_level = C.char_experience / 1000,
+        char_life = (C.char_experience / 1000) * (30) + 10,
+        char_power = (C.char_experience / 1000) * (2) + 10,
+        char_strength = (C.char_experience / 1000) * (4) + 10,
+        char_defence = (C.char_experience / 1000) * (3) + 10,
+        char_will = (C.char_experience / 1000) * (3) + 10,
+        char_speed = (C.char_experience / 1000) * (5) + 10
+    WHERE
+        C.char_name = NEW.char_name;
+END IF;
+IF (NEW.has_class = "white mage") THEN
+    UPDATE
+        Character C
+    SET
+        char_level = C.char_experience / 1000,
+        char_life = (C.char_experience / 1000) * (15) + 10,
+        char_power = (C.char_experience / 1000) * (5) + 10,
+        char_strength = (C.char_experience / 1000) * (1) + 10,
+        char_defence = (C.char_experience / 1000) * (2) + 10,
+        char_will = (C.char_experience / 1000) * (5) + 10,
+        char_speed = (C.char_experience / 1000) * (2) + 10
+    WHERE
+        C.char_name = NEW.char_name;
+END IF;
+IF (NEW.has_class = "black mage") THEN
+    UPDATE
+        Character C
+    SET
+        char_level = C.char_experience / 1000,
+        char_life = (C.char_experience / 1000) * (20) + 10,
+        char_power = (C.char_experience / 1000) * (5) + 10,
+        char_strength = (C.char_experience / 1000) * (1) + 10,
+        char_defence = (C.char_experience / 1000) * (2) + 10,
+        char_will = (C.char_experience / 1000) * (5) + 10,
+        char_speed = (C.char_experience / 1000) * (2) + 10
+    WHERE
+        C.char_name = NEW.char_name;
+END IF;
+RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER on_update_character
+    BEFORE INSERT ON character
+    FOR EACH ROW
+    EXECUTE PROCEDURE update_levels ();
+

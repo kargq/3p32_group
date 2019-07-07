@@ -1,6 +1,14 @@
-drop trigger bef_ins_has_earned on has_earned ;
-drop trigger bef_char_equipment_update on character;
-drop trigger bef_char_equipment_insert on character;
-drop trigger bef_ins_secondary_embed  on secondary_embed;
-drop trigger bef_ins_main_embed  on main_embed;
-drop trigger bef_ins_armour_embed  on armour_embed;
+DROP TRIGGER bef_ins_has_earned ON has_earned;
+
+DROP TRIGGER bef_char_equipment_update ON character;
+
+DROP TRIGGER bef_char_equipment_insert ON character;
+
+DROP TRIGGER bef_ins_secondary_embed ON secondary_embed;
+
+DROP TRIGGER bef_ins_main_embed ON main_embed;
+
+DROP TRIGGER bef_ins_armour_embed ON armour_embed;
+
+DROP TRIGGER on_update_character ON character;
+
