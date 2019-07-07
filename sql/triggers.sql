@@ -253,7 +253,7 @@ BEGIN
     END IF;
 
     IF (NEW.has_class = 'white mage') THEN
-        SET char_life = (NEW.char_experience / 1000) * (15) + 10;
+        NEW.char_life = (NEW.char_experience / 1000) * (15) + 10;
         NEW.char_power = (NEW.char_experience / 1000) * (5) + 10;
         NEW.char_strength = (NEW.char_experience / 1000) * (1) + 10;
         NEW.char_defence = (NEW.char_experience / 1000) * (2) + 10;
@@ -262,7 +262,7 @@ BEGIN
     END IF;
 
     IF (NEW.has_class = 'black mage') THEN
-        SET char_life = (NEW.char_experience / 1000) * (20) + 10;
+        NEW.char_life = (NEW.char_experience / 1000) * (20) + 10;
         NEW.char_power = (NEW.char_experience / 1000) * (5) + 10;
         NEW.char_strength = (NEW.char_experience / 1000) * (1) + 10;
         NEW.char_defence = (NEW.char_experience / 1000) * (2) + 10;
