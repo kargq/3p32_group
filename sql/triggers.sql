@@ -304,13 +304,13 @@ $$
 CREATE TRIGGER on_insert_character
     AFTER INSERT
     ON character
-    FOR EACH STATEMENT
+    FOR EACH ROW
 EXECUTE PROCEDURE update_levels();
 
 CREATE TRIGGER on_update_character
     AFTER UPDATE
     ON character
-    FOR EACH STATEMENT
+    FOR EACH ROW
 EXECUTE PROCEDURE update_levels();
 
 -- EO Trigger #4
