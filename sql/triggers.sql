@@ -232,6 +232,21 @@ CREATE OR REPLACE FUNCTION update_levels()
 AS
 $$
 BEGIN
+
+    --     IF (NEW.has_class = 'warrior') THEN
+--         UPDATE
+--             Character C
+--         SET char_level    = C.char_experience / 1000 + 1,
+--             char_life     = (C.char_experience / 1000) * (50) + 10,
+--             char_power    = (C.char_experience / 1000) * (2) + 10,
+--             char_strength = (C.char_experience / 1000) * (5) + 10,
+--             char_defence  = (C.char_experience / 1000) * (5) + 10,
+--             char_will     = (C.char_experience / 1000) * (1) + 10,
+--             char_speed    = (C.char_experience / 1000) * (3) + 10
+--         WHERE C.char_name = NEW.char_name;
+--     END IF;
+    -- apparently theres an issue with the code abve but it looks identical to the following code so i have
+    -- no clue what the error is
     IF (NEW.has_class = 'warrior') THEN
         UPDATE
             Character C
