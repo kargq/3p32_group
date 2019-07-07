@@ -314,7 +314,7 @@ BEGIN
             A.skill_id = NEW.skill_id
             AND A.cls_name = NEW.cls_name) THEN
         raise
-exception 'Skill is already an auto skill and cannot be listed as a earned skill';
+exception 'Skill is already an auto skill and cannot be listed as an earned skill';
 END IF;
             RETURN NEW;
 END;
