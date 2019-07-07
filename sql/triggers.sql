@@ -10,7 +10,22 @@ CREATE OR REPLACE FUNCTION skill_min_level_check ()
     AS $$
 BEGIN
     -- row will have skill_id and char_name, need to make checks according to that
-    -- need to check if the skill belongs to the Characters class
+    -- check if skill is already assigned through auto skills, and if so, do not assign it.
+    -- need to check if the skill belongs to the Characters class and is in the earned skills table.
+    IF NOT EXISTS (
+            SELECT
+                *
+            FROM
+                Earned_Skill ES,
+                Character CH,
+                Skill S
+            WHERE
+                -- find if there is such a skill in the earned skills table, if not, throw an exception.
+                CH.char_name = NEW.char_name AND ES.skill_id = NEW.skill_id AND ES.cls_name = CH.has_class AND S.skill_id = ES.skill_id) THEN
+            raise
+        exception 'This character class is not allowed to access this skill.';
+    END IF;
+    -- need to check min level.
     IF NOT EXISTS (
             SELECT
                 *
@@ -20,10 +35,12 @@ BEGIN
                 Skill S
                 -- check if skill_id exists in all skills associated with Character classname
                 -- check if char level is greater than skill level
+                -- finds the earned skill, checks if min level is less than char's level, in that case this query will return not empty.
+                -- i.e. not exists evaluates to false. Otherwise, exception is thrown.
             WHERE
                 CH.char_name = NEW.char_name AND ES.skill_id = NEW.skill_id AND ES.cls_name = CH.has_class AND S.skill_id = ES.skill_id AND S.min_level < CH.char_level) THEN
             raise
-        exception 'Invalid skill assignment, check min level and class for skill';
+        exception 'Invalid skill assignment, check min level for skill';
     END IF;
     RETURN NEW;
 END;
@@ -275,7 +292,68 @@ $$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER on_update_character
-    BEFORE INSERT ON character
+    AFTER INSERT ON character
     FOR EACH ROW
     EXECUTE PROCEDURE update_levels ();
 
+-- EO Trigger #4
+-- Trigger group #5
+-- start earned insertion
+
+CREATE OR REPLACE FUNCTION check_earned_skill_in_auto ()
+    RETURNS TRIGGER
+    AS $$
+BEGIN
+    -- check if earned skill is in auto (with given classname) and if it is, don't add it
+    IF EXISTS (
+        SELECT
+            *
+        FROM
+            Auto_Skill A
+        WHERE
+            A.skill_id = NEW.skill_id
+            AND A.cls_name = NEW.cls_name) THEN
+        raise
+exception 'Skill is already an auto skill and cannot be listed as a earned skill';
+END IF;
+            RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER on_add_earned_skill
+    BEFORE INSERT ON Earned_Skill
+    FOR EACH ROW
+    EXECUTE PROCEDURE check_earned_skill_in_auto ();
+
+-- end earned insertion
+-- start auto insertion
+
+CREATE OR REPLACE FUNCTION check_auto_skill_in_earned ()
+    RETURNS TRIGGER
+    AS $$
+BEGIN
+    -- check if earned skill is in auto (with given classname) and if it is, don't add it
+    IF EXISTS (
+        SELECT
+            *
+        FROM
+            Earned_Skill A
+        WHERE
+            A.skill_id = NEW.skill_id
+            AND A.cls_name = NEW.cls_name) THEN
+        raise
+exception 'Skill is already an earned skill and cannot be listed as an auto skill';
+END IF;
+            RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER on_add_auto_skill
+    BEFORE INSERT ON Auto_Skill
+    FOR EACH ROW
+    EXECUTE PROCEDURE check_auto_skill_in_earned ();
+
+-- end auto insertion
+-- EO Trigger #5
