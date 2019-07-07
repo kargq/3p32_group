@@ -1,5 +1,14 @@
 # 3p32 Group Project
 
+### Getting Started
+Be sure to run through the hibernate process, and have a `hibernate.cfg.xml` file that works for your machine. The `connection.url` property will be different.
+
+Also be sure to add the following before any of the `mapping` properties.
+```
+<property name="connection.username">c3p32g02</property>
+<property name="connection.password">d5e6j4v9</property>
+ ```     
+
 ### Schema
 
 All the sql is located in `sql/`
