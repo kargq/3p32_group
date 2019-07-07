@@ -1,3 +1,5 @@
+package main;
+
 import main.models.CharacterModel;
 import main.models.HasEarnedModel;
 import main.models.SkillModel;

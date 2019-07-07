@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 
 import org.hibernate.*;
@@ -13,6 +15,5 @@ public class Main {
         f.setVisible(true);
         f.setSize(500, 500);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //Toybox.generateMassiveMockData();
     }
 }

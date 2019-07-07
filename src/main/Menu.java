@@ -1,7 +1,8 @@
+package main;
+
 import com.jgoodies.common.collect.ArrayListModel;
+import main.API;
 import main.models.CharacterModel;
-import main.models.EarnedSkillModel;
-import main.models.HasEarnedModel;
 import main.models.SkillModel;
 
 import javax.swing.*;

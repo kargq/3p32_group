@@ -1,3 +1,5 @@
+package main;
+
 import main.models.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
