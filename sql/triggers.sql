@@ -232,7 +232,10 @@ CREATE OR REPLACE FUNCTION update_levels()
 AS
 $$
 BEGIN
-
+    UPDATE
+        Character C
+    SET char_level = C.char_experience / 1000 + 1
+    WHERE C.char_name = NEW.char_name;
     --     IF (NEW.has_class = 'warrior') THEN
 --         UPDATE
 --             Character C
@@ -250,8 +253,7 @@ BEGIN
     IF (NEW.has_class = 'warrior') THEN
         UPDATE
             Character C
-        SET char_level    = C.char_experience / 1000 + 1,
-            char_life     = (C.char_experience / 1000) * (50) + 10,
+        SET char_life     = (C.char_experience / 1000) * (50) + 10,
             char_power    = (C.char_experience / 1000) * (2) + 10,
             char_strength = (C.char_experience / 1000) * (5) + 10,
             char_defence  = (C.char_experience / 1000) * (5) + 10,
@@ -262,8 +264,7 @@ BEGIN
     IF (NEW.has_class = 'ranger') THEN
         UPDATE
             Character C
-        SET char_level    = C.char_experience / 1000 + 1,
-            char_life     = (C.char_experience / 1000) * (30) + 10,
+        SET char_life     = (C.char_experience / 1000) * (30) + 10,
             char_power    = (C.char_experience / 1000) * (2) + 10,
             char_strength = (C.char_experience / 1000) * (4) + 10,
             char_defence  = (C.char_experience / 1000) * (3) + 10,
@@ -274,8 +275,7 @@ BEGIN
     IF (NEW.has_class = 'white mage') THEN
         UPDATE
             Character C
-        SET char_level    = C.char_experience / 1000 + 1,
-            char_life     = (C.char_experience / 1000) * (15) + 10,
+        SET char_life     = (C.char_experience / 1000) * (15) + 10,
             char_power    = (C.char_experience / 1000) * (5) + 10,
             char_strength = (C.char_experience / 1000) * (1) + 10,
             char_defence  = (C.char_experience / 1000) * (2) + 10,
@@ -286,8 +286,7 @@ BEGIN
     IF (NEW.has_class = 'black mage') THEN
         UPDATE
             Character C
-        SET char_level    = C.char_experience / 1000 + 1,
-            char_life     = (C.char_experience / 1000) * (20) + 10,
+        SET char_life     = (C.char_experience / 1000) * (20) + 10,
             char_power    = (C.char_experience / 1000) * (5) + 10,
             char_strength = (C.char_experience / 1000) * (1) + 10,
             char_defence  = (C.char_experience / 1000) * (2) + 10,
