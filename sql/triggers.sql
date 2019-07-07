@@ -232,9 +232,9 @@ CREATE OR REPLACE FUNCTION update_levels()
 AS
 $$
 BEGIN
-    NEW.char_level = NEW.char_experience / 1000 + 1;
+    NEW.char_level := NEW.char_experience / 1000 + 1;
 
-    IF (NEW.has_class = 'warrior') THEN
+    IF (lower(NEW.has_class) = 'warrior') THEN
         NEW.char_life := (NEW.char_experience / 1000) * (50) + 10;
         NEW.char_power := (NEW.char_experience / 1000) * (2) + 10;
         NEW.char_strength := (NEW.char_experience / 1000) * (5) + 10;
@@ -243,7 +243,7 @@ BEGIN
         NEW.char_speed := (NEW.char_experience / 1000) * (3) + 10;
     END IF;
 
-    IF (NEW.has_class = 'ranger') THEN
+    IF (lower(NEW.has_class) = 'ranger') THEN
         NEW.char_life := (NEW.char_experience / 1000) * (30) + 10;
         NEW.char_power := (NEW.char_experience / 1000) * (2) + 10;
         NEW.char_strength := (NEW.char_experience / 1000) * (4) + 10;
@@ -252,7 +252,7 @@ BEGIN
         NEW.char_speed := (NEW.char_experience / 1000) * (5) + 10;
     END IF;
 
-    IF (NEW.has_class = 'white mage') THEN
+    IF (lower(NEW.has_class) = 'white mage') THEN
         NEW.char_life := (NEW.char_experience / 1000) * (15) + 10;
         NEW.char_power := (NEW.char_experience / 1000) * (5) + 10;
         NEW.char_strength := (NEW.char_experience / 1000) * (1) + 10;
@@ -261,7 +261,7 @@ BEGIN
         NEW.char_speed := (NEW.char_experience / 1000) * (2) + 10;
     END IF;
 
-    IF (NEW.has_class = 'black mage') THEN
+    IF (lower(NEW.has_class) = 'black mage') THEN
         NEW.char_life := (NEW.char_experience / 1000) * (20) + 10;
         NEW.char_power := (NEW.char_experience / 1000) * (5) + 10;
         NEW.char_strength := (NEW.char_experience / 1000) * (1) + 10;
