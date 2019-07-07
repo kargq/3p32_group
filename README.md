@@ -21,9 +21,15 @@ All the sql is located in `sql/`
 
 `triggers.sql`: Sql to add triggers
 
+`drop_triggers.sql`: Sql to drop all triggers
+
 ### Server
 
 `ssh c3p32g02@sandcastle.cosc.brocku.ca` to login. Enter password `d5e6j4v9` (Super secure to put it up here, I know) check your emails for the password.
+
+type login and press enter to open the postgres terminal for our database.
+
+##### Useful Scripts: -
 
 ./`update_sql.sh`: deploy changes from this repo to the psql database. 
 
