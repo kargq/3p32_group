@@ -277,13 +277,13 @@ $$
     LANGUAGE plpgsql;
 
 CREATE TRIGGER on_insert_character
-    AFTER INSERT
+    BEFORE INSERT
     ON character
     FOR EACH ROW
 EXECUTE PROCEDURE update_levels();
 
 CREATE TRIGGER on_update_character
-    AFTER UPDATE
+    BEFORE UPDATE
     ON character
     FOR EACH ROW
 EXECUTE PROCEDURE update_levels();
