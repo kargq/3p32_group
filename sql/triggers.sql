@@ -232,8 +232,7 @@ CREATE OR REPLACE FUNCTION update_levels()
 AS
 $$
 BEGIN
---     NEW.char_level := NEW.char_experience / 1000 + 1;
-    NEW.char_level := 5;
+    NEW.char_level := NEW.char_experience / 1000 + 1;
 
     IF (lower(NEW.has_class) = 'warrior') THEN
         NEW.char_life := (NEW.char_experience / 1000) * (50) + 10;
