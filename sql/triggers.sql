@@ -289,7 +289,8 @@ CREATE TRIGGER on_update_character
 EXECUTE PROCEDURE update_levels();
 
 -- EO Trigger #4
--- Trigger group #5
+
+-- Trigger group #5: Earned and auto skills
 -- start earned insertion
 
 CREATE OR REPLACE FUNCTION check_earned_skill_in_auto()
@@ -347,3 +348,32 @@ EXECUTE PROCEDURE check_auto_skill_in_earned();
 
 -- end auto insertion
 -- EO Trigger #5
+
+-- Trigger group #6: Clan
+
+CREATE OR REPLACE FUNCTION on_clan_chief_change()
+    RETURNS TRIGGER
+AS
+$$
+    -- insert chief into clan_member as well
+    -- (don't think i need checks for if it's already in member, will get rejected anyway if it is)
+INSERT INTO clan_member
+VALUES (NEW.clanname, NEW.chief);
+
+RETURN NEW;
+$$
+    LANGUAGE plpsql;
+
+CREATE TRIGGER on_insert_clan
+    BEFORE INSERT
+    ON clan
+    FOR EACH ROW
+EXECUTE PROCEDURE on_clan_chief_change();
+
+CREATE TRIGGER on_update_clan
+    BEFORE UPDATE
+    ON clan
+    FOR EACH ROW
+EXECUTE PROCEDURE on_clan_chief_change();
+
+-- EO Trigger group #6
