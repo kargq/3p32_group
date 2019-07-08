@@ -412,11 +412,3 @@ CREATE TRIGGER on_delete_clan_member
     ON clan_member
     FOR EACH ROW
 EXECUTE PROCEDURE on_delete_clan_member();
-
--- CREATE TRIGGER on_update_clan
---     AFTER UPDATE
---     ON clan
---     FOR EACH ROW
--- EXECUTE PROCEDURE on_clan_chief_change();
-
--- EO Trigger group #6
