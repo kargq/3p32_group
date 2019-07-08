@@ -401,7 +401,7 @@ BEGIN
         WHERE C.clanname = old.cln_name;
         -- set clan chief to random chief
     END IF;
-    RETURN NEW;
+    RETURN OLD;
 END;
 $$
     LANGUAGE plpgsql;
