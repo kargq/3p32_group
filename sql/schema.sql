@@ -156,7 +156,7 @@ CREATE TABLE Class_Equipment
 CREATE TABLE Clan
 (
     clanname CHAR(30) PRIMARY KEY,
-    chief    CHAR(30) NOT NULL,
+    chief CHAR(30) NOT NULL UNIQUE,
     FOREIGN KEY (chief) REFERENCES Character
 );
 
