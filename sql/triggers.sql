@@ -392,14 +392,14 @@ BEGIN
               AND C.clanname = OLD.cln_name
         )
     THEN
-        raise notice 'Clan member is a chief, random chief will be appointed.';
+        raise notice 'Clan member is a chief, random chief will be appointed. ';
         UPDATE clan C
-        SET chief = (SELECT char_name
+        SET chief = (SELECT CM.char_name
                      FROM clan_member CM
-                     WHERE old.cln_name = CM.cln_name
+                     WHERE C.clanname = CM.cln_name
                      ORDER BY RANDOM()
                      LIMIT 1)
-        WHERE C.clanname = old.cln_name;
+        WHERE C.clanname = OLD.cln_name;
         -- set clan chief to random chief
     END IF;
     RETURN OLD;
