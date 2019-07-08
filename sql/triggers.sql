@@ -375,6 +375,7 @@ EXECUTE PROCEDURE on_clan_chief_change();
 CREATE TRIGGER on_update_clan
     AFTER UPDATE
     ON clan
+    FOR EACH ROW
 EXECUTE PROCEDURE on_clan_chief_change();
 
 -- EO Trigger group #6
