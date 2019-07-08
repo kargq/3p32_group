@@ -4,6 +4,7 @@ import com.jgoodies.common.collect.ArrayListModel;
 import main.API;
 import main.models.CharacterModel;
 import main.models.SkillModel;
+import main.CreateWeapon;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,6 +29,8 @@ public class Menu extends JPanel{
     private static SkillModel currSelectedSkill;
 
     public Menu() {
+        tabbedPane1.addTab("Create Weapon", new CreateWeapon().getPanel());
+
         tabbedPane1.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {

@@ -4,11 +4,11 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-      <property name="connection.username">c3p32g02</property>
-      <property name="connection.password">d5e6j4v9</property>
-      <property name="connection.url">jdbc:postgresql://localhost:5432/c3p32g02</property>
+    <property name="connection.username">c3p32g02</property>
+    <property name="connection.password">d5e6j4v9</property>
+    <property name="connection.url">jdbc:postgresql://localhost:45727/c3p32g02</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
-      <mapping class="main.models.ArmourModel"/>
+    <mapping class="main.models.ArmourModel"/>
       <mapping class="main.models.ArmourEmbedModel"/>
       <mapping class="main.models.ArmourInstanceModel"/>
       <mapping class="main.models.AutoSkillModel"/>
@@ -28,9 +28,6 @@
       <mapping class="main.models.SecondaryEquipmentModel"/>
       <mapping class="main.models.SecondaryEquipmentInstanceModel"/>
       <mapping class="main.models.SkillModel"/>
-      <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
-
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
