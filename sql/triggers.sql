@@ -367,13 +367,13 @@ $$
     LANGUAGE plpgsql;
 
 CREATE TRIGGER on_insert_clan
-    BEFORE INSERT
+    AFTER INSERT
     ON clan
     FOR EACH ROW
 EXECUTE PROCEDURE on_clan_chief_change();
 
 CREATE TRIGGER on_update_clan
-    BEFORE UPDATE
+    AFTER UPDATE
     ON clan
 EXECUTE PROCEDURE on_clan_chief_change();
 
