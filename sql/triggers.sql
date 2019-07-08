@@ -396,7 +396,7 @@ BEGIN
         UPDATE clan C
         SET chief = (SELECT CM.char_name
                      FROM clan_member CM
-                     WHERE C.clanname = CM.cln_name
+                     WHERE C.clanname = CM.cln_name AND CM.char_name <> C.chief
                      ORDER BY RANDOM()
                      LIMIT 1)
         WHERE C.clanname = OLD.cln_name;
