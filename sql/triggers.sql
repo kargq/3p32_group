@@ -41,7 +41,7 @@ BEGIN
               AND ES.skill_id = NEW.skill_id
               AND ES.cls_name = CH.has_class
               AND S.skill_id = ES.skill_id
-              AND S.min_level < CH.char_level) THEN
+              AND S.min_level <= CH.char_level) THEN
         raise
             exception 'Invalid skill assignment, check min level for skill';
     END IF;
@@ -67,6 +67,7 @@ $$
 BEGIN
     -- all we need from the row is the Character name and equipment instance id
     -- only need to check if min level of equipment is less than char level
+    -- so we're just enforcing the character level against the equipment level here.
     IF EXISTS(
             SELECT *
             FROM Character C,
