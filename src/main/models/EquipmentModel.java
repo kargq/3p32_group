@@ -18,6 +18,11 @@ public class EquipmentModel {
     private Integer elevel;
     private Integer gemLimit;
 
+    @Override
+    public String toString(){
+        return this.eqpName;
+    }
+
     @Id
     @Column(name = "eqp_id")
     public int getEqpId() {

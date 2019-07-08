@@ -11,6 +11,12 @@ import java.util.Objects;
 public class ClazzModel {
     private String clsName;
 
+    @Override
+    public String toString(){
+        return this.clsName;
+    }
+
+
     @Id
     @Column(name = "cls_name")
     public String getClsName() {
