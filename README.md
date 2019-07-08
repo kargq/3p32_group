@@ -1,5 +1,7 @@
 # 3p32 Group Project
 
+Due Tuesday, 16 July 2019 @9 AM
+
 ### Getting Started
 Be sure to run through the hibernate process, and have a `hibernate.cfg.xml` file that works for your machine. The `connection.url` property will be different.
 
