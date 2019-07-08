@@ -18,3 +18,6 @@ DROP TRIGGER on_add_auto_skill ON Auto_Skill;
 
 DROP TRIGGER on_add_earned_skill ON Earned_Skill;
 
+DROP TRIGGER on_insert_clan ON clan;
+
+DROP TRIGGER on_update_clan ON clan;
