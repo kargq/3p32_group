@@ -7,7 +7,7 @@ Also be sure to add the following before any of the `mapping` properties.
 ```
 <property name="connection.username">c3p32g02</property>
 <property name="connection.password">d5e6j4v9</property>
- ```     
+```
 
 ### Schema
 
@@ -47,3 +47,4 @@ Would be helpful to have a script to add dummy data. Add that to update_sql.
 ### ER Diagram
 https://www.draw.io/#G17ShW0CAUOEnBLl88cmvr-g9rNtZNtuZH
 
+![ER diagram](media/ER.png)
