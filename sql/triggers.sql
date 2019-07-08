@@ -357,10 +357,17 @@ AS
 $$
 BEGIN
     -- insert chief into clan_member as well
-    -- (don't think i need checks for if it's already in member, will get rejected anyway if it is)
-    INSERT INTO clan_member
-    VALUES (NEW.clanname, NEW.chief);
-
+    -- need check before inserting otherwise it just throws an error and exits
+    IF NOT EXISTS(
+            SELECT *
+            FROM clan_member C
+            WHERE C.char_name = NEW.chief
+              AND C.cln_name = new.clanname
+        )
+    THEN
+        INSERT INTO clan_member
+        VALUES (NEW.clanname, NEW.chief);
+    END IF;
     RETURN NEW;
 END;
 $$
