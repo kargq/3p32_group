@@ -362,7 +362,7 @@ VALUES (NEW.clanname, NEW.chief);
 
 RETURN NEW;
 $$
-    LANGUAGE plpsql;
+    LANGUAGE plpgsql;
 
 CREATE TRIGGER on_insert_clan
     BEFORE INSERT
@@ -373,7 +373,6 @@ EXECUTE PROCEDURE on_clan_chief_change();
 CREATE TRIGGER on_update_clan
     BEFORE UPDATE
     ON clan
-    FOR EACH ROW
 EXECUTE PROCEDURE on_clan_chief_change();
 
 -- EO Trigger group #6
