@@ -14,8 +14,20 @@ insert into character (char_name, has_class)
 values ('Ian', 'Warrior');
 
 insert into character (char_name, has_class)
-values ('Kindeep', 'Warrior');
+values ('Kindeep', 'Ranger');
+
+insert into character (char_name, has_class)
+values ('Cameron', 'White Mage');
+
+insert into character (char_name, has_class)
+values ('Marlon', 'Black Mage');
 
 update character c
 set char_experience = 3000
 where c.char_name = 'Ian';
+
+insert into clan
+values ('RocketRaiders', 'Kindeep');
+
+insert into clan_member
+values ('RocketRaiders', 'Ian');

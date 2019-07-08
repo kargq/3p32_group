@@ -355,12 +355,14 @@ CREATE OR REPLACE FUNCTION on_clan_chief_change()
     RETURNS TRIGGER
 AS
 $$
+BEGIN
     -- insert chief into clan_member as well
     -- (don't think i need checks for if it's already in member, will get rejected anyway if it is)
-INSERT INTO clan_member
-VALUES (NEW.clanname, NEW.chief);
+    INSERT INTO clan_member
+    VALUES (NEW.clanname, NEW.chief);
 
-RETURN NEW;
+    RETURN NEW;
+END;
 $$
     LANGUAGE plpgsql;
 
