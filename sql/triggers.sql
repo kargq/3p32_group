@@ -373,16 +373,49 @@ END;
 $$
     LANGUAGE plpgsql;
 
-CREATE TRIGGER on_insert_clan
-    AFTER INSERT
+CREATE TRIGGER on_change_clan
+    AFTER INSERT OR UPDATE
     ON clan
     FOR EACH ROW
 EXECUTE PROCEDURE on_clan_chief_change();
 
-CREATE TRIGGER on_update_clan
-    AFTER UPDATE
-    ON clan
+CREATE OR REPLACE FUNCTION on_delete_clan_member()
+    RETURNS TRIGGER
+AS
+$$
+BEGIN
+    -- check if the memeber being deleted is a clan chief
+    IF EXISTS(
+            SELECT *
+            FROM clan C
+            WHERE C.chief = OLD.char_name
+              AND C.clanname = OLD.cln_name
+        )
+    THEN
+        UPDATE clan C
+        SET chief = (SELECT char_name
+                     FROM clan_member CM
+                     WHERE old.cln_name = CM.cln_name
+                     ORDER BY RANDOM()
+                     LIMIT 1)
+        WHERE C.clanname = old.cln_name;
+        -- set clan chief to random chief
+    END IF;
+    RETURN NEW;
+END;
+$$
+    LANGUAGE plpgsql;
+
+CREATE TRIGGER on_delete_clan_member
+    BEFORE DELETE
+    ON clan_member
     FOR EACH ROW
-EXECUTE PROCEDURE on_clan_chief_change();
+EXECUTE PROCEDURE on_delete_clan_member();
+
+-- CREATE TRIGGER on_update_clan
+--     AFTER UPDATE
+--     ON clan
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE on_clan_chief_change();
 
 -- EO Trigger group #6
