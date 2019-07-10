@@ -29,5 +29,8 @@ where c.char_name = 'Ian';
 insert into clan
 values ('RocketRaiders', 'Kindeep');
 
+insert into clan 
+values ('RocketRaiders', 'Marlon');
+
 insert into clan_member
 values ('RocketRaiders', 'Ian');
