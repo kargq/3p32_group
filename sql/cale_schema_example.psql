@@ -1,0 +1,167 @@
+-- Example SQL schema for COSC 3P32 Spring 2019 Project
+
+-- The stats in this table are the per-level increases each class recieves
+create table class (
+  name char(20) primary key,
+  life integer default 0,
+  power integer default 0,
+  str integer default 0,
+  def integer default 0,
+  will integer default 0,
+  speed integer default 0,
+  block integer default 0
+);
+
+create table clan (
+  name char(40) primary key,
+  chief char(40) unique not null
+);
+
+create table character (
+  name char(40) primary key,
+  class char(20) not null,
+  clan char(40),
+  level integer default 0,
+  exp integer default 0,
+  life integer default 0,
+  power integer default 0,
+  str integer default 0,
+  def integer default 0,
+  will integer default 0,
+  speed integer default 0,
+  block integer default 0,
+  foreign key (class) references class(name) on update cascade,
+  foreign key (clan) references clan(name) on update cascade on delete set null
+);
+
+alter table clan add constraint "clan_chief_fkey" 
+foreign key (chief) references character(name) on update cascade;
+
+create table skill (
+  name char(32) primary key,
+  description varchar(128),
+  min_level integer not null,
+  power_cost integer default 0
+);
+
+create table owns_skill (
+  character char(40),
+  skill char(32),
+  primary key (character, skill),
+  foreign key (character) references character(name) on delete cascade on update cascade,
+  foreign key (skill) references skill(name) on update cascade
+);
+
+create table allowed_skill (
+  class char(20),
+  skill char(32),
+  primary key (class, skill),
+  foreign key (class) references class(name) on delete cascade on update cascade,
+  foreign key (skill) references skill(name) on update cascade
+);
+
+create table auto_skill (
+  class char(20),
+  skill char(32),
+  primary key (class, skill),
+  foreign key (class) references class(name) on delete cascade on update cascade,
+  foreign key (skill) references skill(name) on update cascade
+);
+
+create table equipment (
+  eid serial primary key,
+  name varchar(40),
+  level integer not null,
+  num_slots integer not null default 0,
+  life integer default 0,
+  power integer default 0,
+  str integer default 0,
+  def integer default 0,
+  will integer default 0,
+  speed integer default 0,
+  block integer default 0
+);
+
+create table can_equip (
+  class char(20),
+  eid integer,
+  primary key (class, eid),
+  foreign key (class) references class(name) on delete cascade on update cascade,
+  foreign key (eid) references equipment(eid) on delete cascade on update cascade
+);
+
+-- There should be some constraints to disallow overlap in these next three ---
+create table armour (
+  eid integer primary key,
+  foreign key (eid) references equipment on delete cascade on update cascade
+);
+
+create table weapon (
+  eid integer primary key,
+  foreign key (eid) references equipment on delete cascade on update cascade
+);
+
+create table secondary (
+  eid integer primary key,
+  foreign key (eid) references equipment on delete cascade on update cascade
+);
+
+create table armour_instance (
+  aid serial primary key,
+  eid integer not null,
+  cname char(40) unique,
+  foreign key (eid) references armour on delete cascade on update cascade,
+  foreign key (cname) references character(name) on delete cascade on update cascade
+);
+
+create table weapon_instance (
+  wid serial primary key,
+  eid integer not null,
+  cname char(40) unique,
+  foreign key (eid) references weapon on delete cascade on update cascade,
+  foreign key (cname) references character(name) on delete cascade on update cascade
+);
+
+create table secondary_instance (
+  sid serial primary key,
+  eid integer not null,
+  cname char(40) unique,
+  foreign key (eid) references secondary on delete cascade on update cascade,
+  foreign key (cname) references character(name) on delete cascade on update cascade
+);
+
+create table gem (
+  name char(40) primary key,
+  level integer not null,
+  life integer default 0,
+  power integer default 0,
+  str integer default 0,
+  def integer default 0,
+  will integer default 0,
+  speed integer default 0,
+  block integer default 0
+);
+
+create table armour_gem (
+  aid integer,
+  gem char(40),
+  primary key (aid, gem),
+  foreign key (aid) references armour_instance on delete cascade on update cascade,
+  foreign key (gem) references gem(name) on update cascade
+);
+
+create table secondary_gem (
+  aid integer,
+  gem char(40),
+  primary key (aid, gem),
+  foreign key (aid) references secondary_instance on delete cascade on update cascade,
+  foreign key (gem) references gem(name) on update cascade
+);
+
+create table weapon_gem (
+  aid integer,
+  gem char(40),
+  primary key (aid, gem),
+  foreign key (aid) references weapon_instance on delete cascade on update cascade,
+  foreign key (gem) references gem(name) on update cascade
+);
