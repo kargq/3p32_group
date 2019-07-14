@@ -17,7 +17,13 @@
  */
 
 /* Class data - required */
-INSERT INTO class
+INSERT INTO class (cls_name,
+                   base_Life,
+                   base_Power,
+                   base_Strength,
+                   base_Defence,
+                   base_Will,
+                   base_Speed)
 VALUES ('Warrior', 50, 2, 5, 5, 1, 3),
        ('Ranger', 30, 2, 4, 3, 3, 5),
        ('White Mage', 15, 5, 1, 2, 5, 2),

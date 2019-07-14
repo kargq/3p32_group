@@ -15,7 +15,7 @@ Also be sure to add the following before any of the `mapping` properties.
 
 All the sql is located in `sql/`
 
-`schema.sql`: Table creation code
+`schema.psql`: Table creation code
 
 `drop_all.sql`: Code to drop every table
 
@@ -35,7 +35,7 @@ type login and press enter to open the postgres terminal for our database.
 
 ./`update_sql.sh`: deploy changes from this repo to the psql database. 
 
-Note: The script drops every table and recreates them. (just runs drop_table.sql and then schema.sql as of right now)
+Note: The script drops every table and recreates them. (just runs drop_table.sql and then schema.psql as of right now)
 
 ./`reset-data.sh`: Delete all data from tables. This recreates the tables after dropping them.
 
