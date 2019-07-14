@@ -3,6 +3,54 @@
 Due Tuesday, 16 July 2019 @9 AM
 
 ### Getting Started
+
+hibernate config should look something like this: -
+
+```xhtml
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.username">c3p32g02</property>
+    <property name="connection.password">d5e6j4v9</property>
+    <property name="connection.url">jdbc:postgresql://localhost:45727/c3p32g02</property>
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+    <mapping class="main.models.ArmourModel"/>
+      <mapping class="main.models.ArmourEmbedModel"/>
+      <mapping class="main.models.ArmourInstanceModel"/>
+      <mapping class="main.models.AutoSkillModel"/>
+      <mapping class="main.models.CharacterModel"/>
+      <mapping class="main.models.ClanModel"/>
+      <mapping class="main.models.ClanMemberModel"/>
+      <mapping class="main.models.ClazzModel"/>
+      <mapping class="main.models.ClassEquipmentModel"/>
+      <mapping class="main.models.EarnedSkillModel"/>
+      <mapping class="main.models.EquipmentModel"/>
+      <mapping class="main.models.GemModel"/>
+      <mapping class="main.models.HasEarnedModel"/>
+      <mapping class="main.models.MainEmbedModel"/>
+      <mapping class="main.models.MainWeaponModel"/>
+      <mapping class="main.models.MainWeaponInstanceModel"/>
+      <mapping class="main.models.SecondaryEmbedModel"/>
+      <mapping class="main.models.SecondaryEquipmentModel"/>
+      <mapping class="main.models.SecondaryEquipmentInstanceModel"/>
+      <mapping class="main.models.SkillModel"/>
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
+```
+
+Database configuration should look something like this: - 
+
+Local port needs to be the same as that in hibernate.config.xml
+
+[db](media/db_1.png)
+[db](media/db_2.png)
+
+
 Be sure to run through the hibernate process, and have a `hibernate.cfg.xml` file that works for your machine. The `connection.url` property will be different.
 
 Also be sure to add the following before any of the `mapping` properties.
