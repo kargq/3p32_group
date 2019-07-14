@@ -142,6 +142,7 @@ CREATE TRIGGER bef_ins_armour_embed
 EXECUTE PROCEDURE gem_min_level_check_armour();
 
 -- end armour
+
 -- start main
 
 CREATE OR REPLACE FUNCTION gem_min_level_check_main()
@@ -161,6 +162,15 @@ BEGIN
         raise
             exception 'Equipment level is too low for equipping the gem';
     END IF;
+    IF (SELECT e.gem_limit
+        FROM equipment e,
+             main_weapon_instance ai
+        where e.eqp_id = ai.eqp_id
+          and ai.main_weapon_instance_id = NEW.main_weapon_instance_id
+        limit 1) <= (SELECT count(*) from main_weapon_instance ae where ae.main_weapon_instance_id = NEW.main_weapon_instance_id)
+    then
+        raise exception 'Gem limit for main weapon instance reached';
+    end if;
     RETURN NEW;
 END;
 $$
@@ -192,6 +202,15 @@ BEGIN
         raise
             exception 'Equipment level is too low for equipping the gem';
     END IF;
+    IF (SELECT e.gem_limit
+        FROM equipment e,
+             secondary_equipment_instance ai
+        where e.eqp_id = ai.eqp_id
+          and ai.secondary_weapon_instance_id = NEW.secondary_weapon_instance_id
+        limit 1) <= (SELECT count(*) from secondary_equipment_instance ae where ae.secondary_weapon_instance_id = NEW.secondary_weapon_instance_id)
+    then
+        raise exception 'Gem limit for secondary equipment instance reached';
+    end if;
     RETURN NEW;
 END;
 $$
