@@ -47,8 +47,8 @@ Database configuration should look something like this: -
 
 Local port needs to be the same as that in hibernate.config.xml
 
-[db](media/db_1.png)
-[db](media/db_2.png)
+![db](media/db_1.png)
+![db](media/db_2.png)
 
 
 Be sure to run through the hibernate process, and have a `hibernate.cfg.xml` file that works for your machine. The `connection.url` property will be different.
