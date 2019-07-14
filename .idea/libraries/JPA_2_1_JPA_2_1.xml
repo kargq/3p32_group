@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="postgresql-42.2.2">
+  <library name="JPA 2.1-JPA 2.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/postgresql-42.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.persistence_2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

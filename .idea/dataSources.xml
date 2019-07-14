@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="c3p32g02@sandcastle.cosc.brocku.ca" uuid="bd2b0704-fffb-4532-9fe4-34e47cc0ade5">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="9325246e-8276-4c8d-9b37-22f698abc040">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+/home/ian/repos/3p32_group/src/hibernate.cfg.xml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://sandcastle.cosc.brocku.ca/c3p32g02</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/c3p32g02</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="out:production:3p32_group:hibernate.cfg.xml/Hibernate" uuid="4fa4cf73-d56e-41ba-8093-e446f2844755">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+/home/ian/repos/3p32_group/src/out/production/3p32_group/hibernate.cfg.xml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:45727/c3p32g02</jdbc-url>
     </data-source>
   </component>
 </project>
