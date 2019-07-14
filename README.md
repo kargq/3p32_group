@@ -4,6 +4,14 @@ Due Tuesday, 16 July 2019 @9 AM
 
 ### Getting Started
 
+You should just be able to open the project in intelliJ as the .idea/ config is inculded in the repository, ignore prompts for adding database and try running. 
+
+You might have some import errors, the libraries are in either libs/ or lib/, just add them from `Project Structure> Libraries > + `. 
+
+There should be hibernate, jgoodies and postgres listed in there, if not, just import like i said in previos statement.
+
+use `DbTest.java` to test if the db connection and ssh tunnel is functional. If not, go to the databases pane, (should be on the right, if not you can add it from view or something) click on the c3p32g02 db and make sure it is set up correctly. (see below). If it's still wonky with correct setup, changing local port to something random and changing back helped. (Possibly some process is still listenting there so ij can't? no idea it's weird)
+
 hibernate config should look something like this: -
 
 ```xhtml
