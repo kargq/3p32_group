@@ -233,11 +233,11 @@ CREATE OR REPLACE FUNCTION update_levels()
 AS
 $$
 declare
-    _base_life INT; _base_power INT; _base_strength INT; _base_will INT; _base_speed INT;
+    _cls_name CHAR(20);_base_life INT; _base_power INT; _base_strength INT; _base_will INT; _base_speed INT;
 BEGIN
     NEW.char_level := NEW.char_experience / 1000 + 1;
 
-    select * INTO _base_life, _base_power, _base_strength, _base_will, _base_speed
+    select * INTO _cls_name, _base_life, _base_power, _base_strength, _base_will, _base_speed
     from class
     where class.cls_name = NEW.has_class
     limit 1;
