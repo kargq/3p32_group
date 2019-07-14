@@ -6,9 +6,9 @@
 CREATE TABLE Gem
 (
     gem_id    INTEGER PRIMARY KEY,
+    gname     CHAR(20),
     glife     INTEGER,
     gpower    INTEGER,
-    gname     INTEGER,
     gspeed    INTEGER,
     gdefence  INTEGER,
     gwill     INTEGER,
