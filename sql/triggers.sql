@@ -232,44 +232,51 @@ CREATE OR REPLACE FUNCTION update_levels()
     RETURNS TRIGGER
 AS
 $$
+declare
+    _base_life INT; _base_power INT; _base_strength INT; _base_will INT; _base_speed INT;
 BEGIN
     NEW.char_level := NEW.char_experience / 1000 + 1;
 
+    select * INTO _base_life, _base_power, _base_strength, _base_will, _base_speed
+    from class
+    where class.cls_name = NEW.has_class
+    limit 1;
+
     IF (lower(NEW.has_class) = 'warrior') THEN
-        NEW.char_life := (NEW.char_experience / 1000) * (50) + 10;
-        NEW.char_power := (NEW.char_experience / 1000) * (2) + 10;
-        NEW.char_strength := (NEW.char_experience / 1000) * (5) + 10;
-        NEW.char_defence := (NEW.char_experience / 1000) * (5) + 10;
-        NEW.char_will := (NEW.char_experience / 1000) * (1) + 10;
-        NEW.char_speed := (NEW.char_experience / 1000) * (3) + 10;
+        NEW.char_life := (NEW.char_experience / 1000) * _base_life + 10;
+        NEW.char_power := (NEW.char_experience / 1000) * _base_power + 10;
+        NEW.char_strength := (NEW.char_experience / 1000) * _base_strength + 10;
+        NEW.char_defence := (NEW.char_experience / 1000) * _base_will + 10;
+        NEW.char_will := (NEW.char_experience / 1000) * _base_life + 10;
+        NEW.char_speed := (NEW.char_experience / 1000) * _base_speed + 10;
     END IF;
 
-    IF (lower(NEW.has_class) = 'ranger') THEN
-        NEW.char_life := (NEW.char_experience / 1000) * (30) + 10;
-        NEW.char_power := (NEW.char_experience / 1000) * (2) + 10;
-        NEW.char_strength := (NEW.char_experience / 1000) * (4) + 10;
-        NEW.char_defence := (NEW.char_experience / 1000) * (3) + 10;
-        NEW.char_will := (NEW.char_experience / 1000) * (3) + 10;
-        NEW.char_speed := (NEW.char_experience / 1000) * (5) + 10;
-    END IF;
-
-    IF (lower(NEW.has_class) = 'white mage') THEN
-        NEW.char_life := (NEW.char_experience / 1000) * (15) + 10;
-        NEW.char_power := (NEW.char_experience / 1000) * (5) + 10;
-        NEW.char_strength := (NEW.char_experience / 1000) * (1) + 10;
-        NEW.char_defence := (NEW.char_experience / 1000) * (2) + 10;
-        NEW.char_will := (NEW.char_experience / 1000) * (5) + 10;
-        NEW.char_speed := (NEW.char_experience / 1000) * (2) + 10;
-    END IF;
-
-    IF (lower(NEW.has_class) = 'black mage') THEN
-        NEW.char_life := (NEW.char_experience / 1000) * (20) + 10;
-        NEW.char_power := (NEW.char_experience / 1000) * (5) + 10;
-        NEW.char_strength := (NEW.char_experience / 1000) * (1) + 10;
-        NEW.char_defence := (NEW.char_experience / 1000) * (2) + 10;
-        NEW.char_will := (NEW.char_experience / 1000) * (5) + 10;
-        NEW.char_speed := (NEW.char_experience / 1000) * (2) + 10;
-    END IF;
+    --     IF (lower(NEW.has_class) = 'ranger') THEN
+--         NEW.char_life := (NEW.char_experience / 1000) * (30) + 10;
+--         NEW.char_power := (NEW.char_experience / 1000) * (2) + 10;
+--         NEW.char_strength := (NEW.char_experience / 1000) * (4) + 10;
+--         NEW.char_defence := (NEW.char_experience / 1000) * (3) + 10;
+--         NEW.char_will := (NEW.char_experience / 1000) * (3) + 10;
+--         NEW.char_speed := (NEW.char_experience / 1000) * (5) + 10;
+--     END IF;
+--
+--     IF (lower(NEW.has_class) = 'white mage') THEN
+--         NEW.char_life := (NEW.char_experience / 1000) * (15) + 10;
+--         NEW.char_power := (NEW.char_experience / 1000) * (5) + 10;
+--         NEW.char_strength := (NEW.char_experience / 1000) * (1) + 10;
+--         NEW.char_defence := (NEW.char_experience / 1000) * (2) + 10;
+--         NEW.char_will := (NEW.char_experience / 1000) * (5) + 10;
+--         NEW.char_speed := (NEW.char_experience / 1000) * (2) + 10;
+--     END IF;
+--
+--     IF (lower(NEW.has_class) = 'black mage') THEN
+--         NEW.char_life := (NEW.char_experience / 1000) * (20) + 10;
+--         NEW.char_power := (NEW.char_experience / 1000) * (5) + 10;
+--         NEW.char_strength := (NEW.char_experience / 1000) * (1) + 10;
+--         NEW.char_defence := (NEW.char_experience / 1000) * (2) + 10;
+--         NEW.char_will := (NEW.char_experience / 1000) * (5) + 10;
+--         NEW.char_speed := (NEW.char_experience / 1000) * (2) + 10;
+--     END IF;
 
     RETURN NEW;
 END;
@@ -396,7 +403,8 @@ BEGIN
         UPDATE clan C
         SET chief = (SELECT CM.char_name
                      FROM clan_member CM
-                     WHERE C.clanname = CM.cln_name AND CM.char_name <> C.chief
+                     WHERE C.clanname = CM.cln_name
+                       AND CM.char_name <> C.chief
                      ORDER BY RANDOM()
                      LIMIT 1)
         WHERE C.clanname = OLD.cln_name;
@@ -412,3 +420,9 @@ CREATE TRIGGER on_delete_clan_member
     ON clan_member
     FOR EACH ROW
 EXECUTE PROCEDURE on_delete_clan_member();
+
+-- EO group #6: Clan
+
+-- Trigger group #7: Gem
+
+-- EO group #7: Gem

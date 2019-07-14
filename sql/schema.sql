@@ -83,7 +83,13 @@ CREATE TABLE Skill
 
 CREATE TABLE Class
 (
-    cls_name CHAR(20) PRIMARY KEY
+    cls_name      CHAR(20) PRIMARY KEY,
+    base_Life     INT,
+    base_Power    INT,
+    base_Strength INT,
+    base_Defence  INT,
+    base_Will     INT,
+    base_Speed    INT
 );
 
 CREATE TABLE Character
@@ -156,7 +162,7 @@ CREATE TABLE Class_Equipment
 CREATE TABLE Clan
 (
     clanname CHAR(30) PRIMARY KEY,
-    chief CHAR(30) NOT NULL UNIQUE,
+    chief    CHAR(30) NOT NULL UNIQUE,
     FOREIGN KEY (chief) REFERENCES Character
 );
 

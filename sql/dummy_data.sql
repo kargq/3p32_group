@@ -1,14 +1,32 @@
+/* Required data */
+
+
+/*
+(Wouldn't trust this table with my life but should be accurate)
++------------+------+-------+----------+---------+------+-------+
+|            | Life | Power | Strength | Defence | Will | Speed |
++------------+------+-------+----------+---------+------+-------+
+| Warrior    | 50   | 2     | 5        | 5       | 1    | 3     |
++------------+------+-------+----------+---------+------+-------+
+| Ranger     | 30   | 2     | 4        | 3       | 3    | 5     |
++------------+------+-------+----------+---------+------+-------+
+| White mage | 15   | 5     | 1        | 2       | 5    | 2     |
++------------+------+-------+----------+---------+------+-------+
+| Black mage | 20   | 5     | 1        | 2       | 5    | 2     |
++------------+------+-------+----------+---------+------+-------+
+ */
+
+/* Class data - required */
+INSERT INTO class
+VALUES ('Warrior', 50, 2, 5, 5, 1, 3),
+       ('Ranger', 30, 2, 4, 3, 3, 5),
+       ('White Mage', 15, 5, 1, 2, 5, 2),
+       ('Black Mage', 20, 5, 1, 2, 5, 2);
+
+
+/* Test data */
 INSERT INTO Gem
 values (23412, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-
-INSERT INTO class
-VALUES ('Warrior');
-INSERT INTO class
-VALUES ('Ranger');
-INSERT INTO class
-VALUES ('White Mage');
-INSERT INTO class
-VALUES ('Black Mage');
 
 insert into character (char_name, has_class)
 values ('Ian', 'Warrior');
@@ -29,7 +47,7 @@ where c.char_name = 'Ian';
 insert into clan
 values ('RocketRaiders', 'Kindeep');
 
-insert into clan 
+insert into clan
 values ('RocketRaiders', 'Marlon');
 
 insert into clan_member
