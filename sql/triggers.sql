@@ -99,7 +99,7 @@ EXECUTE PROCEDURE equipment_instance_assign_check();
 
 -- EO Trigger #2
 -- Trigger group #3
--- gem level, max gems
+-- gem level
 -- start armour
 
 CREATE OR REPLACE FUNCTION gem_min_level_check_armour()
@@ -121,6 +121,15 @@ BEGIN
         raise
             exception 'Equipment level is too low for equipping the gem';
     END IF;
+    IF (SELECT e.gem_limit
+        FROM equipment e,
+             armour_instance ai
+        where e.eqp_id = ai.eqp_id
+          and ai.armour_instance_id = NEW.armour_instance_id
+        limit 1) <= (SELECT count(*) from armour_embed ae where ae.armour_instance_id = NEW.armour_instance_id)
+    then
+        raise exception 'Gem limit for armour instance reached';
+    end if;
     RETURN NEW;
 END;
 $$
@@ -233,7 +242,7 @@ CREATE OR REPLACE FUNCTION update_levels()
 AS
 $$
 declare
-    _cls_name CHAR(20);_base_life INT; _base_power INT; _base_strength INT; _base_will INT; _base_speed INT;
+    _cls_name CHAR(20); _base_life INT; _base_power INT; _base_strength INT; _base_will INT; _base_speed INT;
 BEGIN
     NEW.char_level := NEW.char_experience / 1000 + 1;
 
@@ -250,33 +259,6 @@ BEGIN
         NEW.char_will := (NEW.char_experience / 1000) * _base_life + 10;
         NEW.char_speed := (NEW.char_experience / 1000) * _base_speed + 10;
     END IF;
-
-    --     IF (lower(NEW.has_class) = 'ranger') THEN
---         NEW.char_life := (NEW.char_experience / 1000) * (30) + 10;
---         NEW.char_power := (NEW.char_experience / 1000) * (2) + 10;
---         NEW.char_strength := (NEW.char_experience / 1000) * (4) + 10;
---         NEW.char_defence := (NEW.char_experience / 1000) * (3) + 10;
---         NEW.char_will := (NEW.char_experience / 1000) * (3) + 10;
---         NEW.char_speed := (NEW.char_experience / 1000) * (5) + 10;
---     END IF;
---
---     IF (lower(NEW.has_class) = 'white mage') THEN
---         NEW.char_life := (NEW.char_experience / 1000) * (15) + 10;
---         NEW.char_power := (NEW.char_experience / 1000) * (5) + 10;
---         NEW.char_strength := (NEW.char_experience / 1000) * (1) + 10;
---         NEW.char_defence := (NEW.char_experience / 1000) * (2) + 10;
---         NEW.char_will := (NEW.char_experience / 1000) * (5) + 10;
---         NEW.char_speed := (NEW.char_experience / 1000) * (2) + 10;
---     END IF;
---
---     IF (lower(NEW.has_class) = 'black mage') THEN
---         NEW.char_life := (NEW.char_experience / 1000) * (20) + 10;
---         NEW.char_power := (NEW.char_experience / 1000) * (5) + 10;
---         NEW.char_strength := (NEW.char_experience / 1000) * (1) + 10;
---         NEW.char_defence := (NEW.char_experience / 1000) * (2) + 10;
---         NEW.char_will := (NEW.char_experience / 1000) * (5) + 10;
---         NEW.char_speed := (NEW.char_experience / 1000) * (2) + 10;
---     END IF;
 
     RETURN NEW;
 END;
@@ -399,16 +381,7 @@ BEGIN
               AND C.clanname = OLD.cln_name
         )
     THEN
-        raise notice 'Clan member is a chief, random chief will be appointed. ';
-        UPDATE clan C
-        SET chief = (SELECT CM.char_name
-                     FROM clan_member CM
-                     WHERE C.clanname = CM.cln_name
-                       AND CM.char_name <> C.chief
-                     ORDER BY RANDOM()
-                     LIMIT 1)
-        WHERE C.clanname = OLD.cln_name;
-        -- set clan chief to random chief
+        raise exception 'Clan member is a chief, appoint new chief before removing.';
     END IF;
     RETURN OLD;
 END;
@@ -423,6 +396,6 @@ EXECUTE PROCEDURE on_delete_clan_member();
 
 -- EO group #6: Clan
 
--- Trigger group #7: Gem
+-- Trigger group #7: Gem limit
 
--- EO group #7: Gem
+-- EO group #7: Gem limit
