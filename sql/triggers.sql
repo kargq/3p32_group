@@ -413,8 +413,36 @@ CREATE TRIGGER on_delete_clan_member
     FOR EACH ROW
 EXECUTE PROCEDURE on_delete_clan_member();
 
+
+-- Don't think this trigger is needed, just not having on delete cascade on character key on clan should serve the same
+-- purpose
+-- CREATE OR REPLACE FUNCTION on_delete_character()
+--     RETURNS TRIGGER
+-- AS
+-- $$
+-- BEGIN
+--     -- check if the character being deleted is a clan chief
+--     -- Also check if the members in the clan is more than one
+--     -- If both conditions satisfied, raise exception. Otherwise just delete the clan too.
+--     IF EXISTS(
+--             SELECT *
+--             FROM clan C
+--             WHERE C.chief = OLD.char_name
+--         )
+--         -- dont think we need this check. just delete clan before deleting character.
+-- --            AND 1 < (SELECT COUNT (*) FROM clan_member cm, clan C where cm.cln_name = C.clanname and c.chief = old.char_name)
+--     THEN
+--         raise exception 'Character is chief of a clan. Appoint a new chief or delete the clan first.';
+--     END IF;
+--     RETURN OLD;
+-- END;
+-- $$
+--     LANGUAGE plpgsql;
+--
+-- CREATE TRIGGER on_delete_clan_member
+--     BEFORE DELETE
+--     ON character
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE on_delete_character();
+
 -- EO group #6: Clan
-
--- Trigger group #7: Gem limit
-
--- EO group #7: Gem limit
