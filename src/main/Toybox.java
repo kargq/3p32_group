@@ -60,8 +60,6 @@ public class Toybox {
         for (int i = 0; i < charNames.length; i++){
             uploadItem(createMockCharacter(charNames[i], classNames[rand.nextInt(classNames.length)]));
         }
-
-
     }
 
     public static void uploadItem(Object item){

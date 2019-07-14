@@ -4,10 +4,23 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="bd2b0704-fffb-4532-9fe4-34e47cc0ade5" />
+          <unit-entry name="hibernate.cfg.xml" value="9325246e-8276-4c8d-9b37-22f698abc040" />
+          <unit-entry name="out:production:3p32_group:hibernate.cfg.xml" value="4fa4cf73-d56e-41ba-8093-e446f2844755" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/out/production/3p32_group/hibernate.cfg.xml" />
+      </configuration>
+    </facet>
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <setting name="provider-name" value="Hibernate" />
+        <datasource-mapping>
+          <factory-entry name="Entities" />
+        </datasource-mapping>
+        <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/libs/hibernate-release-5.4.3.Final/project/tooling/metamodel-generator/src/test/resources/org/hibernate/jpamodelgen/test/xmlmetacomplete/multiplepus/persistence.xml" />
       </configuration>
     </facet>
   </component>
@@ -18,25 +31,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/jgoodies-forms-1.8.0/jgoodies-forms-1.8.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/jgoodies-common-1.8.1/jgoodies-common-1.8.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="JPA 2.1-JPA 2.1" level="project" />
     <orderEntry type="library" name="Hibernate 5.4.3-5.4.3" level="project" />
-    <orderEntry type="library" name="postgresql-42.2.2" level="project" />
   </component>
 </module>

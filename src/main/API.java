@@ -94,6 +94,81 @@ public class API {
         return items;
     }
 
+    //======================== GEM GUI ==========================
+
+    public static List<ArmourInstanceModel> getAllArmourInstances(){
+        Session session = Database.openSession();
+        Query<ArmourInstanceModel> query = session.createQuery("SELECT A FROM ArmourInstanceModel A", ArmourInstanceModel.class);
+        List<ArmourInstanceModel> items = query.list();
+        session.close();
+        return items;
+    }
+
+    public static EquipmentModel getEquipment(int equipId){
+        Session session = Database.openSession();
+        Query<EquipmentModel> query = session.createQuery("SELECT E FROM EquipmentModel E WHERE E.eqpId = :equipId", EquipmentModel.class);
+        query.setParameter("equipId", equipId);
+        EquipmentModel item = query.uniqueResult();
+        session.close();
+        return item;
+    }
+
+    public static List<GemModel> getAttachedGems(ArmourInstanceModel armourInstance){
+        Session session = Database.openSession();
+        Query<GemModel> query = session.createQuery("SELECT G FROM GemModel G, ArmourEmbedModel A " +
+                "WHERE A.armourInstanceId = :armInstanceId and A.gemId = G.gemId");
+        query.setParameter("armInstanceId", armourInstance.getArmourInstanceId());
+        List<GemModel> gems = query.list();
+        session.close();
+        return gems;
+    }
+
+    public static void updateGem(GemModel gemModel){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(gemModel);
+        transaction.commit();
+        session.close();
+    }
+
+    public static void equipArmor(CharacterModel character, ArmourInstanceModel armor){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        character.setArmourEquipped(armor.getArmourInstanceId());
+        session.update(character);
+        transaction.commit();
+        session.close();
+    }
+
+    public static void removeGem(ArmourEmbedModel armourEmbedModel){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.remove(armourEmbedModel);
+        transaction.commit();
+        session.close();
+    }
+
+    public static List<GemModel> getAllGems(){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        Query<GemModel> query = session.createQuery("SELECT G FROM GemModel G", GemModel.class);
+        List<GemModel> gems = query.list();
+        transaction.commit();
+        session.close();
+        return gems;
+    }
+
+    public static void addGemToArmor(ArmourInstanceModel armorInstance, GemModel gem){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        ArmourEmbedModel armorEmbed = new ArmourEmbedModel();
+        armorEmbed.setArmourInstanceId(armorInstance.getArmourInstanceId());
+        armorEmbed.setGemId(gem.getGemId());
+        session.save(armorEmbed);
+        transaction.commit();
+        session.close();
+    }
+
     //--------- SETTERS ----------
 
     //adds skill to a character.
