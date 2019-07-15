@@ -54,7 +54,7 @@ values (0),
         (2),
         (3);
 
-insert into armour_instance
+insert into armour_instance (armour_instance_id, eqp_id)
 values (0, 0),
         (1, 1),
         (2, 2),
@@ -64,7 +64,7 @@ values (0, 0),
         (6, 2),
         (7, 3);
 
-insert into armour_embed
+insert into armour_embed (armour_instance_id, gem_id)
 values (0,4),
         (1,0),
         (2,0),
