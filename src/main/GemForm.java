@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class GemForm {
+public class GemForm extends JPanel{
     private JPanel panel1;
     private JComboBox<ArmourInstanceModel> comboBox_armorInstance;
     private JTextField txtField_equipName;
@@ -74,7 +74,7 @@ public class GemForm {
             public void actionPerformed(ActionEvent e) {
                 selectedGem.setGlife(Integer.valueOf(txtField_gemLife.getText()));
                 selectedGem.setGpower(Integer.valueOf(txtField_gemPower.getText()));
-                selectedGem.setGname(Integer.valueOf(txtField_gemName.getText()));
+                selectedGem.setGname(txtField_gemName.getText());
                 selectedGem.setGspeed(Integer.valueOf(txtField_gemSpeed.getText()));
                 selectedGem.setGdefence(Integer.valueOf(txtField_gemDefense.getText()));
                 selectedGem.setGwill(Integer.valueOf(txtField_gemWill.getText()));
@@ -83,6 +83,7 @@ public class GemForm {
                 selectedGem.setGblock(Integer.valueOf(txtField_gemBlock.getText()));
 
                 API.updateGem(selectedGem);
+                comboBox_allGems.setModel(new DefaultComboBoxModel<>(API.getAllGems().toArray(new GemModel[0])));
             }
         });
 
@@ -98,17 +99,18 @@ public class GemForm {
         btn_removeGem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                API.removeGem((ArmourEmbedModel)jList_attachedGems.getSelectedValue());
+                API.removeGem((GemModel)jList_attachedGems.getSelectedValue(), selectedArmourInstance);
+                jList_attachedGems.setModel(new ArrayListModel<>(API.getAttachedGems(selectedArmourInstance)));
             }
         });
         comboBox_gemEditorAllGems.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                selectedGem = (GemModel)jList_attachedGems.getSelectedValue();
+                selectedGem = (GemModel)comboBox_gemEditorAllGems.getSelectedItem();
                 GemModel g = selectedGem;
-                txtField_gemLife.setText(g.getGlevel().toString());
+                txtField_gemLife.setText(g.getGlife().toString());
                 txtField_gemPower.setText(g.getGpower().toString());
-                txtField_gemName.setText(g.getGname().toString());
+                txtField_gemName.setText(g.getGname());
                 txtField_gemSpeed.setText(g.getGspeed().toString());
                 txtField_gemDefense.setText(g.getGdefence().toString());
                 txtField_gemWill.setText(g.getGwill().toString());
@@ -122,12 +124,25 @@ public class GemForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 API.addGemToArmor(selectedArmourInstance, (GemModel)comboBox_allGems.getSelectedItem());
+                jList_attachedGems.setModel(new ArrayListModel<>(API.getAttachedGems(selectedArmourInstance)));
             }
         });
     }
 
     private void updateCurrArmorFields(){
-        txtField_currEquippedArmor.setText(currEquipment.getEqpName());
-        txtField_currEquippedArmorInstanceId.setText(selectedCharacter.getArmourEquipped().toString());
+        EquipmentModel armour = API.getArmourEquipped(selectedCharacter);
+        if (armour != null) //prints name of armour.
+            txtField_currEquippedArmor.setText(armour.getEqpName());
+        else
+            txtField_currEquippedArmor.setText("");
+
+        if (selectedCharacter.getArmourEquipped() != null) //prints instance id of armour.
+            txtField_currEquippedArmorInstanceId.setText(selectedCharacter.getArmourEquipped().toString());
+        else
+            txtField_currEquippedArmorInstanceId.setText("");
+    }
+
+    public JPanel getPanel(){
+        return panel1;
     }
 }

@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 import java.util.Random;
 
@@ -140,10 +141,13 @@ public class API {
         session.close();
     }
 
-    public static void removeGem(ArmourEmbedModel armourEmbedModel){
+    public static void removeGem(GemModel gem, ArmourInstanceModel armour){
         Session session = Database.openSession();
         Transaction transaction = session.beginTransaction();
-        session.remove(armourEmbedModel);
+        ArmourEmbedModel temp = new ArmourEmbedModel();
+        temp.setGemId(gem.getGemId());
+        temp.setArmourInstanceId(armour.getArmourInstanceId());
+        session.remove(temp);
         transaction.commit();
         session.close();
     }
@@ -167,6 +171,26 @@ public class API {
         session.save(armorEmbed);
         transaction.commit();
         session.close();
+    }
+
+    public static EquipmentModel getArmourEquipped(CharacterModel character){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        Query<EquipmentModel> query = session.createQuery("SELECT E FROM EquipmentModel E, ArmourInstanceModel A, CharacterModel C " +
+                "WHERE C.charName = :charName and " +
+                "C.armourEquipped = A.armourInstanceId and " +
+                "A.eqpId = E.eqpId", EquipmentModel.class);
+        query.setParameter("charName", character.getCharName());
+        EquipmentModel item = null;
+        try {
+           item = query.getSingleResult();
+        } catch(NoResultException err){
+
+        }
+
+        transaction.commit();
+        session.close();
+        return item;
     }
 
     //--------- SETTERS ----------

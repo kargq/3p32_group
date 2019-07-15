@@ -9,6 +9,10 @@ public class ArmourInstanceModel {
     private Integer eqpId;
     private int armourInstanceId;
 
+    @Override
+    public String toString(){
+        return String.valueOf(this.armourInstanceId);
+    }
     @Basic
     @Column(name = "eqp_id")
     public Integer getEqpId() {

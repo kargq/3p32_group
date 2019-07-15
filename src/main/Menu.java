@@ -30,6 +30,7 @@ public class Menu extends JPanel{
 
     public Menu() {
         tabbedPane1.addTab("Create Weapon", new CreateWeapon().getPanel());
+        tabbedPane1.addTab("Modify Gems", new GemForm().getPanel());
 
         tabbedPane1.addFocusListener(new FocusAdapter() {
             @Override

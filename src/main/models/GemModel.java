@@ -9,13 +9,18 @@ public class GemModel {
     private int gemId;
     private Integer glife;
     private Integer gpower;
-    private Integer gname;
+    private String gname;
     private Integer gspeed;
     private Integer gdefence;
     private Integer gwill;
     private Integer gstrength;
     private Integer glevel;
     private Integer gblock;
+
+    @Override
+    public String toString(){
+        return this.gname;
+    }
 
     @Id
     @Column(name = "gem_id")
@@ -49,11 +54,11 @@ public class GemModel {
 
     @Basic
     @Column(name = "gname")
-    public Integer getGname() {
+    public String getGname() {
         return gname;
     }
 
-    public void setGname(Integer gname) {
+    public void setGname(String gname) {
         this.gname = gname;
     }
 
