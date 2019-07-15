@@ -34,10 +34,10 @@ VALUES ('Warrior', 50, 2, 5, 5, 1, 3),
 
 /*---------- gems and armour -------------- */
 INSERT INTO Gem
-values (0, Red, 2, 1, 2, 4, 1, 6, 1, 1),
-        (1, Green, 9, 4, 2, 5, 1, 3, 6, 1),
-        (2, Blue, 2, 4, 4, 1, 1, 3, 1, 1),
-        (3, Yellow 1, 4, 1, 5, 1, 7, 3, 1);
+values (0, 'Red', 2, 1, 2, 4, 1, 6, 1, 1),
+        (1, 'Green', 9, 4, 2, 5, 1, 3, 6, 1),
+        (2, 'Blue', 2, 4, 4, 1, 1, 3, 1, 1),
+        (3, 'Yellow', 1, 4, 1, 5, 1, 7, 3, 1);
 
 insert into equipment (eqp_name,
                         estrength,
