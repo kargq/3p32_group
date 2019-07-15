@@ -42,11 +42,11 @@ values (0, 'Red', 2, 1, 2, 4, 1, 6, 1, 1),
 insert into equipment (eqp_name, eqp_id,
                         estrength,
                         edefence,
-                        gem_limit)
-values ('Leather Jacket', 0, 1, 2, 3),
-        ('Iron Chainmail', 1, 2, 3, 4),
-        ('Gold Chestplate', 2, 3, 5, 5),
-        ('Diamond Chestplate', 3, 7, 10, 6);
+                        gem_limit, elevel)
+values ('Leather Jacket', 0, 1, 2, 3, 5),
+        ('Iron Chainmail', 1, 2, 3, 4, 6),
+        ('Gold Chestplate', 2, 3, 5, 5, 4),
+        ('Diamond Chestplate', 3, 7, 10, 6, 5);
 
 insert into armour 
 values (0),
