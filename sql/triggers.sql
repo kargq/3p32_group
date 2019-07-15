@@ -80,6 +80,56 @@ BEGIN
         raise
             exception 'Character level is too low for given equipment';
     END IF;
+
+    -- check class of main weapon
+
+    IF new.main_equipped notnull and EXISTS(
+            SELECT *
+            FROM equipment E,
+                 main_weapon_instance mwi,
+                 class_equipment ce
+            WHERE mwi.main_weapon_instance_id = NEW.main_equipped
+              and mwi.eqp_id = E.eqp_id
+              and ce.eqp_id = e.eqp_id
+              and ce.cls_name = NEW.has_class
+        )
+    THEN
+        raise exception 'Equipment instance cannot be equipped for this class';
+    end if;
+
+    -- check class of secondary weapon
+
+    IF new.secondary_equipped notnull and EXISTS(
+            SELECT *
+            FROM equipment E,
+                 secondary_equipment_instance mwi,
+                 class_equipment ce
+            WHERE mwi.secondary_weapon_instance_id = NEW.secondary_equipped
+              and mwi.eqp_id = E.eqp_id
+              and ce.eqp_id = e.eqp_id
+              and ce.cls_name = NEW.has_class
+        )
+    THEN
+        raise exception 'Equipment instance cannot be equipped for this class';
+    end if;
+
+    -- check class of armour
+
+
+    IF new.armour_equipped notnull and not EXISTS(
+            SELECT *
+            FROM equipment E,
+                 armour_instance mwi,
+                 class_equipment ce
+            WHERE mwi.armour_instance_id = NEW.armour_equipped
+              and mwi.eqp_id = E.eqp_id
+              and ce.eqp_id = e.eqp_id
+              and ce.cls_name = NEW.has_class
+        )
+    THEN
+        raise exception 'Equipment instance cannot be equipped for this class';
+    end if;
+
     RETURN NEW;
 END;
 $$
@@ -92,7 +142,7 @@ CREATE TRIGGER bef_char_equipment_update
 EXECUTE PROCEDURE equipment_instance_assign_check();
 
 CREATE TRIGGER bef_char_equipment_insert
-    BEFORE UPDATE
+    BEFORE INSERT
     ON Character
     FOR EACH ROW
 EXECUTE PROCEDURE equipment_instance_assign_check();
@@ -167,7 +217,8 @@ BEGIN
              main_weapon_instance ai
         where e.eqp_id = ai.eqp_id
           and ai.main_weapon_instance_id = NEW.main_weapon_instance_id
-        limit 1) <= (SELECT count(*) from main_weapon_instance ae where ae.main_weapon_instance_id = NEW.main_weapon_instance_id)
+        limit 1) <=
+       (SELECT count(*) from main_weapon_instance ae where ae.main_weapon_instance_id = NEW.main_weapon_instance_id)
     then
         raise exception 'Gem limit for main weapon instance reached';
     end if;
@@ -207,7 +258,9 @@ BEGIN
              secondary_equipment_instance ai
         where e.eqp_id = ai.eqp_id
           and ai.secondary_weapon_instance_id = NEW.secondary_weapon_instance_id
-        limit 1) <= (SELECT count(*) from secondary_equipment_instance ae where ae.secondary_weapon_instance_id = NEW.secondary_weapon_instance_id)
+        limit 1) <= (SELECT count(*)
+                     from secondary_equipment_instance ae
+                     where ae.secondary_weapon_instance_id = NEW.secondary_weapon_instance_id)
     then
         raise exception 'Gem limit for secondary equipment instance reached';
     end if;
@@ -412,7 +465,6 @@ CREATE TRIGGER on_delete_clan_member
     ON clan_member
     FOR EACH ROW
 EXECUTE PROCEDURE on_delete_clan_member();
-
 
 -- Don't think this trigger is needed, just not having on delete cascade on character key on clan should serve the same
 -- purpose
