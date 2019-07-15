@@ -5,7 +5,7 @@
 /* Equipment */
 CREATE TABLE Gem
 (
-    gem_id    INTEGER PRIMARY KEY,
+    gem_id    SERIAL PRIMARY KEY,
     gname     CHAR(20),
     glife     INTEGER,
     gpower    INTEGER,
@@ -19,7 +19,7 @@ CREATE TABLE Gem
 
 CREATE TABLE Equipment
 (
-    eqp_id    INTEGER PRIMARY KEY,
+    eqp_id    SERIAL PRIMARY KEY,
     eqp_name  CHAR(20),
     ewill     INTEGER,
     espeed    INTEGER,
@@ -52,29 +52,29 @@ CREATE TABLE Secondary_Equipment
 
 CREATE TABLE Armour_Instance
 (
+    armour_instance_id SERIAL PRIMARY KEY,
     eqp_id             INTEGER,
-    armour_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Armour ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Main_Weapon_Instance
 (
+    main_weapon_instance_id SERIAL PRIMARY KEY,
     eqp_id                  INTEGER,
-    main_weapon_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Main_Weapon ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Secondary_Equipment_Instance
 (
+    secondary_weapon_instance_id SERIAL PRIMARY KEY,
     eqp_id                       INTEGER,
-    secondary_weapon_instance_id INTEGER PRIMARY KEY,
     FOREIGN KEY (eqp_id) REFERENCES Secondary_Equipment ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 /* Entities that need to be changed */
 CREATE TABLE Skill
 (
-    skill_id     INTEGER PRIMARY KEY,
+    skill_id     SERIAL PRIMARY KEY,
     min_level    INTEGER,
     power_cost   INTEGER,
     sdescription CHAR(60),
