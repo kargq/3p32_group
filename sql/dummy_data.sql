@@ -65,7 +65,7 @@ values (0, 0),
         (7, 3);
 
 insert into armour_embed (armour_instance_id, gem_id)
-values (0,4),
+values (0,0),
         (1,0),
         (2,0),
         (3,3),
