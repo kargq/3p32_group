@@ -6,7 +6,6 @@ import main.models.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class GemForm extends JPanel{
     private JPanel panel1;
@@ -27,13 +26,15 @@ public class GemForm extends JPanel{
     private JTextField txtField_gemDefense;
     private JTextField txtField_gemWill;
     private JTextField txtField_gemStrength;
-    private JTextField txtField_gemLevel;
+    private JTextField txtField_gemLevelEditor;
     private JTextField txtField_currEquippedArmor;
     private JTextField txtField_currEquippedArmorInstanceId;
     private JComboBox comboBox_allGems;
     private JButton addGemButton;
     private JComboBox comboBox_gemEditorAllGems;
     private JList jList_attachedGems;
+    private JTextField txtField_gemLevel;
+    private JTextField txtField_equipLevel;
 
     private static ArmourInstanceModel selectedArmourInstance;
     private static EquipmentModel currEquipment;
@@ -56,6 +57,7 @@ public class GemForm extends JPanel{
                 txtField_gemLimit.setText(currEquipment.getGemLimit().toString());
                 txtField_equipName.setText(currEquipment.getEqpName());
                 jList_attachedGems.setModel(new ArrayListModel<>(API.getAttachedGems(selectedArmourInstance)));
+                txtField_equipLevel.setText(currEquipment.getElevel().toString());
             }
         });
 
@@ -79,7 +81,7 @@ public class GemForm extends JPanel{
                 selectedGem.setGdefence(Integer.valueOf(txtField_gemDefense.getText()));
                 selectedGem.setGwill(Integer.valueOf(txtField_gemWill.getText()));
                 selectedGem.setGstrength(Integer.valueOf(txtField_gemStrength.getText()));
-                selectedGem.setGlevel(Integer.valueOf(txtField_gemLevel.getText()));
+                selectedGem.setGlevel(Integer.valueOf(txtField_gemLevelEditor.getText()));
                 selectedGem.setGblock(Integer.valueOf(txtField_gemBlock.getText()));
 
                 API.updateGem(selectedGem);
@@ -115,7 +117,7 @@ public class GemForm extends JPanel{
                 txtField_gemDefense.setText(g.getGdefence().toString());
                 txtField_gemWill.setText(g.getGwill().toString());
                 txtField_gemStrength.setText(g.getGstrength().toString());
-                txtField_gemLevel.setText(g.getGlevel().toString());
+                txtField_gemLevelEditor.setText(g.getGlevel().toString());
                 txtField_gemBlock.setText(g.getGblock().toString());
                 btn_updateGem.setEnabled(true);
             }
@@ -127,19 +129,25 @@ public class GemForm extends JPanel{
                 jList_attachedGems.setModel(new ArrayListModel<>(API.getAttachedGems(selectedArmourInstance)));
             }
         });
+        comboBox_allGems.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtField_gemLevel.setText(((GemModel)comboBox_allGems.getSelectedItem()).getGlevel().toString());
+            }
+        });
     }
 
     private void updateCurrArmorFields(){
+        txtField_currEquippedArmor.setText("");
+        txtField_currEquippedArmorInstanceId.setText("");
+
         EquipmentModel armour = API.getArmourEquipped(selectedCharacter);
         if (armour != null) //prints name of armour.
             txtField_currEquippedArmor.setText(armour.getEqpName());
-        else
-            txtField_currEquippedArmor.setText("");
 
         if (selectedCharacter.getArmourEquipped() != null) //prints instance id of armour.
             txtField_currEquippedArmorInstanceId.setText(selectedCharacter.getArmourEquipped().toString());
-        else
-            txtField_currEquippedArmorInstanceId.setText("");
+
     }
 
     public JPanel getPanel(){
