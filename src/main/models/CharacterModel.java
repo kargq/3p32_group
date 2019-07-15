@@ -32,8 +32,8 @@ public class CharacterModel {
     }
 
     @Override
-    public String toString(){
-        return this.charName;
+    public String toString() {
+        return charName;
     }
 
     @Basic
@@ -191,4 +191,6 @@ public class CharacterModel {
     public int hashCode() {
         return Objects.hash(charName, charExperience, charSpeed, charBlock, charPower, charLevel, charWill, charLife, charDefence, charStrength, hasClass, armourEquipped, mainEquipped, secondaryEquipped);
     }
+
+
 }

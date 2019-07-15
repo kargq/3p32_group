@@ -1,4 +1,5 @@
 out/*
+# wait whaaaaaat lol out in src
 src/out/*
 .idea/*
 *.iml
