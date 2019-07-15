@@ -41,7 +41,7 @@ values (0, 'Red', 2, 1, 2, 4, 1, 6, 1, 1),
 
 insert into equipment (eqp_name,
                         estrength,
-                        edefence
+                        edefence,
                         gem_limit)
 values ('Leather Jacket', 1, 2, 3),
         ('Iron Chainmail', 2, 3, 4),
