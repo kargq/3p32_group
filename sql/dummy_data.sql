@@ -33,11 +33,12 @@ VALUES ('Warrior', 50, 2, 5, 5, 1, 3),
 /* Test data */
 
 /*---------- gems and armour -------------- */
-INSERT INTO Gem
-values (0, 'Red', 2, 1, 2, 4, 1, 6, 1, 1),
-        (1, 'Green', 9, 4, 2, 5, 1, 3, 6, 1),
-        (2, 'Blue', 2, 4, 4, 1, 1, 3, 1, 1),
-        (3, 'Yellow', 1, 4, 1, 5, 1, 7, 3, 1);
+INSERT INTO Gem (gname, glife, gpower, gspeed, gdefence, gwill, gstrength, glevel, gblock)
+values ('Red', 2, 1, 2, 4, 1, 6, 1, 1),
+        ('Green', 9, 4, 2, 5, 1, 3, 6, 1),
+        ('Blue', 2, 4, 4, 1, 1, 3, 1, 1),
+        ('Yellow', 1, 4, 1, 5, 1, 7, 3, 1)
+        ('Test', 2, 2, 2, 2, 2, 2, 2, 2);
 
 insert into equipment (eqp_name, eqp_id,
                         estrength,
