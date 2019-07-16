@@ -134,6 +134,12 @@ insert into earned_skill
 values (1, 'White Mage');
 
 insert into earned_skill
-values (4,'Warrior')
+values (4,'Warrior');
+
+insert into auto_skill
+values (3,'Black Mage');
+
+insert into auto_skill
+values (2,'Ranger');
 
 
