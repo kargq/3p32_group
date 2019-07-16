@@ -109,6 +109,19 @@ update character c
 set char_experience = 3000
 where c.char_name = 'Ian';
 
+update character c
+set char_experience = 200000
+where c.char_name = 'Cameron';
+
+update character c
+set char_experience = 150000
+where c.char_name = 'Marlon';
+
+update charater c
+set char_experience = 20000
+where c.char_name = 'Kindeep';
+
+
 insert into clan
 values ('RocketRaiders', 'Kindeep');
 
@@ -141,5 +154,4 @@ values (3,'Black Mage');
 
 insert into auto_skill
 values (2,'Ranger');
-
 
