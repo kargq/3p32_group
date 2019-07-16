@@ -324,11 +324,11 @@ insert into auto_skill
 values (2, 'Ranger');
 
 insert into skill (min_level, power_cost, sname, sdescription)
-values (1, 1, 'Superhuman Strength', 'As a Saiyan, Goku possesses immense physica'),
-       (2, 2, 'Superhuman Speed', 'Goku can move/react at least as fast as Beerus, who'),
-       (3, 3, 'Superhuman Durability', 'Goku''s body is far more durable than t'),
-       (4, 4, 'Superhuman Senses', 'Goku is able to think and react at extremely '),
-       (5, 5, 'Superhuman Endurance', 'Thanks to his physiology and willpower, Gok'),
-       (6, 6, 'Powerful Lungs', 'Thanks to his physiology, Goku possesses powerf'),
-       (7, 7, 'Heat Resistance', 'Thanks to his Saiyan biology, Goku possesses an');
+values (1, 1, 'Superhuman Strength', 'As a Saiyan, Goku possesses immens'),
+       (2, 2, 'Superhuman Speed', 'Goku can move/react at least as fast a'),
+       (3, 3, 'Superhuman Durabili', 'Goku''s body is far more durable th'),
+       (4, 4, 'Superhuman Senses', 'Goku is able to think and react at ex'),
+       (5, 5, 'Superhuman Enduranc', 'Thanks to his physiology and willpo'),
+       (6, 6, 'Powerful Lungs', 'Thanks to his physiology, Goku possesses'),
+       (7, 7, 'Heat Resistance', 'Thanks to his Saiyan biology, Goku poss');
 
