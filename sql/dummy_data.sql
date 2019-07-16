@@ -38,56 +38,34 @@ values ('Red', 2, 1, 2, 4, 1, 6, 1, 1),
         ('Green', 9, 4, 2, 5, 1, 3, 6, 1),
         ('Blue', 2, 4, 4, 1, 1, 3, 1, 1),
         ('Yellow', 1, 4, 1, 5, 1, 7, 3, 1),
-        ('Black', 2, 2, 2, 2, 2, 2, 2, 2);
+        ('Test', 2, 2, 2, 2, 2, 2, 2, 2);
 
 insert into equipment (eqp_name, estrength, edefence, gem_limit, elevel)
 values ('Leather Jacket', 1, 2, 3, 5),
         ('Iron Chainmail', 2, 3, 4, 6),
-        ('White t-shirt', 3, 5, 5, 4),
+        ('swooords', 3, 5, 5, 4),
         ('Diamond Chestplate', 7, 10, 6, 5),
-        ('Canada Goose Jacket', 4, 2, 6, 1),
-        ('Two Handed Sword', 2, 2, 4, 2),
-        ('Glock', 3, 2, 5, 3),
-        ('AK 47', 2, 4, 2, 7),
-        ('Dagger', 3, 5, 5, 2),
-        ('Crossbow', 2, 2, 6, 2),
-        ('Baseball bat', 4, 2, 7, 2),
-        ('Whip', 2, 8, 2, 8);
+        ('TEST', 2, 2, 2, 2);
 
 insert into armour (eqp_id)
 values (1),
         (2),
-        (3),
-        (4),
-        (5);
+        (4);
 
 insert into main_weapon (eqp_id)
-values  (6),
-        (7),
-        (8);
+values  (3),
+        (2),
+        (4);
 
 insert into secondary_equipment (eqp_id)
-values (9),
-        (10),
-        (11),
-        (12);
+values (5),
+        (2),
+        (4);
 
 insert into armour_instance (eqp_id)
 values (1),
         (2),
-        (3),
-        (4),
-        (5),
-        (1),
-        (2),
-        (3),
-        (4),
-        (5),
-        (1),
-        (2),
-        (3),
-        (4),
-        (5);
+        (4);
 
 insert into main_weapon_instance (eqp_id)
 values (3),
@@ -127,6 +105,45 @@ values ('Cameron', 'White Mage');
 insert into character (char_name, has_class)
 values ('Marlon', 'Black Mage');
 
+insert into character (char_name, has_class)
+values ('Cale', 'Warrior');
+
+insert into character (char_name, has_class)
+values ('Sammy', 'White Mage');
+
+insert into character (char_name, has_class)
+values ('Jhonny', 'Black Mage');
+
+insert into character (char_name, has_class)
+values ('Katie', 'Ranger');
+
+insert into character (char_name, has_class)
+values ('Nate', 'Warrior');
+
+insert into character (char_name, has_class)
+values ('Paul', 'White Mage');
+
+insert into character (char_name, has_class)
+values ('Sidd', 'Black Mage');
+
+insert into character (char_name, has_class)
+values ('God', 'Warrior');
+
+insert into character (char_name, has_class)
+values ('Jesus', 'Ranger');
+
+insert into character (char_name, has_class)
+values ('Dillon', 'White Mage');
+
+insert into character (char_name, has_class)
+values ('Kyle', 'Black Mage');
+
+insert into character (char_name, has_class)
+values ('Sara', 'Warrior');
+
+insert into character (char_name, has_class)
+values ('Patrick', 'Ranger');
+
 update character c
 set char_experience = 3000
 where c.char_name = 'Ian';
@@ -149,6 +166,12 @@ values ('RocketRaiders', 'Kindeep');
 
 insert into clan
 values ('RocketRaiders', 'Marlon');
+
+insert into clan
+values ('Soaked', 'Ian');
+
+insert into clan_member
+values ('Soaked', 'Marlon');
 
 insert into clan_member
 values ('RocketRaiders', 'Ian');
