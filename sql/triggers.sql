@@ -520,7 +520,7 @@ BEGIN
     THEN
         raise exception 'Equipment already belongs to secondary or armour';
     end if;
-    RETURN OLD;
+    RETURN NEW;
 END;
 $$
     LANGUAGE plpgsql;
