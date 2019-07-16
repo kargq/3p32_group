@@ -192,6 +192,38 @@ public class API {
         session.close();
         return item;
     }
+    // ==================== SKILLS GUI ===========================
+    public static List<SkillModel> getAllSkills(){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        Query<SkillModel> query = session.createQuery("SELECT S FROM SkillModel S", SkillModel.class);
+        List<SkillModel> items = query.list();
+        transaction.commit();
+        session.close();
+        return items;
+    }
+
+    public static void addSkillToEarned(SkillModel skill, ClazzModel clazz){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        EarnedSkillModel item = new EarnedSkillModel();
+        item.setClsName(clazz.getClsName());
+        item.setSkillId(skill.getSkillId());
+        session.save(item);
+        transaction.commit();
+        session.close();
+    }
+
+    public static void addSkillToAuto(SkillModel skill, ClazzModel clazz){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        AutoSkillModel item = new AutoSkillModel();
+        item.setClsName(clazz.getClsName());
+        item.setSkillId(skill.getSkillId());
+        session.save(item);
+        transaction.commit();
+        session.close();
+    }
 
     //--------- SETTERS ----------
 
