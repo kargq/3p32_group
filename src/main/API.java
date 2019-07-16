@@ -14,7 +14,7 @@ public class API {
     //get skills given character class name.
     public static List<SkillModel> getSkills(String className){
         Session session = Database.openSession();
-        Query query = session.createQuery("SELECT skill from AutoSkillModel auto, SkillModel skill WHERE skill.skillId = auto.skillId and auto.clsName = :className");
+        Query query = session.createQuery("SELECT skill from EarnedSkillModel earned, SkillModel skill WHERE skill.skillId = earned.skillId and earned.clsName = :className");
         query.setParameter("className", className);
         List<SkillModel> data = query.list();
         session.close();
@@ -60,6 +60,15 @@ public class API {
         List<EquipmentModel> data = query.list();
         session.close();
         return data;
+    }
+
+    public static GemModel getGem(GemModel g){
+        Session session = Database.openSession();
+        Query query = session.createQuery("SELECT G FROM GemModel G WHERE G.gemId = :gemId", GemModel.class);
+        query.setParameter("gemId", g.getGemId());
+        GemModel item = (GemModel)query.getSingleResult();
+        session.close();
+        return item;
     }
 
     public static EquipmentModel getMainEquipment(CharacterModel character){

@@ -108,7 +108,7 @@ public class GemForm extends JPanel{
         comboBox_gemEditorAllGems.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                selectedGem = (GemModel)comboBox_gemEditorAllGems.getSelectedItem();
+                selectedGem = API.getGem((GemModel)comboBox_gemEditorAllGems.getSelectedItem());
                 GemModel g = selectedGem;
                 txtField_gemLife.setText(g.getGlife().toString());
                 txtField_gemPower.setText(g.getGpower().toString());

@@ -5,6 +5,7 @@ import main.models.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.util.Random;
 
 public class CreateWeapon extends JPanel{
@@ -32,6 +33,7 @@ public class CreateWeapon extends JPanel{
     private JComboBox<EquipmentModel> comboBox_allEquipment;
     private JComboBox<ClazzModel> comboBox_allClasses;
     private JComboBox comboBox_weaponType;
+    private JFormattedTextField formattedTextField1;
 
     public static EquipmentModel selectedEquipment;
     public static ClazzModel selectedClass;
@@ -41,8 +43,9 @@ public class CreateWeapon extends JPanel{
     public static String selectedEquipmentSlot;
     public static String selectedWeaponType;
 
-
+    public NumberFormat numFormat = NumberFormat.getNumberInstance();
     public CreateWeapon() {
+
         comboBox_allEquipment.setModel(new DefaultComboBoxModel<>(API.getAllEquipment().toArray(new EquipmentModel[0])));
         comboBox_allClasses.setModel(new DefaultComboBoxModel<>(API.getAllClasses().toArray(new ClazzModel[0])));
         comboBox_characters.setModel(new DefaultComboBoxModel<>(API.getAllCharacters().toArray(new CharacterModel[0])));
