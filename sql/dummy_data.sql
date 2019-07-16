@@ -164,7 +164,7 @@ where c.char_name = 'Kindeep';
 insert into clan
 values ('RocketRaiders', 'Kindeep');
 
-insert into clan
+insert into clan_member
 values ('RocketRaiders', 'Marlon');
 
 insert into clan
