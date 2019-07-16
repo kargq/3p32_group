@@ -496,31 +496,128 @@ EXECUTE PROCEDURE on_delete_clan_member();
 -- Trigger #8: Overlap Constraint
 
 -- trigger for overlap
--- CREATE OR REPLACE FUNCTION isa_overlap_check()
---     RETURNS TRIGGER
--- AS
--- $$
--- BEGIN
---     -- check if the memeber being deleted is a clan chief
---     IF EXISTS(
---             SELECT *
---             FROM clan C
---             WHERE C.chief = OLD.char_name
---               AND C.clanname = OLD.cln_name
---         )
---     THEN
---         raise exception 'Clan member is a chief, appoint new chief before removing.';
---     END IF;
---     RETURN OLD;
--- END;
--- $$
---     LANGUAGE plpgsql;
---
--- CREATE TRIGGER isa_check_trigger
---     BEFORE DELETE
---     ON clan_member
---     FOR EACH ROW
--- EXECUTE PROCEDURE isa_overlap_check();
+CREATE OR REPLACE FUNCTION isa_overlap_check_main()
+    RETURNS TRIGGER
+AS
+$$
+BEGIN
+    IF EXISTS(
+            SELECT *
+            FROM Armour A
+            WHERE A.eqp_id = NEW.eqp_id
+            UNION
+            SELECT *
+            FROM secondary_equipment A
+            WHERE A.eqp_id = NEW.eqp_id
+        )
+    THEN
+        raise exception 'Equipment already belongs to secondary or armour';
+    end if;
+    RETURN OLD;
+END;
+$$
+    LANGUAGE plpgsql;
 
+
+CREATE TRIGGER isa_check_trigger_main
+    BEFORE UPDATE OR INSERT
+    ON main_weapon_instance
+    FOR EACH ROW
+EXECUTE PROCEDURE isa_overlap_check_main();
+
+CREATE OR REPLACE FUNCTION isa_overlap_check_main()
+    RETURNS TRIGGER
+AS
+$$
+BEGIN
+    IF EXISTS(
+               SELECT *
+               FROM Armour A
+               WHERE A.eqp_id = NEW.eqp_id
+           )
+        or exists(
+               SELECT *
+               FROM secondary_equipment A
+               WHERE A.eqp_id = NEW.eqp_id
+           )
+    THEN
+        raise exception 'Equipment already belongs to secondary or armour';
+    end if;
+    RETURN OLD;
+END;
+$$
+    LANGUAGE plpgsql;
+
+CREATE TRIGGER isa_check_trigger_main
+    BEFORE UPDATE OR INSERT
+    ON main_weapon_instance
+    FOR EACH ROW
+EXECUTE PROCEDURE isa_overlap_check_main();
+
+CREATE TRIGGER isa_check_trigger_main
+    BEFORE UPDATE OR INSERT
+    ON main_weapon_instance
+    FOR EACH ROW
+EXECUTE PROCEDURE isa_overlap_check_main();
+
+CREATE OR REPLACE FUNCTION isa_overlap_check_secondary()
+    RETURNS TRIGGER
+AS
+$$
+BEGIN
+    IF EXISTS(
+               SELECT *
+               FROM Armour A
+               WHERE A.eqp_id = NEW.eqp_id
+           )
+        or exists(
+               SELECT *
+               FROM secondary_equipment A
+               WHERE A.eqp_id = NEW.eqp_id
+           )
+    THEN
+        raise exception 'Equipment already belongs to main or armour';
+    end if;
+    RETURN OLD;
+END;
+$$
+    LANGUAGE plpgsql;
+
+CREATE TRIGGER isa_check_trigger_main
+    BEFORE UPDATE OR INSERT
+    ON secondary_equipment
+    FOR EACH ROW
+EXECUTE PROCEDURE isa_overlap_check_secondary();
+
+
+
+CREATE OR REPLACE FUNCTION isa_overlap_check_armour()
+    RETURNS TRIGGER
+AS
+$$
+BEGIN
+    IF EXISTS(
+               SELECT *
+               FROM Armour A
+               WHERE A.eqp_id = NEW.eqp_id
+           )
+        or exists(
+               SELECT *
+               FROM armour_instance A
+               WHERE A.eqp_id = NEW.eqp_id
+           )
+    THEN
+        raise exception 'Equipment already belongs to main or secondary';
+    end if;
+    RETURN OLD;
+END;
+$$
+    LANGUAGE plpgsql;
+
+CREATE TRIGGER isa_check_trigger_main
+    BEFORE UPDATE OR INSERT
+    ON armour_instance
+    FOR EACH ROW
+EXECUTE PROCEDURE isa_overlap_check_armour();
 
 -- EO Trigger #8
