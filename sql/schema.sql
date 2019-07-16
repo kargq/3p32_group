@@ -22,7 +22,7 @@ CREATE TABLE Equipment
     eqp_id    SERIAL PRIMARY KEY,
     eqp_name  CHAR(20),
     ewill     INTEGER,
-    espeed    INTEGER,
+    espeed    INTEGER CHECK (espeed >= 0),
     edefence  INTEGER,
     estrength INTEGER,
     eblcok    INTEGER,
