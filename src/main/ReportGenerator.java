@@ -27,7 +27,7 @@ public class ReportGenerator {
      * Create a report which will list all of the clans, where for each clan it will identify the chief followed
      * by a list of every member of that clan.
      */
-    static void generateClanReport() {
+    public static void generateClanReport() {
         StringBuilder html = new StringBuilder();
         html.append("<html><head></head><body>");
         Session session = Database.openSession();
@@ -555,7 +555,7 @@ public class ReportGenerator {
         session.close();
     }
 
-    static void generateUseableSkillsReport(String characterName) {
+    public static void generateUseableSkillsReport(String characterName) {
         generateUseableSkillsReport(getCharacterByName(characterName));
     }
 
@@ -669,7 +669,7 @@ public class ReportGenerator {
         session.close();
     }
 
-    static void generateCharachterStatsReport(String character_name) {
+    public static void generateCharachterStatsReport(String character_name) {
         generateCharachterStatsReport(getCharacterByName(character_name));
     }
 
@@ -847,7 +847,7 @@ public class ReportGenerator {
         session.close();
     }
 
-    static void generateEquipmentReport(String character_name) {
+    public static void generateEquipmentReport(String character_name) {
         generateEquipmentReport(getCharacterByName(character_name));
     }
 
