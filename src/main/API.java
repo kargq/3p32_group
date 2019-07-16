@@ -259,6 +259,17 @@ public class API {
         session.close();
     }
 
+    public static ClazzModel getClass(String className){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("SELECT C FROM ClazzModel C WHERE C.clsName = :className", ClazzModel.class);
+        query.setParameter("className", className);
+        ClazzModel result = (ClazzModel)query.getSingleResult();
+        transaction.commit();
+        session.close();
+        return result;
+    }
+
     //--------- SETTERS ----------
 
     //adds skill to a character.

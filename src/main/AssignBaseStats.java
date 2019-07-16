@@ -30,6 +30,8 @@ public class AssignBaseStats {
     private final String EARNED = "Earned";
     private final String AUTO = "Auto";
 
+    private static ClazzModel currClass;
+
     public AssignBaseStats() {
         comboBox_skills.setModel(new DefaultComboBoxModel(API.getAllSkills().toArray(new SkillModel[0])));
         comboBox_class.setModel(new DefaultComboBoxModel(API.getAllClasses().toArray(new ClazzModel[0])));
@@ -60,7 +62,7 @@ public class AssignBaseStats {
         comboBox_baseStatsClass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ClazzModel currClass = (ClazzModel)comboBox_baseStatsClass.getSelectedItem();
+                currClass = API.getClass(((ClazzModel)comboBox_baseStatsClass.getSelectedItem()).getClsName());
                 txtField_class.setText(currClass.getClsName());
                 txtField_life.setText(currClass.getBaseLife().toString());
                 txtField_power.setText(currClass.getBasePower().toString());
@@ -68,6 +70,13 @@ public class AssignBaseStats {
                 txtField_defense.setText(currClass.getBaseStrength().toString());
                 txtField_will.setText(currClass.getBaseWill().toString());
                 txtField_speed.setText(currClass.getBaseSpeed().toString());
+            }
+        });
+        btn_updateClass.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ClazzModel item = createClassFromFields();
+                API.updateClass(item);
             }
         });
     }
