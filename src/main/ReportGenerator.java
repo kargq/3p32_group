@@ -709,6 +709,7 @@ public class ReportGenerator {
 
     static String gemHeader() {
         StringBuilder html = new StringBuilder();
+        html.append("<tr>");
         html.append(boxInTag("ID", "th"));
         html.append(boxInTag("name", "th"));
         html.append(boxInTag("life", "th"));
@@ -719,12 +720,14 @@ public class ReportGenerator {
         html.append(boxInTag("strength", "th"));
         html.append(boxInTag("level", "th"));
         html.append(boxInTag("block", "th"));
+        html.append("</tr>");
         return html.toString();
 
     }
 
     static String gemRow(GemModel g) {
         StringBuilder html = new StringBuilder();
+        html.append("<tr>");
         html.append(boxInTag("" + g.getGemId(), "td"));
         html.append(boxInTag("" + g.getGname(), "td"));
         html.append(boxInTag("" + g.getGlife(), "td"));
@@ -735,6 +738,7 @@ public class ReportGenerator {
         html.append(boxInTag("" + g.getGstrength(), "td"));
         html.append(boxInTag("" + g.getGlevel(), "td"));
         html.append(boxInTag("" + g.getGblock(), "td"));
+        html.append("</tr>");
         return html.toString();
     }
 
