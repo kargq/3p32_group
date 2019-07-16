@@ -54,7 +54,6 @@ values (1),
 
 insert into main_weapon (eqp_id)
 values  (3),
-        (3),
         (2),
         (4);
 
@@ -65,9 +64,6 @@ values (5),
 
 insert into armour_instance (eqp_id)
 values (1),
-        (2),
-        (4),
-        (1),
         (2),
         (4);
 
