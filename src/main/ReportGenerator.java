@@ -755,7 +755,7 @@ public class ReportGenerator {
         Session session = Database.openSession();
 
 
-        List<EquipmentModel> mainWeapon = session.createQuery("SELECT EQ from EquipmentModel EQ where EQ.eqpId = :main_weapon_id ")
+        List<EquipmentModel> mainWeapon = session.createQuery("SELECT EQ from EquipmentModel EQ, MainWeaponInstanceModel MM where EQ.eqpId = MM.eqpId and MM.mainWeaponInstanceId = :main_weapon_id ")
                 .setParameter("main_weapon_id", c.getMainEquipped())
                 .list();
 
@@ -789,7 +789,7 @@ public class ReportGenerator {
         html.append("</table>");
 
         List<EquipmentModel> secondaryWeapon =
-                session.createQuery("SELECT EQ from EquipmentModel EQ where  EQ.eqpId = :secondary_weapon_id ")
+                session.createQuery("SELECT EQ from EquipmentModel EQ, SecondaryEquipmentInstanceModel SS where  EQ.eqpId = SS.eqpId and SS.secondaryWeaponInstanceId = :secondary_weapon_id ")
                         .setParameter("secondary_weapon_id", c.getSecondaryEquipped())
                         .list();
 
@@ -818,7 +818,7 @@ public class ReportGenerator {
         html.append("</table>");
 
         List<EquipmentModel> armour =
-                session.createQuery("SELECT EQ from EquipmentModel EQ where EQ.eqpId = :armour_id")
+                session.createQuery("SELECT EQ from EquipmentModel EQ, ArmourInstanceModel AI where EQ.eqpId = AI.eqpId and AI.armourInstanceId = :armour_id")
                         .setParameter("armour_id", c.getArmourEquipped())
                         .list();
 
@@ -838,7 +838,8 @@ public class ReportGenerator {
         System.out.println("Armour: " + mainWeapon);
         System.out.println("Armour Gems: " + mainGems);
 
-        System.out.println("main: " + c.getMainEquipped() + " secondary: " + c.getSecondaryEquipped() + " armour: " + c.getArmourEquipped());;
+        System.out.println("main: " + c.getMainEquipped() + " secondary: " + c.getSecondaryEquipped() + " armour: " + c.getArmourEquipped());
+        ;
 
         html.append("<h5>Gems</h5>");
         html.append("<table>");
