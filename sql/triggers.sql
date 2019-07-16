@@ -68,38 +68,36 @@ BEGIN
     -- all we need from the row is the Character name and equipment instance id
     -- only need to check if min level of equipment is less than char level
     -- so we're just enforcing the character level against the equipment level here.
+
     IF EXISTS(
             SELECT *
-            FROM Character C,
-                 Equipment E,
+            FROM Equipment E,
                  main_weapon_instance Ins
-            WHERE C.char_name = NEW.char_name
-              AND Ins.main_weapon_instance_id = NEW.armour_equipped
-              AND C.char_level < E.elevel) THEN
+            WHERE Ins.main_weapon_instance_id = NEW.main_equipped
+              and e.eqp_id = Ins.eqp_id
+              AND new.char_level < E.elevel) THEN
         raise
             exception 'Character level is too low for given Main weapon';
     END IF;
 
     IF EXISTS(
             SELECT *
-            FROM Character C,
-                 Equipment E,
+            FROM Equipment E,
                  secondary_equipment_instance Ins
-            WHERE C.char_name = NEW.char_name
-              AND Ins.secondary_weapon_instance_id = NEW.secondary_equipped
-              AND C.char_level < E.elevel) THEN
+            WHERE Ins.secondary_weapon_instance_id = NEW.secondary_equipped
+              and e.eqp_id = Ins.eqp_id
+              AND new.char_level < E.elevel) THEN
         raise
             exception 'Character level is too low for given Secondary weapon';
     END IF;
 
     IF EXISTS(
             SELECT *
-            FROM Character C,
-                 Equipment E,
+            FROM Equipment E,
                  armour_instance Ins
-            WHERE C.char_name = NEW.char_name
-              AND Ins.armour_instance_id = NEW.armour_equipped
-              AND C.char_level < E.elevel) THEN
+            WHERE Ins.armour_instance_id = NEW.armour_equipped
+              and e.eqp_id = Ins.eqp_id
+              AND new.char_level < E.elevel) THEN
         raise
             exception 'Character level is too low for given Armour weapon';
     END IF;
