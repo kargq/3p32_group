@@ -65,7 +65,7 @@ public class GemForm extends JPanel{
         comboBox_characters.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                selectedCharacter = (CharacterModel)comboBox_characters.getSelectedItem();
+                selectedCharacter = API.getCharacter(((CharacterModel)comboBox_characters.getSelectedItem()).getCharName());
                 txtField_class.setText(selectedCharacter.getHasClass());
                 updateCurrArmorFields();
             }

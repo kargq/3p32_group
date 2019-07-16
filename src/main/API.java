@@ -14,11 +14,20 @@ public class API {
     //get skills given character class name.
     public static List<SkillModel> getSkills(String className){
         Session session = Database.openSession();
-        Query query = session.createQuery("SELECT earned from EarnedSkillModel earned, SkillModel skill WHERE skill.skillId = earned.skillId and earned.clsName = :className");
+        Query query = session.createQuery("SELECT skill from EarnedSkillModel earned, SkillModel skill WHERE skill.skillId = earned.skillId and earned.clsName = :className");
         query.setParameter("className", className);
         List<SkillModel> data = query.list();
         session.close();
         return data;
+    }
+
+    public static CharacterModel getCharacter(String charName){
+        Session session = Database.openSession();
+        Query query = session.createQuery("SELECT C FROM CharacterModel C WHERE C.charName = :charName", CharacterModel.class);
+        query.setParameter("charName", charName);
+        CharacterModel result = (CharacterModel)query.getSingleResult();
+        session.close();
+        return result;
     }
 
     //get list of skills character has earned.
