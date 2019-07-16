@@ -117,6 +117,11 @@ update character c
 set char_experience = 150000
 where c.char_name = 'Marlon';
 
+update charater c
+set char_experience = 20000
+where c.char_name = 'Kindeep';
+
+
 insert into clan
 values ('RocketRaiders', 'Kindeep');
 
