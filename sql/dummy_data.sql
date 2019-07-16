@@ -105,6 +105,45 @@ values ('Cameron', 'White Mage');
 insert into character (char_name, has_class)
 values ('Marlon', 'Black Mage');
 
+insert into character (char_name, has_class)
+values ('Cale', 'Warrior');
+
+insert into character (char_name, has_class)
+values ('Sammy', 'White Mage');
+
+insert into character (char_name, has_class)
+values ('Jhonny', 'Black Mage');
+
+insert into character (char_name, has_class)
+values ('Katie', 'Ranger');
+
+insert into character (char_name, has_class)
+values ('Nate', 'Warrior');
+
+insert into character (char_name, has_class)
+values ('Paul', 'White Mage');
+
+insert into character (char_name, has_class)
+values ('Sidd', 'Black Mage');
+
+insert into character (char_name, has_class)
+values ('God', 'Warrior');
+
+insert into character (char_name, has_class)
+values ('Jesus', 'Ranger');
+
+insert into character (char_name, has_class)
+values ('Dillon', 'White Mage');
+
+insert into character (char_name, has_class)
+values ('Kyle', 'Black Mage');
+
+insert into character (char_name, has_class)
+values ('Sara', 'Warrior');
+
+insert into character (char_name, has_class)
+values ('Patrick', 'Ranger');
+
 update character c
 set char_experience = 3000
 where c.char_name = 'Ian';
@@ -125,8 +164,14 @@ where c.char_name = 'Kindeep';
 insert into clan
 values ('RocketRaiders', 'Kindeep');
 
-insert into clan
+insert into clan_member
 values ('RocketRaiders', 'Marlon');
+
+insert into clan
+values ('Soaked', 'Ian');
+
+insert into clan_member
+values ('Soaked', 'Marlon');
 
 insert into clan_member
 values ('RocketRaiders', 'Ian');
