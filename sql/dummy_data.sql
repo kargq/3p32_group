@@ -46,12 +46,12 @@ values ('Leather Jacket', 1, 2, 3, 5),
         ('White t-shirt', 3, 5, 5, 4),
         ('Diamond Chestplate', 7, 10, 6, 5),
         ('Canada Goose Jacket', 4, 2, 6, 1),
-        ('Two Handed Sword', 2, 2, 4, 2)
-        ('Glock', 3, 2, 5, 3)
-        ('AK 47', 2, 4, 2, 7)
-        ('Dagger', 3, 5, 5, 2)
-        ('Crossbow', 2, 2, 6, 2)
-        ('Baseball bat', 4, 2, 7, 2)
+        ('Two Handed Sword', 2, 2, 4, 2),
+        ('Glock', 3, 2, 5, 3),
+        ('AK 47', 2, 4, 2, 7),
+        ('Dagger', 3, 5, 5, 2),
+        ('Crossbow', 2, 2, 6, 2),
+        ('Baseball bat', 4, 2, 7, 2),
         ('Whip', 2, 8, 2, 8);
 
 insert into armour (eqp_id)
