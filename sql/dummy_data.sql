@@ -103,21 +103,21 @@ values (10),
         (12);
 
 insert into armour_embed (armour_instance_id, gem_id)
-values (1,1),
-        (2,1),
-        (3,1),
-        (4,4),
-        (5,1),
-        (6,4),
-        (7,1),
-        (8,1),
-        (2,2),
-        (3,2),
-        (4,2),
-        (5,3),
-        (6,3),
-        (7,3),
-        (8,3);
+values (1, 1),
+       (2, 1),
+       (3, 1),
+       (4, 4),
+       (5, 1),
+       (6, 4),
+       (7, 1),
+       (8, 1),
+       (2, 2),
+       (3, 2),
+       (4, 2),
+       (5, 3),
+       (6, 3),
+       (7, 3),
+       (8, 3);
 /*---------- --------------------------- */
 
 insert into character (char_name, has_class)
@@ -204,13 +204,13 @@ insert into clan_member
 values ('RocketRaiders', 'Ian');
 
 insert into clan
-values ('Goolies','Katie');
+values ('Goolies', 'Katie');
 
 insert into clan_member
-values ('Goolies','God');
+values ('Goolies', 'God');
 
 insert into clan
-values ('Slayers','Sidd');
+values ('Slayers', 'Sidd');
 
 insert into clan_member
 values ('Slayers','Patrick');
@@ -222,42 +222,51 @@ insert into clan_member
 values ('Slayers','Cameron');
 
 insert into clan
-values ('Beasties','Nate');
+values ('Beasties', 'Nate');
 
 insert into clan_member
-values ('Beasties','Jesus');
+values ('Beasties', 'Jesus');
 
 insert into clan
-values ('Gwalla','Dillon');
+values ('Gwalla', 'Dillon');
 
 insert into clan_member
-values ('Gwalla','Jhonny');
+values ('Gwalla', 'Jhonny');
 
 insert into clan_member
 values ('Gwalla','Paul');
 
 
 insert into skill
-values (1, 0,100, 'Ki blast fired with two hands','Kamehameha');
+values (1, 0, 100, 'Ki blast fired with two hands', 'Kamehameha');
 
 insert into skill
-values (2, -2,8, 'Bending of earths valuable element','Air bending ');
+values (2, -2, 8, 'Bending of earths valuable element', 'Air bending ');
 
 insert into skill
-values (3, 4,5, 'double energy sphere of Ki','Twin dragon shot');
+values (3, 4, 5, 'double energy sphere of Ki', 'Twin dragon shot');
 
 insert into skill
-values (4, 10,10, 'kick in the air','Aerial kick');
+values (4, 10, 10, 'kick in the air', 'Aerial kick');
 
 insert into earned_skill
 values (1, 'White Mage');
 
 insert into earned_skill
-values (4,'Warrior');
+values (4, 'Warrior');
 
 insert into auto_skill
-values (3,'Black Mage');
+values (3, 'Black Mage');
 
 insert into auto_skill
-values (2,'Ranger');
+values (2, 'Ranger');
+
+insert into skill (min_level, power_cost, sname, sdescription)
+values (1, 1, 'Superhuman Strength', 'As a Saiyan, Goku possesses immense physica'),
+       (2, 2, 'Superhuman Speed', 'Goku can move/react at least as fast as Beerus, who'),
+       (3, 3, 'Superhuman Durability', 'Goku''s body is far more durable than t'),
+       (4, 4, 'Superhuman Senses', 'Goku is able to think and react at extremely '),
+       (5, 5, 'Superhuman Endurance', 'Thanks to his physiology and willpower, Gok'),
+       (6, 6, 'Powerful Lungs', 'Thanks to his physiology, Goku possesses powerf'),
+       (7, 7, 'Heat Resistance', 'Thanks to his Saiyan biology, Goku possesses an');
 
