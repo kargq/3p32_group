@@ -7,29 +7,29 @@ CREATE TABLE Gem
 (
     gem_id    SERIAL PRIMARY KEY,
     gname     CHAR(20),
-    glife     INTEGER,
-    gpower    INTEGER,
-    gspeed    INTEGER,
-    gdefence  INTEGER,
-    gwill     INTEGER,
+    glife     INTEGER CHECK (glife >= 0),
+    gpower    INTEGER CHECK (gpower >= 0),
+    gspeed    INTEGER CHECK (gspeed >= 0),
+    gdefence  INTEGER CHECK (gdefence >= 0),
+    gwill     INTEGER CHECK (gwill >= 0),
     gstrength INTEGER CHECK (gstrength >= 0),
-    glevel    INTEGER,
-    gblock    INTEGER
+    glevel    INTEGER CHECK (glevel >= 0),
+    gblock    INTEGER CHECK (gblock >= 0)
 );
 
 CREATE TABLE Equipment
 (
     eqp_id    SERIAL PRIMARY KEY,
     eqp_name  CHAR(20),
-    ewill     INTEGER,
+    ewill     INTEGER CHECK (ewill >= 0),
     espeed    INTEGER CHECK (espeed >= 0),
-    edefence  INTEGER,
-    estrength INTEGER,
-    eblcok    INTEGER,
-    epower    INTEGER,
-    elife     INTEGER,
-    elevel    INTEGER,
-    gem_limit INTEGER
+    edefence  INTEGER CHECK (edefence >= 0),
+    estrength INTEGER CHECK (estrength >= 0),
+    eblcok    INTEGER CHECK (eblcok >= 0),
+    epower    INTEGER CHECK (epower >= 0),
+    elife     INTEGER CHECK (elife >= 0),
+    elevel    INTEGER CHECK (elevel >= 0),
+    gem_limit INTEGER CHECK (gem_limit >= 0)
 );
 
 CREATE TABLE Armour
@@ -75,8 +75,8 @@ CREATE TABLE Secondary_Equipment_Instance
 CREATE TABLE Skill
 (
     skill_id     SERIAL PRIMARY KEY,
-    min_level    INTEGER,
-    power_cost   INTEGER,
+    min_level    INTEGER CHECK (min_level >= 0),
+    power_cost   INTEGER CHECK (power_cost >= 0),
     sdescription CHAR(60),
     sname        CHAR(20)
 );
@@ -84,12 +84,12 @@ CREATE TABLE Skill
 CREATE TABLE Class
 (
     cls_name      CHAR(20) PRIMARY KEY,
-    base_Life     INT,
-    base_Power    INT,
-    base_Strength INT,
-    base_Defence  INT,
-    base_Will     INT,
-    base_Speed    INT
+    base_Life     INT CHECK (base_Life >= 0),
+    base_Power    INT CHECK (base_Power >= 0),
+    base_Strength INT CHECK (base_Strength >= 0),
+    base_Defence  INT CHECK (base_Defence >= 0),
+    base_Will     INT CHECK (base_Will >= 0),
+    base_Speed    INT CHECK (base_Speed >= 0)
 );
 
 CREATE TABLE Character
@@ -97,7 +97,7 @@ CREATE TABLE Character
     char_name          CHAR(30) PRIMARY KEY,
     char_experience    INTEGER DEFAULT 0,
     char_speed         INTEGER DEFAULT 10,
-    char_block         INTEGER,
+    char_block         INTEGER DEFAULT 10,
     char_power         INTEGER DEFAULT 10,
     char_level         INTEGER DEFAULT 1,
     char_will          INTEGER DEFAULT 10,
