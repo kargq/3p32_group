@@ -799,7 +799,7 @@ public class ReportGenerator {
 
         List<GemModel> secondaryGems =
                 session.createQuery("SELECT GM FROM GemModel GM, SecondaryEmbedModel ME where ME.secondaryWeaponInstanceId = :weapon_id and GM.gemId = ME.gemId")
-                        .setParameter("weapon_id", c.getMainEquipped())
+                        .setParameter("weapon_id", c.getSecondaryEquipped())
                         .list();
 
         System.out.println("Secondary Weapon: " + secondaryWeapon);
@@ -828,11 +828,13 @@ public class ReportGenerator {
 
         List<GemModel> armourGems =
                 session.createQuery("SELECT GM FROM GemModel GM, ArmourEmbedModel ME where ME.armourInstanceId = :weapon_id and GM.gemId = ME.gemId")
-                        .setParameter("weapon_id", c.getMainEquipped())
+                        .setParameter("weapon_id", c.getArmourEquipped())
                         .list();
 
         System.out.println("Armour: " + mainWeapon);
         System.out.println("Armour Gems: " + mainGems);
+
+        System.out.println("main: " + c.getMainEquipped() + " secondary: " + c.getSecondaryEquipped() + " armour: " + c.getArmourEquipped());;
 
         html.append("<h5>Gems</h5>");
         html.append("<table>");
