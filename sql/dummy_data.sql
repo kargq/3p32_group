@@ -183,67 +183,67 @@ update character c
 set char_experience = 30000
 where c.char_name = 'Marlon';
 
-update charater c
+update character c
 set char_experience = 40000
 where c.char_name = 'Kindeep';
 
-update charater c
+update character c
 set char_experience = 50000
 where c.char_name = 'Cameron';
 
-update charater c
+update character c
 set char_experience = 60000
 where c.char_name = 'Marlon';
 
-update charater c
+update character c
 set char_experience = 70000
 where c.char_name = 'Cale';
 
-update charater c
+update character c
 set char_experience = 80000
 where c.char_name = 'Sammy';
 
-update charater c
+update character c
 set char_experience = 90000
 where c.char_name = 'Jhonny';
 
-update charater c
+update character c
 set char_experience = 100000
 where c.char_name = 'Nate';
 
-update charater c
+update character c
 set char_experience = 10000
 where c.char_name = 'Paul';
 
-update charater c
+update character c
 set char_experience = 20000
 where c.char_name = 'Sidd';
 
-update charater c
+update character c
 set char_experience = 30000
 where c.char_name = 'Katie';
 
-update charater c
+update character c
 set char_experience = 40000
 where c.char_name = 'God';
 
-update charater c
+update character c
 set char_experience = 50000
 where c.char_name = 'Jesus';
 
-update charater c
+update character c
 set char_experience = 60000
 where c.char_name = 'Dillon';
 
-update charater c
+update character c
 set char_experience = 70000
 where c.char_name = 'Kyle';
 
-update charater c
+update character c
 set char_experience = 80000
 where c.char_name = 'Sara';
 
-update charater c
+update character c
 set char_experience = 90000
 where c.char_name = 'Patrick';
 
@@ -262,7 +262,6 @@ values ('Soaked', 'Marlon');
 
 insert into clan_member
 values ('RocketRaiders', 'Ian');
-
 insert into clan
 values ('Goolies', 'Katie');
 
