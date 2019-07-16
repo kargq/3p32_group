@@ -14,7 +14,7 @@ public class API {
     //get skills given character class name.
     public static List<SkillModel> getSkills(String className){
         Session session = Database.openSession();
-        Query query = session.createQuery("SELECT skill from EarnedSkillModel earned, SkillModel skill WHERE skill.skillId = earned.skillId and earned.clsName = :className");
+        Query query = session.createQuery("SELECT earned from EarnedSkillModel earned, SkillModel skill WHERE skill.skillId = earned.skillId and earned.clsName = :className");
         query.setParameter("className", className);
         List<SkillModel> data = query.list();
         session.close();
