@@ -104,7 +104,7 @@ BEGIN
 
     -- check class of main weapon
 
-    IF new.main_equipped notnull and EXISTS(
+    IF new.main_equipped notnull and NOT EXISTS(
             SELECT *
             FROM equipment E,
                  main_weapon_instance mwi,
@@ -120,7 +120,7 @@ BEGIN
 
     -- check class of secondary weapon
 
-    IF new.secondary_equipped notnull and EXISTS(
+    IF new.secondary_equipped notnull and NOT EXISTS(
             SELECT *
             FROM equipment E,
                  secondary_equipment_instance mwi,
@@ -137,7 +137,7 @@ BEGIN
     -- check class of armour
 
 
-    IF new.armour_equipped notnull and not EXISTS(
+    IF new.armour_equipped notnull and not NOT EXISTS(
             SELECT *
             FROM equipment E,
                  armour_instance mwi,
