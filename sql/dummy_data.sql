@@ -48,55 +48,55 @@ values ('Leather Jacket', 1, 2, 3, 5),
         ('TEST', 2, 2, 2, 2);
 
 insert into armour (eqp_id)
-values (0),
-        (1),
-        (3);
+values (1),
+        (2),
+        (4);
 
 insert into main_weapon (eqp_id)
-values  (2),
+values  (3),
+        (3),
         (2),
-        (1),
-        (3);
+        (4);
 
 insert into secondary_equipment (eqp_id)
-values (4),
-        (1),
-        (3);
+values (5),
+        (2),
+        (4);
 
 insert into armour_instance (eqp_id)
-values (0),
+values (1),
+        (2),
+        (4),
         (1),
-        (3),
-        (0),
-        (1),
-        (3);
+        (2),
+        (4);
 
 insert into main_weapon_instance (eqp_id)
-values (2),
-        (3),
-        (0);
+values (3),
+        (4),
+        (1);
 
 insert into secondary_equipment_instance (eqp_id)
-values (4),
-        (3),
-        (0);
+values (5),
+        (4),
+        (1);
 
 insert into armour_embed (armour_instance_id, gem_id)
-values (0,0),
-        (1,0),
-        (2,0),
-        (3,3),
-        (4,0),
-        (5,3),
-        (6,0),
-        (7,0),
-        (1,1),
+values (1,1),
         (2,1),
         (3,1),
+        (4,4),
+        (5,1),
+        (6,4),
+        (7,1),
+        (8,1),
+        (2,2),
+        (3,2),
         (4,2),
-        (5,2),
-        (6,2),
-        (7,2);
+        (5,3),
+        (6,3),
+        (7,3),
+        (8,3);
 /*---------- --------------------------- */
 
 insert into character (char_name, has_class)
