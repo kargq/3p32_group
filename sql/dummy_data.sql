@@ -69,13 +69,11 @@ values (1),
 
 insert into main_weapon_instance (eqp_id)
 values (3),
-        (4),
-        (1);
+        (4);
 
 insert into secondary_equipment_instance (eqp_id)
 values (5),
-        (4),
-        (1);
+        (4);
 
 insert into armour_embed (armour_instance_id, gem_id)
 values (1,1),
