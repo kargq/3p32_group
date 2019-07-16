@@ -297,8 +297,6 @@ values ('Gwalla', 'Jhonny');
 insert into clan_member
 values ('Gwalla','Paul');
 
->>>>>>> 6bd83ac42014a5682f61c0855fe67b27c6a76e9f
-
 insert into skill
 values (1, 0, 100, 'Ki blast fired with two hands', 'Kamehameha');
 
