@@ -211,7 +211,6 @@ update charater c
 set char_experience = 100000
 where c.char_name = 'Nate';
 
-<<<<<<< HEAD
 update charater c
 set char_experience = 10000
 where c.char_name = 'Paul';
@@ -263,7 +262,7 @@ values ('Soaked', 'Marlon');
 
 insert into clan_member
 values ('RocketRaiders', 'Ian');
-=======
+
 insert into clan
 values ('Goolies', 'Katie');
 
