@@ -225,6 +225,22 @@ public class API {
         session.close();
     }
 
+    public static void createClass(ClazzModel clazz){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(clazz);
+        transaction.commit();
+        session.close();
+    }
+
+    public static void updateClass(ClazzModel clazz){
+        Session session = Database.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(clazz);
+        transaction.commit();
+        session.close();
+    }
+
     //--------- SETTERS ----------
 
     //adds skill to a character.
