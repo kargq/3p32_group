@@ -109,7 +109,7 @@ update character c
 set char_experience = 3000
 where c.char_name = 'Ian';
 
-update character
+update character c
 set char_experience = 200000
 where c.char_name = 'Cameron';
 
@@ -145,5 +145,4 @@ values (3,'Black Mage');
 
 insert into auto_skill
 values (2,'Ranger');
-
 
