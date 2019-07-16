@@ -176,6 +176,27 @@ values ('Soaked', 'Marlon');
 insert into clan_member
 values ('RocketRaiders', 'Ian');
 
+insert into clan
+values ('Goolies','Katie');
+
+insert into clan_member
+values ('Goolies','God');
+
+insert into clan
+values ('Slayers','Sidd');
+
+insert into clan
+values ('Beasties','Nate');
+
+insert into clan_member
+values ('Beasties','Jesus');
+
+insert into clan
+values ('Gwalla','Dillon');
+
+insert into clan_member
+values ('Gwalla','Jhonny');
+
 insert into skill
 values (1, 0,100, 'Ki blast fired with two hands','Kamehameha');
 
