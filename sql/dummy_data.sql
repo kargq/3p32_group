@@ -329,7 +329,7 @@ values (5, 1, 1, 'As a Saiyan, Goku possesses immens', 'Superhuman Strength'),
        (11, 7, 7, 'Thanks to his Saiyan biology, Goku poss', 'Heat Resistance');
 
 insert into Gem
-values (90, 'Emerald', 2, 3, 4, 5, 3, 3, 4, 5),
+values (9034, 'Emerald', 2, 3, 4, 5, 3, 3, 4, 5),
 (90, 'Diamond', 2, 3, 4, 5, 3, 3, 4, 55),
 (910, 'Jade', 2, 3, 4, 5, 3, 3, 4, 5),
 (92, 'Ruby', 2, 3, 3, 5, 3, 3, 4, 5),
@@ -350,6 +350,7 @@ values (90, 'Emerald', 2, 3, 4, 5, 3, 3, 4, 5),
 insert into auto_skill
 values
 (90, 'Warrior'),
+(9034, 'Warrior'),
 (910, 'White Mage'),
 (92, 'Warrior'),
 (94, 'Black Mage'),
