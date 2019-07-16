@@ -339,6 +339,13 @@ $$
 declare
     _cls_name CHAR(20); _base_life INT; _base_power INT; _base_strength INT; _base_will INT; _base_speed INT;
 BEGIN
+    -- check if experience/level is negative
+
+    IF NEW.char_experience < 0
+    THEN
+        RAISE EXCEPTION 'Experience cannot be negative';
+    end if;
+
     NEW.char_level := NEW.char_experience / 1000;
 
     select * INTO _cls_name, _base_life, _base_power, _base_strength, _base_will, _base_speed
