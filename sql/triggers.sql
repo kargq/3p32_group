@@ -74,7 +74,7 @@ BEGIN
                  Equipment E,
                  main_weapon_instance Ins
             WHERE C.char_name = NEW.char_name
-              AND Ins.main_weapon_instance_id = NEW.armour_equipped
+              AND Ins.main_weapon_instance_id = NEW.main_equipped
               AND C.char_level < E.elevel) THEN
         raise
             exception 'Character level is too low for given Main weapon';

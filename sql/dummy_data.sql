@@ -328,3 +328,4 @@ values (5, 1, 1, 'As a Saiyan, Goku possesses immens', 'Superhuman Strength'),
        (10, 6, 6, 'Thanks to his physiology, Goku possesses', 'Powerful Lungs'),
        (11, 7, 7, 'Thanks to his Saiyan biology, Goku poss', 'Heat Resistance');
 
+
