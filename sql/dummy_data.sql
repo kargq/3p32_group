@@ -328,4 +328,49 @@ values (5, 1, 1, 'As a Saiyan, Goku possesses immens', 'Superhuman Strength'),
        (10, 6, 6, 'Thanks to his physiology, Goku possesses', 'Powerful Lungs'),
        (11, 7, 7, 'Thanks to his Saiyan biology, Goku poss', 'Heat Resistance');
 
+insert into Gem
+values (90, 'Emerald', 2, 3, 4, 5, 3, 3, 4, 5),
+(90, 'Diamond', 2, 3, 4, 5, 3, 3, 4, 55),
+(910, 'Jade', 2, 3, 4, 5, 3, 3, 4, 5),
+(92, 'Ruby', 2, 3, 3, 5, 3, 3, 4, 5),
+(93, 'More Emerald', 54, 3, 4, 5, 3, 3, 4, 5),
+(94, 'White Emerald', 23, 3, 4, 5, 3, 3, 4, 5),
+(95, 'Not emerald', 2, 3, 4, 5, 3, 3, 4, 5),
+(96, 'Is this emar', 2, 3, 43, 5, 3, 3, 4, 5),
+(97, 'But Jade', 2, 3, 4, 53, 3, 3, 4, 5),
+(98, 'OH m y wor', 2, 3, 4, 5, 3, 3, 4, 5),
+(908, 'Black Diamond', 2, 3, 4, 5, 3, 3, 4, 5),
+(909, 'Pink Dmnd', 21, 3, 4, 5, 3, 3, 4, 5),
+(900, 'Red Read', 2, 3, 24, 5, 3, 3, 4, 5),
+(9012, 'Read dore', 2, 3, 4, 5, 3, 3, 4, 5),
+(9034, 'Wrase', 2, 3, 4, 5, 3, 3, 43, 5),
+(9011, 'Waaan', 2, 32, 4, 5, 32, 3, 24, 5)
+;
+
+insert into auto_skill
+values
+(90, 'Warrior'),
+(910, 'White Mage'),
+(92, 'Warrior'),
+(94, 'Black Mage'),
+(95, 'Warrior'),
+(96, 'Ranger'),
+(96, 'White Mage'),
+(97, 'Warrior'),
+(97, 'Black Mage')
+;
+
+insert into earned_skill
+values
+(98, 'Warrior'),
+(98, 'White Mage'),
+(98, 'Ranger'),
+(908, 'White Mage'),
+(909, 'Black Mage'),
+(9012, 'Warrior'),
+(9011, 'Warrior')
+;
+
+
+
 
