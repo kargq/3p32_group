@@ -528,44 +528,10 @@ $$
 
 CREATE TRIGGER isa_check_trigger_main
     BEFORE UPDATE OR INSERT
-    ON main_weapon_instance
+    ON main_weapon
     FOR EACH ROW
 EXECUTE PROCEDURE isa_overlap_check_main();
 
-CREATE OR REPLACE FUNCTION isa_overlap_check_main()
-    RETURNS TRIGGER
-AS
-$$
-BEGIN
-    IF EXISTS(
-               SELECT *
-               FROM Armour A
-               WHERE A.eqp_id = NEW.eqp_id
-           )
-        or exists(
-               SELECT *
-               FROM secondary_equipment A
-               WHERE A.eqp_id = NEW.eqp_id
-           )
-    THEN
-        raise exception 'Equipment already belongs to secondary or armour';
-    end if;
-    RETURN OLD;
-END;
-$$
-    LANGUAGE plpgsql;
-
-CREATE TRIGGER isa_check_trigger_main
-    BEFORE UPDATE OR INSERT
-    ON main_weapon_instance
-    FOR EACH ROW
-EXECUTE PROCEDURE isa_overlap_check_main();
-
-CREATE TRIGGER isa_check_trigger_main
-    BEFORE UPDATE OR INSERT
-    ON main_weapon_instance
-    FOR EACH ROW
-EXECUTE PROCEDURE isa_overlap_check_main();
 
 CREATE OR REPLACE FUNCTION isa_overlap_check_secondary()
     RETURNS TRIGGER
@@ -579,13 +545,13 @@ BEGIN
            )
         or exists(
                SELECT *
-               FROM secondary_equipment A
+               FROM main_weapon A
                WHERE A.eqp_id = NEW.eqp_id
            )
     THEN
         raise exception 'Equipment already belongs to main or armour';
     end if;
-    RETURN OLD;
+    RETURN NEW;
 END;
 $$
     LANGUAGE plpgsql;
@@ -605,25 +571,25 @@ $$
 BEGIN
     IF EXISTS(
                SELECT *
-               FROM Armour A
+               FROM secondary_equipment A
                WHERE A.eqp_id = NEW.eqp_id
            )
         or exists(
                SELECT *
-               FROM armour_instance A
+               FROM main_weapon A
                WHERE A.eqp_id = NEW.eqp_id
            )
     THEN
         raise exception 'Equipment already belongs to main or secondary';
     end if;
-    RETURN OLD;
+    RETURN NEW;
 END;
 $$
     LANGUAGE plpgsql;
 
 CREATE TRIGGER isa_check_trigger_main
     BEFORE UPDATE OR INSERT
-    ON armour_instance
+    ON armour
     FOR EACH ROW
 EXECUTE PROCEDURE isa_overlap_check_armour();
 
