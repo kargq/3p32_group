@@ -130,3 +130,8 @@ values ('3', '4','5', 'double energy sphere of Ki','Twin dragon shot');
 insert into skill
 values ('1', '0','10', 'kick in the air','Aerial kick');
 
+insert into earned_skill
+values ('1', 'White Mage');
+
+insert into earned_skill
+values ('4','Warrior')
