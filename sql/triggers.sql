@@ -71,7 +71,8 @@ BEGIN
     IF EXISTS(
             SELECT *
             FROM Character C,
-                 Equipment E, main_weapon_instance Ins
+                 Equipment E,
+                 main_weapon_instance Ins
             WHERE C.char_name = NEW.char_name
               AND Ins.main_weapon_instance_id = NEW.armour_equipped
               AND C.char_level < E.elevel) THEN
@@ -82,7 +83,8 @@ BEGIN
     IF EXISTS(
             SELECT *
             FROM Character C,
-                 Equipment E, secondary_equipment_instance Ins
+                 Equipment E,
+                 secondary_equipment_instance Ins
             WHERE C.char_name = NEW.char_name
               AND Ins.secondary_weapon_instance_id = NEW.secondary_equipped
               AND C.char_level < E.elevel) THEN
@@ -93,7 +95,8 @@ BEGIN
     IF EXISTS(
             SELECT *
             FROM Character C,
-                 Equipment E, armour_instance Ins
+                 Equipment E,
+                 armour_instance Ins
             WHERE C.char_name = NEW.char_name
               AND Ins.armour_instance_id = NEW.armour_equipped
               AND C.char_level < E.elevel) THEN
@@ -340,7 +343,7 @@ BEGIN
 
     select * INTO _cls_name, _base_life, _base_power, _base_strength, _base_will, _base_speed
     from class
-    where class.cls_name = NEW.has_class0
+    where class.cls_name = NEW.has_class
     limit 1;
 
     IF (lower(NEW.has_class) = 'warrior') THEN
@@ -485,3 +488,39 @@ CREATE TRIGGER on_delete_clan_member
     ON clan_member
     FOR EACH ROW
 EXECUTE PROCEDURE on_delete_clan_member();
+
+-- EO Trigger group #6
+
+-- Trigger #7
+
+-- Trigger #8: Overlap Constraint
+
+-- trigger for overlap
+-- CREATE OR REPLACE FUNCTION isa_overlap_check()
+--     RETURNS TRIGGER
+-- AS
+-- $$
+-- BEGIN
+--     -- check if the memeber being deleted is a clan chief
+--     IF EXISTS(
+--             SELECT *
+--             FROM clan C
+--             WHERE C.chief = OLD.char_name
+--               AND C.clanname = OLD.cln_name
+--         )
+--     THEN
+--         raise exception 'Clan member is a chief, appoint new chief before removing.';
+--     END IF;
+--     RETURN OLD;
+-- END;
+-- $$
+--     LANGUAGE plpgsql;
+--
+-- CREATE TRIGGER isa_check_trigger
+--     BEFORE DELETE
+--     ON clan_member
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE isa_overlap_check();
+
+
+-- EO Trigger #8
