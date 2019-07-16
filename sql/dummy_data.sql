@@ -38,42 +38,69 @@ values ('Red', 2, 1, 2, 4, 1, 6, 1, 1),
         ('Green', 9, 4, 2, 5, 1, 3, 6, 1),
         ('Blue', 2, 4, 4, 1, 1, 3, 1, 1),
         ('Yellow', 1, 4, 1, 5, 1, 7, 3, 1),
-        ('Test', 2, 2, 2, 2, 2, 2, 2, 2);
+        ('Black', 2, 4, 2, 5, 2, 2, 6, 2);
 
 insert into equipment (eqp_name, estrength, edefence, gem_limit, elevel)
 values ('Leather Jacket', 1, 2, 3, 5),
         ('Iron Chainmail', 2, 3, 4, 6),
-        ('swooords', 3, 5, 5, 4),
-        ('Diamond Chestplate', 7, 10, 6, 5),
-        ('TEST', 2, 2, 2, 2);
+        ('White t-shirt', 3, 5, 5, 7),
+        ('Black t-shirt', 3, 5, 5, 4),
+        ('Bullet-proof vest', 3, 5, 5, 9),
+        ('Long Sword', 3, 5, 5, 4),
+        ('Staff', 7, 10, 6, 3),
+        ('Lightsaber', 7, 5, 6, 6),
+        ('Whip', 7, 10, 6, 5),
+        ('Brass Knuckles', 7, 5, 6, 4),
+        ('White Gloves', 5, 10, 6, 2),
+        ('Dagger', 2, 2, 2, 2);
 
 insert into armour (eqp_id)
 values (1),
         (2),
-        (4);
+        (3),
+        (4),
+        (5);
 
 insert into main_weapon (eqp_id)
-values  (3),
-        (2),
-        (4);
+values  (6),
+        (7),
+        (8),
+        (9);
 
 insert into secondary_equipment (eqp_id)
-values (5),
-        (2),
-        (4);
+values (10),
+        (11),
+        (12);
 
 insert into armour_instance (eqp_id)
 values (1),
         (2),
-        (4);
+        (3),
+        (4),
+        (5),
+        (1),
+        (2),
+        (3),
+        (4),
+        (5);
 
 insert into main_weapon_instance (eqp_id)
-values (3),
-        (4);
+values (6),
+        (7),
+        (8),
+        (9),
+        (6),
+        (7),
+        (8),
+        (9);
 
 insert into secondary_equipment_instance (eqp_id)
-values (5),
-        (4);
+values (10),
+        (11),
+        (12),
+        (10),
+        (11),
+        (12);
 
 insert into armour_embed (armour_instance_id, gem_id)
 values (1,1),
