@@ -12,7 +12,7 @@ CREATE TABLE Gem
     gspeed    INTEGER,
     gdefence  INTEGER,
     gwill     INTEGER,
-    gstrength INTEGER,
+    gstrength INTEGER CHECK (gstrength >= 0),
     glevel    INTEGER,
     gblock    INTEGER
 );
