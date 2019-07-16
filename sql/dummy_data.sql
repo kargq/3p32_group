@@ -136,40 +136,40 @@ insert into character (char_name, has_class)
 values ('Cale', 'Warrior');
 
 insert into character (char_name, has_class)
-values ('Sammy', 'White Mage');
+values ('Sammy', 'Ranger');
 
 insert into character (char_name, has_class)
-values ('Jhonny', 'Black Mage');
+values ('Jhonny', 'White Mage');
 
 insert into character (char_name, has_class)
-values ('Katie', 'Ranger');
+values ('Katie', 'Black Mage');
 
 insert into character (char_name, has_class)
 values ('Nate', 'Warrior');
 
 insert into character (char_name, has_class)
-values ('Paul', 'White Mage');
+values ('Paul', 'Ranger');
 
 insert into character (char_name, has_class)
-values ('Sidd', 'Black Mage');
+values ('Sidd', 'White Mage');
 
 insert into character (char_name, has_class)
-values ('God', 'Warrior');
+values ('God', 'Black Mage');
 
 insert into character (char_name, has_class)
-values ('Jesus', 'Ranger');
+values ('Jesus', 'Warrior');
 
 insert into character (char_name, has_class)
-values ('Dillon', 'White Mage');
+values ('Dillon', 'Ranger');
 
 insert into character (char_name, has_class)
 values ('Kyle', 'Black Mage');
 
 insert into character (char_name, has_class)
-values ('Sara', 'Warrior');
+values ('Sara', 'White Mage');
 
 insert into character (char_name, has_class)
-values ('Patrick', 'Ranger');
+values ('Patrick', 'Warrior');
 
 update character c
 set char_experience = 1000
