@@ -172,79 +172,79 @@ insert into character (char_name, has_class)
 values ('Patrick', 'Ranger');
 
 update character c
-set char_experience = 10000
+set char_experience = 1000
 where c.char_name = 'Ian';
 
 update character c
-set char_experience = 20000
+set char_experience = 2000
 where c.char_name = 'Cameron';
 
 update character c
-set char_experience = 30000
+set char_experience = 3000
 where c.char_name = 'Marlon';
 
 update character c
-set char_experience = 40000
+set char_experience = 4000
 where c.char_name = 'Kindeep';
 
 update character c
-set char_experience = 50000
+set char_experience = 5000
 where c.char_name = 'Cameron';
 
 update character c
-set char_experience = 60000
+set char_experience = 6000
 where c.char_name = 'Marlon';
 
 update character c
-set char_experience = 70000
+set char_experience = 7000
 where c.char_name = 'Cale';
 
 update character c
-set char_experience = 80000
+set char_experience = 8000
 where c.char_name = 'Sammy';
 
 update character c
-set char_experience = 90000
+set char_experience = 9000
 where c.char_name = 'Jhonny';
 
 update character c
-set char_experience = 100000
+set char_experience = 10000
 where c.char_name = 'Nate';
 
 update character c
-set char_experience = 10000
+set char_experience = 1000
 where c.char_name = 'Paul';
 
 update character c
-set char_experience = 20000
+set char_experience = 2000
 where c.char_name = 'Sidd';
 
 update character c
-set char_experience = 30000
+set char_experience = 3000
 where c.char_name = 'Katie';
 
 update character c
-set char_experience = 40000
+set char_experience = 4000
 where c.char_name = 'God';
 
 update character c
-set char_experience = 50000
+set char_experience = 5000
 where c.char_name = 'Jesus';
 
 update character c
-set char_experience = 60000
+set char_experience = 6000
 where c.char_name = 'Dillon';
 
 update character c
-set char_experience = 70000
+set char_experience = 7000
 where c.char_name = 'Kyle';
 
 update character c
-set char_experience = 80000
+set char_experience = 8000
 where c.char_name = 'Sara';
 
 update character c
-set char_experience = 90000
+set char_experience = 9000
 where c.char_name = 'Patrick';
 
 
@@ -295,10 +295,6 @@ values ('Gwalla', 'Jhonny');
 insert into clan_member
 values ('Gwalla','Paul');
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4292e5b72280ec425309c88da97feddcff559acc
 insert into skill
 values (1, 0, 100, 'Ki blast fired with two hands', 'Kamehameha');
 
