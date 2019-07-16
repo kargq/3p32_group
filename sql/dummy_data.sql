@@ -212,6 +212,15 @@ values ('Goolies','God');
 insert into clan
 values ('Slayers','Sidd');
 
+insert into clan_member
+values ('Slayers','Patrick');
+
+insert into clan_member
+values ('Slayers','Sammy');
+
+insert into clan_member
+values ('Slayers','Cameron');
+
 insert into clan
 values ('Beasties','Nate');
 
@@ -223,6 +232,10 @@ values ('Gwalla','Dillon');
 
 insert into clan_member
 values ('Gwalla','Jhonny');
+
+insert into clan_member
+values ('Gwalla','Paul');
+
 
 insert into skill
 values (1, 0,100, 'Ki blast fired with two hands','Kamehameha');
