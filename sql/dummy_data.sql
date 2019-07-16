@@ -117,3 +117,21 @@ values ('RocketRaiders', 'Marlon');
 
 insert into clan_member
 values ('RocketRaiders', 'Ian');
+
+insert into skill
+values ('1', '0','100', 'Ki blast fired with two hands','Kamehameha');
+
+insert into skill
+values ('2', '-2','8', 'Bending of earths valuable element','Air bending ');
+
+insert into skill
+values ('3', '4','5', 'double energy sphere of Ki','Twin dragon shot');
+
+insert into skill
+values ('1', '0','10', 'kick in the air','Aerial kick');
+
+insert into earned_skill
+values ('1', 'White Mage');
+
+insert into earned_skill
+values ('4','Warrior')
