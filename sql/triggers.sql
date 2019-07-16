@@ -353,7 +353,7 @@ BEGIN
     where class.cls_name = NEW.has_class
     limit 1;
 
-    IF (lower(NEW.has_class) = 'warrior') THEN
+    IF (new.has_class = _cls_name) THEN
         NEW.char_life := (NEW.char_experience / 1000) * _base_life + 10;
         NEW.char_power := (NEW.char_experience / 1000) * _base_power + 10;
         NEW.char_strength := (NEW.char_experience / 1000) * _base_strength + 10;
